@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Smaller build footprint on low-disk machines (fewer parallel page writes)
+  experimental: {
+    staticGenerationMaxConcurrency: 1,
+    staticGenerationMinPagesPerWorker: 999,
+  },
+  images: {
+    formats: ['image/webp'],
+  },
 };
 
 export default nextConfig;
