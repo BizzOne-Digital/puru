@@ -1,104 +1,100 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Globe, Search, Factory, Truck, Settings, Handshake } from 'lucide-react';
+import { Globe, Handshake, Building2, Search, Settings, Truck } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Container from '@/components/ui/Container';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
+import { siteContent } from '@/lib/data/site-content';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-const snapshots = [
-  {
-    icon: Globe,
-    title: 'Global Trade Support',
-    description: 'Connecting businesses across international markets for import, export, and trade development.',
-    color: 'teal',
-  },
-  {
-    icon: Search,
-    title: 'Product Sourcing',
-    description: 'Identifying and coordinating product sourcing connections across global supply chains.',
-    color: 'aqua',
-  },
-  {
-    icon: Factory,
-    title: 'Manufacturer Connections',
-    description: 'Building direct relationships between manufacturers, suppliers, and buyers worldwide.',
-    color: 'green',
-  },
-  {
-    icon: Truck,
-    title: 'Wholesale & Distribution',
-    description: 'Supporting wholesale trade and distribution channel development for various product categories.',
-    color: 'teal',
-  },
-  {
-    icon: Settings,
-    title: 'Industrial Machinery',
-    description: 'Specialized support for industrial machinery buyers, sellers, and equipment sourcing.',
-    color: 'copper',
-  },
-  {
-    icon: Handshake,
-    title: 'Strategic Partnerships',
-    description: 'Developing long-term business partnerships for sustained international trade growth.',
-    color: 'aqua',
-  },
+const { coreBusiness } = siteContent;
+
+const pillarIcons = [Globe, Handshake, Building2];
+const pillarColors = [
+  { icon: 'text-teal', bg: 'bg-teal/10', border: 'border-teal/20', dot: 'bg-teal' },
+  { icon: 'text-aqua', bg: 'bg-aqua/10', border: 'border-aqua/20', dot: 'bg-aqua' },
+  { icon: 'text-copper', bg: 'bg-copper/10', border: 'border-copper/20', dot: 'bg-copper' },
 ];
 
-const colorMap = {
-  teal: { icon: 'text-teal', bg: 'bg-teal/10', border: 'border-teal/20', glow: 'hover:shadow-glow-teal' },
-  aqua: { icon: 'text-aqua', bg: 'bg-aqua/10', border: 'border-aqua/20', glow: 'hover:shadow-glow-aqua' },
-  green: { icon: 'text-green-trade', bg: 'bg-green-trade/10', border: 'border-green-trade/20', glow: '' },
-  copper: { icon: 'text-copper', bg: 'bg-copper/10', border: 'border-copper/20', glow: 'hover:shadow-glow-copper' },
-};
+const supportCards = [
+  { icon: Globe,    title: 'Global Trade Support',          desc: 'International sourcing, import/export, and supply chain management across 11+ markets worldwide.' },
+  { icon: Search,   title: 'Technology Commercialization',  desc: 'Bringing cutting-edge technologies to market through strategic partnerships and distribution networks.' },
+  { icon: Handshake,title: 'Business Matchmaking',          desc: 'Joint ventures, cross-border partnerships, and government relations to accelerate global growth.' },
+  { icon: Truck,    title: 'Wholesale & Distribution',      desc: 'Exclusive distribution agreements and wholesale channel development for global product categories.' },
+  { icon: Settings, title: 'Industrial Machinery',          desc: 'Specialized sourcing and trade support for industrial machinery, equipment, and heavy industry.' },
+  { icon: Building2,title: 'Infrastructure Projects',       desc: 'Renewable energy, PPP projects, and investment facilitation for large-scale development.' },
+];
 
 export default function CorporateSnapshot() {
   return (
-    <section className="relative py-12 sm:py-20 lg:py-24 bg-navy overflow-hidden">
+    <section className="relative py-24 bg-navy overflow-hidden">
       <GlobalGridBackground />
 
       <Container>
+        {/* Three Pillars */}
         <SectionHeading
-          eyebrow="What We Do"
-          title="International Trade <span class='gradient-text'>Solutions</span>"
-          subtitle="YUVAAN INTERNATIONAL supports every stage of the global trade process — from sourcing to partnerships."
-          className="mb-10 sm:mb-16"
+          eyebrow={coreBusiness.eyebrow}
+          title={`${coreBusiness.heading.split(' ').slice(0,3).join(' ')} <span class='gradient-text'>${coreBusiness.heading.split(' ').slice(3).join(' ')}</span>`}
+          subtitle={coreBusiness.subheading}
+          className="mb-16"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-          {snapshots.map((item, i) => {
-            const colors = colorMap[item.color as keyof typeof colorMap];
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 items-stretch">
+          {coreBusiness.pillars.map((pillar, i) => {
+            const IconComp = pillarIcons[i];
+            const color = pillarColors[i];
             return (
-              <ScrollReveal key={i} delay={i * 0.1} direction="up" className="h-full">
-                <div
-                  className={`group relative h-full flex flex-col p-5 sm:p-8 rounded-2xl glass border ${colors.border} card-hover ${colors.glow} transition-all duration-300`}
-                >
-                  {/* Background shimmer */}
+              <ScrollReveal key={i} delay={i * 0.12} direction="up" className="h-full">
+                <div className={`group relative h-full flex flex-col p-8 rounded-2xl glass border ${color.border} hover:shadow-lg transition-all duration-300 overflow-hidden`}>
                   <div className="absolute inset-0 rounded-2xl overflow-hidden">
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shimmer" />
                   </div>
 
-                  {/* Icon */}
-                  <div className={`relative z-10 w-12 h-12 flex-shrink-0 rounded-xl ${colors.bg} border ${colors.border} flex items-center justify-center mb-6`}>
-                    <item.icon className={`w-6 h-6 ${colors.icon}`} />
+                  <div className={`relative z-10 w-14 h-14 flex-shrink-0 rounded-xl ${color.bg} border ${color.border} flex items-center justify-center mb-6`}>
+                    <IconComp className={`w-7 h-7 ${color.icon}`} />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="relative z-10 font-sora font-semibold text-xl text-soft-white mb-3 group-hover:text-soft-white transition-colors">
-                    {item.title}
-                  </h3>
+                  <h3 className={`relative z-10 font-sora font-bold text-xl text-soft-white mb-3 flex-shrink-0`}>{pillar.title}</h3>
+                  <p className="relative z-10 font-inter text-soft-white/55 text-sm leading-relaxed mb-6 flex-grow">{pillar.description}</p>
 
-                  {/* Description — flex-grow so it fills remaining space */}
-                  <p className="relative z-10 font-inter text-soft-white/50 text-sm leading-relaxed group-hover:text-soft-white/70 transition-colors flex-grow">
-                    {item.description}
-                  </p>
-
-                  {/* Bottom accent */}
-                  <div className={`absolute bottom-0 left-8 right-8 h-px ${colors.bg} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <ul className="relative z-10 space-y-2 mt-auto">
+                    {pillar.points.map((pt) => (
+                      <li key={pt} className="flex items-center gap-2 text-soft-white/60 text-xs font-inter">
+                        <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${color.dot}`} />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </ScrollReveal>
             );
           })}
+        </div>
+
+        {/* What We Do cards */}
+        <SectionHeading
+          eyebrow="What We Do"
+          title="International Trade <span class='gradient-text'>Solutions</span>"
+          subtitle="YUVAAN INTERNATIONAL supports every stage of the global trade process — from sourcing to infrastructure development."
+          className="mb-12"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          {supportCards.map((item, i) => (
+            <ScrollReveal key={i} delay={i * 0.08} direction="up" className="h-full">
+              <div className="group relative h-full flex flex-col p-8 rounded-2xl glass border border-teal/10 hover:border-teal/30 card-hover transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shimmer" />
+                </div>
+                <div className="relative z-10 w-12 h-12 flex-shrink-0 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center mb-6">
+                  <item.icon className="w-6 h-6 text-teal" />
+                </div>
+                <h3 className="relative z-10 font-sora font-semibold text-xl text-soft-white mb-3 flex-shrink-0">{item.title}</h3>
+                <p className="relative z-10 font-inter text-soft-white/50 text-sm leading-relaxed flex-grow">{item.desc}</p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </Container>
     </section>

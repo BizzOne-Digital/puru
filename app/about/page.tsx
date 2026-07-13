@@ -1,53 +1,41 @@
 import type { Metadata } from 'next';
-import { Target, Eye, Globe, Search, Factory, Truck, Settings, Handshake, Shield, Star, Users, TrendingUp } from 'lucide-react';
+import { Target, Eye, Globe, Search, Handshake, Truck, Settings, Building2, Shield, Star, TrendingUp, MapPin, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
+import { siteContent } from '@/lib/data/site-content';
 
 export const metadata: Metadata = {
   title: 'About YUVAAN INTERNATIONAL | International Trade Company',
-  description: 'Learn about YUVAAN INTERNATIONAL — a professional international trade platform connecting businesses with product, supply, machinery, and partnership opportunities.',
+  description: 'YUVAAN International Trade Canada — headquartered in British Columbia, connecting manufacturers, governments, investors, and project developers across 11+ global markets.',
 };
 
-const whatWeDo = [
-  { icon: Globe, title: 'Global Trade Support', desc: 'Supporting businesses in navigating international trade channels and market connections.' },
-  { icon: Search, title: 'Product Sourcing', desc: 'Identifying and coordinating product sourcing across global supply chains.' },
-  { icon: Users, title: 'Supplier & Buyer Connections', desc: 'Facilitating meaningful connections between suppliers, buyers, and trade partners.' },
-  { icon: Settings, title: 'Industrial Product Inquiries', desc: 'Specialized support for industrial machinery and equipment inquiries.' },
-  { icon: Truck, title: 'Wholesale Distribution Support', desc: 'Helping businesses develop and expand wholesale distribution channels.' },
-  { icon: Handshake, title: 'Business Partnership Development', desc: 'Building sustainable long-term business partnerships across global markets.' },
-];
+const { about, globalPresence, whyYuvaan } = siteContent;
 
-const values = [
-  { icon: Shield, title: 'Trust', desc: 'Building reliable relationships through consistent, transparent operations.' },
-  { icon: Eye, title: 'Transparency', desc: 'Open communication at every stage of the trade process.' },
-  { icon: Star, title: 'Professionalism', desc: 'Conducting business with the highest standards of professional integrity.' },
-  { icon: Globe, title: 'Global Reach', desc: 'Connecting businesses across international markets and trade corridors.' },
-  { icon: Handshake, title: 'Long-Term Partnerships', desc: 'Prioritizing sustainable, long-term business relationships over short-term gain.' },
-  { icon: TrendingUp, title: 'Strategic Growth', desc: 'Supporting business growth through strategic trade opportunities and market access.' },
-];
+const whatWeDoIcons = [Globe, Search, Handshake, Building2, Truck, Settings];
+const valueIcons = [Shield, Eye, Star, Globe, Handshake, TrendingUp];
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-navy">
+
       {/* Hero */}
       <section className="relative pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
         <GlobalGridBackground />
         <TradeRouteLines />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/60" />
-
         <Container size="md">
           <div className="relative z-10 text-center">
             <ScrollReveal>
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">About Us</span>
+              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">{about.eyebrow}</span>
               <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-soft-white leading-tight mb-5 sm:mb-6">
                 About <span className="gradient-text">YUVAAN INTERNATIONAL</span>
               </h1>
               <p className="font-inter text-soft-white/60 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2">
-                A professional international trade platform connecting businesses with product, supply, machinery, and partnership opportunities.
+                {about.subheading}
               </p>
             </ScrollReveal>
           </div>
@@ -62,16 +50,22 @@ export default function AboutPage() {
               <div>
                 <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Company Overview</span>
                 <h2 className="font-sora font-bold text-2xl sm:text-4xl text-soft-white leading-tight mb-6">
-                  A Canadian Gateway for <span className="gradient-text">Global Trade</span>
+                  A Canadian Gateway for <span className="gradient-text">Global Markets</span>
                 </h2>
-                <p className="font-inter text-soft-white/60 text-lg leading-relaxed mb-6">
-                  YUVAAN INTERNATIONAL supports importers, exporters, manufacturers, wholesalers, distributors, and industrial buyers by helping create reliable trade connections and business opportunities across markets.
-                </p>
-                <p className="font-inter text-soft-white/50 text-base leading-relaxed mb-8">
-                  Operating from Canada, we serve businesses seeking to expand their international trade reach — whether it&apos;s sourcing products, finding buyers, building supply partnerships, or exploring distribution channels across borders.
-                </p>
+                <p className="font-inter text-soft-white/60 text-lg leading-relaxed mb-6">{about.overview}</p>
+                <div className="flex items-center gap-3 mb-6 p-4 rounded-xl glass border border-teal/20">
+                  <MapPin className="w-5 h-5 text-teal flex-shrink-0" />
+                  <div>
+                    <p className="font-inter text-xs text-soft-white/40 uppercase tracking-widest">Headquarters</p>
+                    <p className="font-sora font-semibold text-soft-white">{about.location}</p>
+                  </div>
+                  <div className="ml-6 pl-6 border-l border-teal/20">
+                    <p className="font-inter text-xs text-soft-white/40 uppercase tracking-widest">Active Markets</p>
+                    <p className="font-sora font-bold text-teal text-xl">{about.marketsCount}</p>
+                  </div>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  {['Import & Export', 'Product Sourcing', 'Industrial Machinery', 'Wholesale Trade', 'Manufacturer Links', 'Partnerships'].map((item, i) => (
+                  {['Global Trading', 'Technology Commercialization', 'Infrastructure Projects', 'Wholesale Distribution', 'Business Matchmaking', 'Investment Facilitation'].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-soft-white/60 text-sm font-inter">
                       <div className="w-1.5 h-1.5 rounded-full bg-teal" />
                       {item}
@@ -83,7 +77,6 @@ export default function AboutPage() {
 
             <ScrollReveal direction="right">
               <div className="grid grid-cols-1 gap-5">
-                {/* Mission */}
                 <div className="glass border border-teal/20 rounded-2xl p-7">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center">
@@ -91,12 +84,8 @@ export default function AboutPage() {
                     </div>
                     <h3 className="font-sora font-semibold text-soft-white text-lg">Mission</h3>
                   </div>
-                  <p className="font-inter text-soft-white/60 text-sm leading-relaxed">
-                    To create trusted international trade pathways for businesses seeking product sourcing, supply connections, distribution, and partnership opportunities.
-                  </p>
+                  <p className="font-inter text-soft-white/60 text-sm leading-relaxed">{about.mission}</p>
                 </div>
-
-                {/* Vision */}
                 <div className="glass border border-copper/20 rounded-2xl p-7">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-copper/10 border border-copper/20 flex items-center justify-center">
@@ -104,9 +93,7 @@ export default function AboutPage() {
                     </div>
                     <h3 className="font-sora font-semibold text-soft-white text-lg">Vision</h3>
                   </div>
-                  <p className="font-inter text-soft-white/60 text-sm leading-relaxed">
-                    To become a reliable global trade gateway for businesses looking to connect, source, distribute, and grow across international markets.
-                  </p>
+                  <p className="font-inter text-soft-white/60 text-sm leading-relaxed">{about.vision}</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -120,18 +107,69 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Our Services"
             title="What <span class='gradient-text'>We Do</span>"
-            subtitle="A comprehensive approach to international trade support — from sourcing to partnerships."
+            subtitle="A comprehensive approach to international trade, technology commercialization, and project development."
             className="mb-14"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            {whatWeDo.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.1} className="h-full">
-                <div className="group h-full flex flex-col glass border border-teal/10 hover:border-teal/30 rounded-2xl p-7 card-hover transition-all">
-                  <div className="w-12 h-12 flex-shrink-0 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center mb-5 group-hover:bg-teal/20 transition-colors">
-                    <item.icon className="w-6 h-6 text-teal" />
+            {about.whatWeDo.map((item, i) => {
+              const Icon = whatWeDoIcons[i];
+              return (
+                <ScrollReveal key={i} delay={i * 0.1} className="h-full">
+                  <div className="group h-full flex flex-col glass border border-teal/10 hover:border-teal/30 rounded-2xl p-7 card-hover transition-all">
+                    <div className="w-12 h-12 flex-shrink-0 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center mb-5 group-hover:bg-teal/20 transition-colors">
+                      <Icon className="w-6 h-6 text-teal" />
+                    </div>
+                    <h3 className="font-sora font-semibold text-soft-white text-lg mb-3 flex-shrink-0">{item.title}</h3>
+                    <p className="font-inter text-soft-white/50 text-sm leading-relaxed flex-grow">{item.desc}</p>
                   </div>
-                  <h3 className="font-sora font-semibold text-soft-white text-lg mb-3 flex-shrink-0">{item.title}</h3>
-                  <p className="font-inter text-soft-white/50 text-sm leading-relaxed flex-grow">{item.desc}</p>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* Global Presence */}
+      <section className="py-20">
+        <Container>
+          <SectionHeading
+            eyebrow={globalPresence.eyebrow}
+            title={`Operating Across <span class='gradient-text'>11+ Markets Worldwide</span>`}
+            subtitle={globalPresence.subheading}
+            className="mb-14"
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {globalPresence.markets.map((m, i) => (
+              <ScrollReveal key={i} delay={i * 0.05} className="h-full">
+                <div className={`group h-full flex flex-col glass border rounded-2xl p-5 text-center card-hover transition-all ${i === 0 ? 'border-teal/30 bg-teal/5' : 'border-white/5 hover:border-teal/20'}`}>
+                  <p className={`font-sora font-bold text-base mb-1 ${i === 0 ? 'text-teal' : 'text-soft-white'}`}>{m.country}</p>
+                  <p className="font-inter text-soft-white/40 text-xs leading-snug">{m.detail}</p>
+                  {i === 0 && <span className="mt-2 text-[10px] font-inter text-copper/80 uppercase tracking-widest">HQ</span>}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Why YUVAAN */}
+      <section className="py-20" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
+        <Container>
+          <SectionHeading
+            eyebrow={whyYuvaan.eyebrow}
+            title={`Your Trusted Canadian Gateway to <span class='gradient-text'>Global Markets</span>`}
+            subtitle={whyYuvaan.subheading}
+            className="mb-14"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 items-stretch">
+            {whyYuvaan.reasons.map((v, i) => (
+              <ScrollReveal key={i} delay={i * 0.06} className="h-full">
+                <div className="group h-full flex flex-col glass border border-white/5 hover:border-teal/20 rounded-2xl p-6 card-hover transition-all">
+                  <div className="w-10 h-10 flex-shrink-0 rounded-xl bg-teal/10 border border-teal/15 flex items-center justify-center mb-4 group-hover:bg-teal/20 transition-colors">
+                    <CheckCircle className="w-5 h-5 text-teal group-hover:text-aqua transition-colors" />
+                  </div>
+                  <h3 className="font-sora font-semibold text-soft-white text-sm mb-2 flex-shrink-0">{v.title}</h3>
+                  <p className="font-inter text-soft-white/40 text-xs leading-relaxed flex-grow">{v.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -145,21 +183,24 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Our Values"
             title="What <span class='gradient-text'>Drives Us</span>"
-            subtitle="The principles that guide our approach to international trade and business relationships."
+            subtitle="The principles that guide our approach to international trade, project development, and business relationships."
             className="mb-14"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
-            {values.map((v, i) => (
-              <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="group text-center glass border border-white/5 hover:border-teal/20 rounded-2xl p-7 card-hover transition-all">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-teal/10 border border-teal/15 flex items-center justify-center group-hover:bg-teal/20 transition-colors">
-                    <v.icon className="w-6 h-6 text-teal group-hover:text-aqua transition-colors" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 items-stretch">
+            {about.values.map((v, i) => {
+              const Icon = valueIcons[i];
+              return (
+                <ScrollReveal key={i} delay={i * 0.08} className="h-full">
+                  <div className="group h-full flex flex-col items-center text-center glass border border-white/5 hover:border-teal/20 rounded-2xl p-7 card-hover transition-all">
+                    <div className="w-12 h-12 flex-shrink-0 mx-auto mb-4 rounded-xl bg-teal/10 border border-teal/15 flex items-center justify-center group-hover:bg-teal/20 transition-colors">
+                      <Icon className="w-6 h-6 text-teal group-hover:text-aqua transition-colors" />
+                    </div>
+                    <h3 className="font-sora font-semibold text-soft-white text-base mb-2 flex-shrink-0">{v.title}</h3>
+                    <p className="font-inter text-soft-white/40 text-xs leading-relaxed flex-grow">{v.desc}</p>
                   </div>
-                  <h3 className="font-sora font-semibold text-soft-white text-base mb-2">{v.title}</h3>
-                  <p className="font-inter text-soft-white/40 text-xs leading-relaxed">{v.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -171,10 +212,10 @@ export default function AboutPage() {
           <div className="relative z-10 text-center">
             <ScrollReveal>
               <h2 className="font-sora font-bold text-2xl sm:text-4xl text-soft-white mb-4">
-                Ready to <span className="gradient-text">Start a Conversation?</span>
+                Ready to <span className="gradient-text">Build Something Extraordinary?</span>
               </h2>
-              <p className="font-inter text-soft-white/60 text-lg mb-8">
-                Submit your business inquiry and our team will review your requirements.
+              <p className="font-inter text-soft-white/60 text-lg mb-8 max-w-xl mx-auto">
+                Whether you&apos;re a manufacturer, investor, government agency, or business partner — submit your inquiry and our team will respond promptly.
               </p>
               <Link
                 href="/contact#inquiry-form"

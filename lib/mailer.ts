@@ -82,7 +82,7 @@ export async function sendInquiryEmail(data: InquiryEmailData) {
       </table>
 
       <div style="margin-top: 30px; text-align: center; padding-top: 20px; border-top: 1px solid rgba(77,184,213,0.2);">
-        <p style="color: #6B7280; font-size: 12px;">YUVAAN INTERNATIONAL — pacifictrade2010@gmail.com — (778) 828-3610</p>
+        <p style="color: #6B7280; font-size: 12px;">YUVAAN International Trade Canada — pacifictrade2010@gmail.com — (778) 828-3610</p>
       </div>
     </div>
   `;

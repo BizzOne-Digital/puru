@@ -10,7 +10,7 @@ import ProductCategoryCard from '@/components/products/ProductCategoryCard';
 import { productCategories } from '@/lib/data/products';
 import { getIcon } from '@/lib/data/icons';
 
-const filters = ['All', 'Industrial Machinery', 'Industrial Supplies', 'Wholesale Products', 'Manufacturing', 'Infrastructure', 'Custom Sourcing'];
+const filters = ['All', 'Energy Solutions', 'Trade & Sourcing', 'Business Development', 'Infrastructure', 'Industrial Machinery', 'Wholesale Products', 'Agriculture', 'Custom Sourcing'];
 
 export default function ProductsPage() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -23,6 +23,7 @@ export default function ProductsPage() {
       productCategories.map(p => ({
         slug: p.slug,
         title: p.title,
+        tag: p.tag,
         category: p.category,
         shortDescription: p.shortDescription,
         audience: p.audience.join(', '),
@@ -52,12 +53,13 @@ export default function ProductsPage() {
         <Container size="md">
           <div className="relative z-10 text-center">
             <ScrollReveal>
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Trade Categories</span>
+              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Solutions & Trade Categories</span>
               <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-soft-white leading-tight mb-5 sm:mb-6">
-                Products, Machinery &amp; <span className="gradient-text">Trade Categories</span>
+                Products, Machinery &amp;{' '}
+                <span className="gradient-text">Trade Solutions</span>
               </h1>
               <p className="font-inter text-soft-white/60 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2">
-                Explore the product and machinery categories YUVAAN INTERNATIONAL can help source, connect, or coordinate through international trade channels.
+                Explore YUVAAN INTERNATIONAL&apos;s energy solutions, trade categories, and sourcing capabilities across 11+ global markets.
               </p>
             </ScrollReveal>
           </div>
@@ -68,19 +70,16 @@ export default function ProductsPage() {
       <section className="py-6 sm:py-8 sticky top-[72px] sm:top-[88px] z-20 bg-navy/80 backdrop-blur-xl border-b border-white/5">
         <Container>
           <div className="flex flex-col items-center gap-4">
-            {/* Search — centered */}
             <div className="relative w-full max-w-md">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-soft-white/30" />
               <input
                 type="text"
-                placeholder="Search categories..."
+                placeholder="Search solutions and categories..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-11 pr-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-soft-white text-sm font-inter placeholder:text-soft-white/30 focus:outline-none focus:border-teal/40"
               />
             </div>
-
-            {/* Filter pills — centered */}
             <div className="flex items-center justify-center gap-2 flex-wrap">
               {filters.map(f => (
                 <button
@@ -116,7 +115,7 @@ export default function ProductsPage() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="font-inter text-soft-white/40 text-lg">No categories found. Try a different search or filter.</p>
+              <p className="font-inter text-soft-white/40 text-lg">No results found. Try a different search or filter.</p>
             </div>
           )}
         </Container>
@@ -132,7 +131,7 @@ export default function ProductsPage() {
                 Don&apos;t See What You Need?
               </h2>
               <p className="font-inter text-soft-white/60 text-lg mb-8 max-w-xl mx-auto">
-                Submit a custom product sourcing inquiry. Our team will review your requirements and identify relevant trade pathways.
+                Submit a custom sourcing or project development inquiry. Our team will review your requirements and identify relevant trade pathways across our 11+ market network.
               </p>
               <button
                 onClick={() => openModal('Custom Product Sourcing')}

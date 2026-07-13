@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
+import SectionHeading from '@/components/ui/SectionHeading';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import IndustryCard from '@/components/industries/IndustryCard';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
@@ -33,6 +34,7 @@ export default function IndustriesPage() {
 
   return (
     <div className="min-h-screen bg-navy">
+
       {/* Hero */}
       <section className="relative pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
         <GlobalGridBackground />
@@ -41,27 +43,45 @@ export default function IndustriesPage() {
         <Container size="md">
           <div className="relative z-10 text-center">
             <ScrollReveal>
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Industries</span>
+              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Industries Served</span>
               <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-soft-white leading-tight mb-5 sm:mb-6">
-                Industries <span className="gradient-text">We Serve</span>
+                Solutions Across <span className="gradient-text">Every Sector</span>
               </h1>
               <p className="font-inter text-soft-white/60 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2">
-                Connecting businesses across key sectors through product sourcing, trade coordination, and partnership opportunities.
+                From government infrastructure to commercial real estate, we deliver strategic trade solutions tailored to the unique demands of each industry.
               </p>
             </ScrollReveal>
           </div>
         </Container>
       </section>
 
+      {/* Industry count strip */}
+      <div className="border-y border-white/5 bg-navy/60 backdrop-blur">
+        <Container>
+          <div className="py-5 flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
+            {[
+              { val: '14+', label: 'Industries Served' },
+              { val: '11+', label: 'Global Markets' },
+              { val: '∞', label: 'Trade Connections' },
+            ].map((s, i) => (
+              <div key={i} className="text-center">
+                <p className="font-sora font-bold text-2xl text-teal">{s.val}</p>
+                <p className="font-inter text-soft-white/40 text-xs uppercase tracking-widest mt-0.5">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </div>
+
       {/* Industry Cards */}
       <section className="py-20">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {industryCards.map((ind, i) => (
               <IndustryCard
                 key={i}
                 {...ind}
-                delay={i * 0.06}
+                delay={i * 0.04}
                 onInquire={() => openModal(ind.title)}
               />
             ))}
@@ -80,7 +100,7 @@ export default function IndustriesPage() {
                 Not sure where your requirement fits?
               </h2>
               <p className="font-inter text-soft-white/60 text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-                Submit your inquiry and our team will review your product, machinery, supply, or partnership requirement and identify the best path forward.
+                Submit your inquiry and our team will review your product, machinery, energy solution, or partnership requirement and identify the best path forward.
               </p>
               <Link
                 href="/contact#inquiry-form"
