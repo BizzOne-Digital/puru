@@ -7,10 +7,11 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import { siteContent } from '@/lib/data/site-content';
+import { company, markets, targetMarketCountLabel } from '@/lib/data/company';
 
 export const metadata: Metadata = {
   title: 'About YUVAAN INTERNATIONAL | International Trade Company',
-  description: 'YUVAAN International Trade Canada — headquartered in British Columbia, connecting manufacturers, governments, investors, and project developers across 11+ global markets.',
+  description: 'Yuvaan International supports cross-border product sourcing, commercial partnerships, market development, industrial solutions, and international business inquiries.',
 };
 
 const { about, globalPresence, whyYuvaan } = siteContent;
@@ -57,11 +58,11 @@ export default function AboutPage() {
                   <MapPin className="w-5 h-5 text-teal flex-shrink-0" />
                   <div>
                     <p className="font-inter text-xs text-soft-white/40 uppercase tracking-widest">Headquarters</p>
-                    <p className="font-sora font-semibold text-soft-white">{about.location}</p>
+                    <p className="font-sora font-semibold text-soft-white">{company.locationDisplay}</p>
                   </div>
                   <div className="ml-6 pl-6 border-l border-teal/20">
-                    <p className="font-inter text-xs text-soft-white/40 uppercase tracking-widest">Active Markets</p>
-                    <p className="font-sora font-bold text-teal text-xl">{about.marketsCount}</p>
+                    <p className="font-inter text-xs text-soft-white/40 uppercase tracking-widest">Market Focus</p>
+                    <p className="font-sora font-bold text-teal text-xl">{targetMarketCountLabel}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -129,21 +130,21 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Global Presence */}
+      {/* Market Focus */}
       <section className="py-20">
         <Container>
           <SectionHeading
             eyebrow={globalPresence.eyebrow}
-            title={`Operating Across <span class='gradient-text'>11+ Markets Worldwide</span>`}
-            subtitle={globalPresence.subheading}
+            title={`International <span class='gradient-text'>Market Development</span>`}
+            subtitle="Yuvaan International distinguishes its Canada base from target markets and opportunities currently under evaluation."
             className="mb-14"
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {globalPresence.markets.map((m, i) => (
+            {markets.map((m, i) => (
               <ScrollReveal key={i} delay={i * 0.05} className="h-full">
                 <div className={`group h-full flex flex-col glass border rounded-2xl p-5 text-center card-hover transition-all ${i === 0 ? 'border-teal/30 bg-teal/5' : 'border-white/5 hover:border-teal/20'}`}>
-                  <p className={`font-sora font-bold text-base mb-1 ${i === 0 ? 'text-teal' : 'text-soft-white'}`}>{m.country}</p>
-                  <p className="font-inter text-soft-white/40 text-xs leading-snug">{m.detail}</p>
+                  <p className={`font-sora font-bold text-base mb-1 ${i === 0 ? 'text-teal' : 'text-soft-white'}`}>{m.name}</p>
+                  <p className="font-inter text-soft-white/40 text-xs leading-snug">{m.note}</p>
                   {i === 0 && <span className="mt-2 text-[10px] font-inter text-copper/80 uppercase tracking-widest">HQ</span>}
                 </div>
               </ScrollReveal>

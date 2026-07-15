@@ -31,8 +31,8 @@ const config: Config = {
         "dark-text": "#111827",
       },
       fontFamily: {
-        sora: ["Sora", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        sora: ["var(--font-sora)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

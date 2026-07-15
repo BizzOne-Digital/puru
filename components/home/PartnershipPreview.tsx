@@ -19,7 +19,7 @@ export default function PartnershipPreview() {
         <SectionHeading
           eyebrow="Partnership"
           title="Built for <span class='gradient-text'>Strategic Business Partnerships</span>"
-          subtitle="YUVAAN INTERNATIONAL works with manufacturers, governments, investors, and project developers seeking global trade and partnership opportunities across 11+ markets."
+          subtitle="YUVAAN INTERNATIONAL works with manufacturers, distributors, institutions, investors, and project developers seeking trade, sourcing, distribution, and partnership opportunities across target markets."
           className="mb-10 sm:mb-16"
         />
 

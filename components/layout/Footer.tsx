@@ -6,6 +6,7 @@ import Logo from '@/components/ui/Logo';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { siteContent } from '@/lib/data/site-content';
+import { company } from '@/lib/data/company';
 
 const { brand } = siteContent;
 
@@ -92,17 +93,17 @@ export default function Footer() {
                 {brand.tagline}
               </p>
               <div className="flex flex-col gap-3">
-                <a href={`tel:${brand.phone.replace(/\D/g,'')}`} className="flex items-center gap-2 text-soft-white/60 hover:text-aqua transition-colors text-sm font-inter group">
+                <a href={`tel:${company.publicPhoneTel}`} className="flex items-center gap-2 text-soft-white/60 hover:text-aqua transition-colors text-sm font-inter group">
                   <Phone className="w-4 h-4 text-teal group-hover:text-aqua transition-colors flex-shrink-0" />
-                  {brand.phone}
+                  {company.publicPhoneDisplay}
                 </a>
-                <a href={`mailto:${brand.email}`} className="flex items-center gap-2 text-soft-white/60 hover:text-aqua transition-colors text-sm font-inter group">
+                <a href={`mailto:${company.publicEmail}`} className="flex items-center gap-2 text-soft-white/60 hover:text-aqua transition-colors text-sm font-inter group">
                   <Mail className="w-4 h-4 text-teal group-hover:text-aqua transition-colors flex-shrink-0" />
-                  <span className="truncate text-xs">{brand.email}</span>
+                  <span className="truncate text-xs">{company.publicEmail}</span>
                 </a>
                 <div className="flex items-center gap-2 text-soft-white/40 text-sm font-inter">
                   <MapPin className="w-4 h-4 text-teal flex-shrink-0" />
-                  {brand.location}
+                  {company.locationDisplay}
                 </div>
               </div>
             </div>
@@ -194,7 +195,7 @@ export default function Footer() {
                   animate={{ opacity: [0.4, 1, 0.4] }}
                   transition={{ duration: 2.5, repeat: Infinity }}
                 />
-                <span className="text-soft-white/40 text-xs font-inter">{brand.markets} Global Markets</span>
+              <span className="text-soft-white/40 text-xs font-inter">International market development</span>
               </div>
               <div className="flex items-center gap-2 mb-6">
                 <motion.div
@@ -236,7 +237,7 @@ export default function Footer() {
           <div className="rounded-2xl bg-white/[0.03] border border-white/8 p-5">
             <p className="font-sora font-semibold text-soft-white text-sm mb-3">Trademark Notice</p>
             <p className="text-soft-white/40 text-xs font-inter leading-relaxed">
-              Safe Solution®, CRS™, and Clean Step™ are trademarks of their respective owner.
+              {company.trademarkNotice}
             </p>
           </div>
         </div>

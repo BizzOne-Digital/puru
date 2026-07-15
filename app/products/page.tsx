@@ -61,7 +61,7 @@ export default function ProductsPage() {
                 <span className="gradient-text">Trade Solutions</span>
               </h1>
               <p className="font-inter text-soft-white/60 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2">
-                Explore YUVAAN INTERNATIONAL&apos;s energy solutions, trade categories, and sourcing capabilities across 11+ global markets.
+                Explore YUVAAN INTERNATIONAL&apos;s energy solutions, trade categories, and sourcing capabilities across configured target markets.
               </p>
             </ScrollReveal>
           </div>
@@ -103,7 +103,7 @@ export default function ProductsPage() {
                 <div className="rounded-3xl border border-white/10 bg-navy/60 p-6 min-h-[260px] flex flex-col justify-between">
                   <div className="flex items-center justify-between">
                     <ShieldCheck className="w-12 h-12 text-aqua" />
-                    <span className="font-inter text-soft-white/35 text-xs uppercase tracking-widest">Professional Visual Placeholder</span>
+                    <span className="font-inter text-soft-white/35 text-xs uppercase tracking-widest">Commercial floor-safety system</span>
                   </div>
                   <div className="grid grid-cols-3 gap-3 mt-10">
                     {productSystem.map((item) => (
@@ -188,7 +188,7 @@ export default function ProductsPage() {
                 Don&apos;t See What You Need?
               </h2>
               <p className="font-inter text-soft-white/60 text-lg mb-8 max-w-xl mx-auto">
-                Submit a custom sourcing or project development inquiry. Our team will review your requirements and identify relevant trade pathways across our 11+ market network.
+                Submit a custom sourcing or project development inquiry. Our team will review your requirements and identify relevant trade pathways across target markets.
               </p>
               <button
                 onClick={() => openModal('Custom Product Sourcing')}

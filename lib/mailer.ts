@@ -26,7 +26,21 @@ interface InquiryEmailData {
   source: string;
 }
 
+function escapeHtml(value: string | undefined) {
+  return (value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+    .replace(/\n/g, '<br />');
+}
+
 export async function sendInquiryEmail(data: InquiryEmailData) {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.ADMIN_EMAIL) {
+    throw new Error('Missing SMTP configuration');
+  }
+
   const submittedAt = new Date().toLocaleString('en-CA', { timeZone: 'America/Vancouver' });
 
   const htmlBody = `
@@ -41,42 +55,42 @@ export async function sendInquiryEmail(data: InquiryEmailData) {
           <strong style="color: #4DB8D5;">Contact Information</strong>
         </td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF; width: 40%;">Full Name</td>
-            <td style="padding: 8px 16px;">${data.fullName}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.fullName)}</td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Company Name</td>
-            <td style="padding: 8px 16px;">${data.companyName}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.companyName)}</td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Email</td>
-            <td style="padding: 8px 16px;"><a href="mailto:${data.email}" style="color: #4DB8D5;">${data.email}</a></td></tr>
+            <td style="padding: 8px 16px;"><a href="mailto:${escapeHtml(data.email)}" style="color: #4DB8D5;">${escapeHtml(data.email)}</a></td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Phone</td>
-            <td style="padding: 8px 16px;">${data.phone}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.phone)}</td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Country</td>
-            <td style="padding: 8px 16px;">${data.country}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.country)}</td></tr>
         ${data.website ? `<tr><td style="padding: 8px 16px; color: #9CA3AF;">Website</td>
-            <td style="padding: 8px 16px;"><a href="${data.website}" style="color: #4DB8D5;">${data.website}</a></td></tr>` : ''}
+            <td style="padding: 8px 16px;"><a href="${escapeHtml(data.website)}" style="color: #4DB8D5;">${escapeHtml(data.website)}</a></td></tr>` : ''}
 
         <tr><td colspan="2" style="padding: 16px 0 8px; border-bottom: 1px solid rgba(77,184,213,0.2);">
           <strong style="color: #4DB8D5;">Inquiry Details</strong>
         </td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Business Type</td>
-            <td style="padding: 8px 16px;">${data.businessType}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.businessType)}</td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Inquiry Category</td>
-            <td style="padding: 8px 16px;">${data.inquiryCategory}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.inquiryCategory)}</td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Product / Service</td>
-            <td style="padding: 8px 16px;">${data.productOrServiceNeeded}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.productOrServiceNeeded)}</td></tr>
         ${data.quantityOrVolume ? `<tr><td style="padding: 8px 16px; color: #9CA3AF;">Quantity / Volume</td>
-            <td style="padding: 8px 16px;">${data.quantityOrVolume}</td></tr>` : ''}
+            <td style="padding: 8px 16px;">${escapeHtml(data.quantityOrVolume)}</td></tr>` : ''}
         ${data.targetMarket ? `<tr><td style="padding: 8px 16px; color: #9CA3AF;">Target Market</td>
-            <td style="padding: 8px 16px;">${data.targetMarket}</td></tr>` : ''}
+            <td style="padding: 8px 16px;">${escapeHtml(data.targetMarket)}</td></tr>` : ''}
 
         <tr><td colspan="2" style="padding: 16px 0 8px; border-bottom: 1px solid rgba(77,184,213,0.2);">
           <strong style="color: #4DB8D5;">Message</strong>
         </td></tr>
-        <tr><td colspan="2" style="padding: 12px 16px; background: rgba(255,255,255,0.05); border-radius: 6px;">${data.message}</td></tr>
+        <tr><td colspan="2" style="padding: 12px 16px; background: rgba(255,255,255,0.05); border-radius: 6px;">${escapeHtml(data.message)}</td></tr>
 
         <tr><td colspan="2" style="padding: 16px 0 8px; border-bottom: 1px solid rgba(77,184,213,0.2);">
           <strong style="color: #4DB8D5;">Submission Info</strong>
         </td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Source Page</td>
-            <td style="padding: 8px 16px;">${data.source}</td></tr>
+            <td style="padding: 8px 16px;">${escapeHtml(data.source)}</td></tr>
         <tr><td style="padding: 8px 16px; color: #9CA3AF;">Date Submitted</td>
             <td style="padding: 8px 16px;">${submittedAt} (PST)</td></tr>
       </table>

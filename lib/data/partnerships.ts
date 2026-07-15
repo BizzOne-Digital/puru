@@ -19,7 +19,7 @@ export const partnershipTypes: PartnershipType[] = [
   {
     slug: 'manufacturer-partnerships',
     title: 'Manufacturer Partnerships',
-    description: 'Become a manufacturer partner and access YUVAAN\'s global distribution network across 11+ markets. We help manufacturers reach new buyers and establish exclusive distribution agreements internationally.',
+    description: 'Discuss manufacturer partnership opportunities for product sourcing, distribution review, and market development. Commercial terms and territories are subject to capability review and written agreement.',
     icon: 'Factory',
     image: '/images/products/global-trading.jpg',
   },
@@ -40,7 +40,7 @@ export const partnershipTypes: PartnershipType[] = [
   {
     slug: 'joint-venture-partnerships',
     title: 'Joint Venture Partnerships',
-    description: 'Co-develop projects, technologies, and business ventures with YUVAAN\'s global network. We facilitate joint venture formation including partner identification and cross-border coordination.',
+    description: 'Review project, technology, and business-venture opportunities with Yuvaan International. Joint venture discussions are subject to partner fit, due diligence, and written agreement.',
     icon: 'Handshake',
     image: '/images/products/business-development.jpg',
   },

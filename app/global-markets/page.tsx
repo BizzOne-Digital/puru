@@ -7,6 +7,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import { safeSolutionRoutes } from '@/lib/data/safe-solution';
+import { company, distributorOpenMarkets, markets } from '@/lib/data/company';
 
 export const metadata: Metadata = {
   title: 'Global Markets | Yuvaan International',
@@ -15,9 +16,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/global-markets' },
 };
 
-const existingMarkets = ['Canada'];
-const targetMarkets = ['United States', 'Europe', 'Middle East', 'India', 'China', 'Japan', 'Southeast Asia', 'Australia', 'Nepal'];
-const openTerritories = ['North America', 'Europe', 'Middle East', 'South Asia', 'Southeast Asia', 'Australia and New Zealand'];
+const existingMarkets = markets.filter((market) => market.status === 'existing');
+const targetMarkets = markets.filter((market) => market.status === 'target');
+const underEvaluationMarkets = markets.filter((market) => market.status === 'under-evaluation');
 
 export default function GlobalMarketsPage() {
   return (
@@ -34,7 +35,7 @@ export default function GlobalMarketsPage() {
                 Market Focus and <span className="gradient-text">Territory Opportunities</span>
               </h1>
               <p className="font-inter text-soft-white/60 text-lg leading-relaxed max-w-3xl mx-auto">
-                Yuvaan International is based in Canada and evaluates international trade, product distribution, sourcing, project collaboration, and distributor opportunities across target markets.
+                {company.displayName} is based in {company.country} and evaluates international trade, product distribution, sourcing, project collaboration, and distributor opportunities across target markets.
               </p>
             </div>
           </ScrollReveal>
@@ -45,9 +46,10 @@ export default function GlobalMarketsPage() {
         <Container>
           <div className="grid lg:grid-cols-3 gap-5">
             {[
-              ['Existing markets', existingMarkets, 'Confirmed company base and current operational market reference.'],
-              ['Target markets', targetMarkets, 'Markets relevant to product sourcing, trade development, and partnership evaluation.'],
-              ['Distributor territories open for application', openTerritories, 'Territories where Safe Solution® distributor applications may be reviewed.'],
+              ['Existing market', existingMarkets.map((market) => market.name), 'Confirmed company base and current public contact market.'],
+              ['Target markets', targetMarkets.map((market) => market.name), 'Markets relevant to product sourcing, trade development, and partnership evaluation.'],
+              ['Distributor applications open', distributorOpenMarkets, 'Regions where Safe Solution® distributor applications may be reviewed.'],
+              ['Under evaluation', underEvaluationMarkets.map((market) => market.name), 'Market opportunity under evaluation.'],
             ].map(([title, list, desc]) => (
               <div key={String(title)} className="rounded-3xl glass border border-teal/10 p-6">
                 <Globe2 className="w-8 h-8 text-teal mb-5" />

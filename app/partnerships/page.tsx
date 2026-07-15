@@ -87,14 +87,20 @@ export default function PartnershipsPage() {
           <SectionHeading
             eyebrow="Partnership Types"
             title="Types of <span class='gradient-text'>Partnerships</span>"
-            subtitle="Distributors Wanted is the priority opportunity, alongside manufacturer, representative, importer/exporter, joint venture, institutional, investment, and technology-transfer pathways."
+            subtitle="Explore distribution, manufacturing, representation, import/export, joint venture, institutional, investment, and technology-transfer opportunities."
             className="mb-12"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {partnershipTypes.map((p) => {
               const Icon = p.slug === 'distributors-wanted-worldwide' ? ShieldCheck : getIcon(p.icon);
+              const sectionId =
+                p.slug === 'country-representative' ? 'country-representatives' :
+                p.slug === 'importer-partnerships' ? 'importers-exporters' :
+                p.slug === 'joint-venture-partnerships' ? 'joint-ventures' :
+                p.slug === 'government-institutional' ? 'government-institutions' :
+                p.slug;
               return (
-                <div id={p.slug} key={p.slug} className="scroll-mt-32">
+                <div id={sectionId} key={p.slug} className="scroll-mt-32">
                   <div className="group relative p-5 sm:p-8 rounded-2xl glass border border-teal/10 hover:border-teal/30 transition-all duration-300 overflow-hidden h-full">
                     <div className="relative z-10 w-14 h-14 rounded-xl bg-gradient-to-br from-teal/20 to-aqua/10 border border-teal/20 flex items-center justify-center mb-6">
                       <Icon className="w-7 h-7 text-teal group-hover:text-aqua transition-colors" />

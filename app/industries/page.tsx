@@ -3,7 +3,6 @@ import { useState, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
-import SectionHeading from '@/components/ui/SectionHeading';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import IndustryCard from '@/components/industries/IndustryCard';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
@@ -61,7 +60,7 @@ export default function IndustriesPage() {
           <div className="py-5 flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
             {[
               { val: '14+', label: 'Industries Served' },
-              { val: '11+', label: 'Global Markets' },
+              { val: '11+', label: 'Target Markets' },
               { val: '∞', label: 'Trade Connections' },
             ].map((s, i) => (
               <div key={i} className="text-center">

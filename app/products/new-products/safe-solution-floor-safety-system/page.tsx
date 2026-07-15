@@ -27,12 +27,12 @@ import {
 export const metadata: Metadata = {
   title: 'Safe Solution® Floor Safety System | Yuvaan International',
   description:
-    'Explore the Safe Solution® commercial floor-safety system, including invisible anti-slip treatment, CRS™ rejuvenation, Clean Step™ maintenance, and worldwide distributor opportunities.',
+    'Explore the Safe Solution® commercial floor-safety system, including anti-slip surface treatment, CRS™ rejuvenation, Clean Step™ maintenance, and distributor opportunities.',
   alternates: { canonical: '/products/new-products/safe-solution-floor-safety-system' },
   openGraph: {
     title: 'Safe Solution® Floor Safety System | Yuvaan International',
     description:
-      'Invisible anti-slip treatment, CRS™ rejuvenation, Clean Step™ maintenance, and worldwide distributor opportunities.',
+      'Commercial floor-safety system with anti-slip surface treatment, CRS™ rejuvenation, Clean Step™ maintenance, and distributor opportunities.',
   },
 };
 
@@ -75,7 +75,7 @@ export default function SafeSolutionDetailPage() {
               <div className="rounded-3xl border border-white/10 bg-navy/65 p-6 min-h-[340px]">
                 <div className="flex items-center justify-between mb-10">
                   <ShieldCheck className="w-14 h-14 text-aqua" />
-                  <span className="font-inter text-soft-white/35 text-xs uppercase tracking-widest">System Placeholder Visual</span>
+                  <span className="font-inter text-soft-white/35 text-xs uppercase tracking-widest">Commercial floor-treatment system</span>
                 </div>
                 <div className="grid grid-cols-3 gap-3">
                   {productSystem.map((item) => (
@@ -118,7 +118,7 @@ export default function SafeSolutionDetailPage() {
                 Safe Solution® is an invisible, non-coating micro-etch treatment designed for suitable hard mineral surfaces. It creates microscopic channels in the surface that help disperse oils and water from underfoot, supporting more consistent contact between footwear and the floor.
               </p>
               <SafetyNotice tone="teal">
-                This diagram is a simplified commercial explanation and should not be presented as scientific certification.
+                Illustrative surface-treatment diagram. Actual results depend on the surface, application, testing conditions, contamination, and maintenance.
               </SafetyNotice>
             </ScrollReveal>
             <ScrollReveal direction="right">
@@ -159,7 +159,7 @@ export default function SafeSolutionDetailPage() {
             <div>
               <h2 className="font-sora font-bold text-3xl text-soft-white mb-6">Performance and Testing</h2>
               <p className="font-inter text-soft-white/60 leading-relaxed mb-5">
-                Safe Solution® has reported anti-slip coefficient results in the range of 0.6–0.8+ under applicable testing conditions. Exact results vary by surface, test method, contamination, maintenance, and testing conditions.
+                Performance must be reviewed against the applicable surface, test area, maintenance conditions, and supporting technical documentation.
               </p>
               <SafetyNotice>
                 Performance figures are surface- and test-specific. Supporting technical documentation should be reviewed for the applicable use case.
@@ -226,10 +226,9 @@ export default function SafeSolutionDetailPage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              ['No Unnecessary Lock-In', 'The program should clearly explain cancellation and notice requirements. Commercial terms should be confirmed in the approved customer agreement.'],
+              ['Clear Commercial Terms', 'Program scope, cancellation, renewal, service intervals, and customer responsibilities should be confirmed in the customer agreement.'],
               ['Scheduled Inspection and Rejuvenation', 'Commercial protection and maintenance intervals vary. Scheduled inspections help determine whether cleaning, maintenance, or CRS™ rejuvenation is required.'],
               ['Annual Program Option', 'Where available, customers may select an annual inspection and rejuvenation program for maximum floor-care consistency.'],
-              ['Five-Year Price Guarantee', 'Only publish a five-year price guarantee where commercial terms are approved, including eligibility, exclusions, renewal conditions, territory restrictions, and customer responsibilities.'],
               ['Complete Floor-Safety Support', 'The program may include written inspections, Safe Solution® treatment, Clean Step™ maintenance cleaner, scheduled CRS™ rejuvenation, maintenance guidance, commercial pricing, and follow-up documentation.'],
             ].map(([title, copy]) => (
               <div key={title} className="rounded-2xl glass border border-white/10 p-6">
@@ -267,7 +266,7 @@ export default function SafeSolutionDetailPage() {
           <SectionHeading
             eyebrow="Technical Documents"
             title="Prepared Document Area <span class='gradient-text'>for Approved Files</span>"
-            subtitle="Download buttons are not shown until approved documentation exists in the repository. Current documents are available on request."
+            subtitle="Technical documentation is available to qualified customers and distribution partners upon request."
             className="mb-10"
           />
           <DocumentsGrid />

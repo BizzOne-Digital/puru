@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { MessageSquare, Users, TrendingUp, Clock, CheckCircle, Phone, Mail, ArrowRight } from 'lucide-react';
+import { MessageSquare, Users, TrendingUp, Clock, Phone, Mail, ArrowRight } from 'lucide-react';
 import AdminShell from '@/components/admin/AdminShell';
 import Link from 'next/link';
 

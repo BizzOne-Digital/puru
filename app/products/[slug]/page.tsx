@@ -9,6 +9,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import { getIcon } from '@/lib/data/icons';
+import { relatedProductMap } from '@/lib/data/related-products';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,9 +34,14 @@ export default async function ProductDetailPage(
 
   const Icon = getIcon(product.icon);
 
-  const related = productCategories
-    .filter((p) => p.slug !== slug && p.relatedIndustries.some((r) => product.relatedIndustries.includes(r)))
-    .slice(0, 3);
+  const mappedRelated = (relatedProductMap[slug] ?? [])
+    .map((relatedSlug) => productCategories.find((p) => p.slug === relatedSlug))
+    .filter(Boolean) as typeof productCategories;
+  const related = mappedRelated.length > 0
+    ? mappedRelated.slice(0, 4)
+    : productCategories
+      .filter((p) => p.slug !== slug && p.relatedIndustries.some((r) => product.relatedIndustries.includes(r)))
+      .slice(0, 4);
   const industryLinks = product.relatedIndustries
     .map((name) => {
       const normalized = name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -203,7 +209,7 @@ export default async function ProductDetailPage(
             <ScrollReveal>
               <h2 className="font-sora font-bold text-2xl text-soft-white mb-8">Related <span className="gradient-text">Categories</span></h2>
             </ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
               {related.map((p, i) => {
                 const RelIcon = getIcon(p.icon);
                 return (

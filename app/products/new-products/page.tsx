@@ -68,10 +68,10 @@ export default function NewProductsPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href={safeSolutionRoutes.detail} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold text-sm">
-                  Product Detail <ArrowRight className="w-4 h-4" />
+                  Explore Safe Solution® <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href={safeSolutionRoutes.distributor} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-copper/35 text-copper font-sora font-semibold text-sm">
-                  Distributor CTA <ArrowRight className="w-4 h-4" />
+                  Apply to Become a Distributor <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </ScrollReveal>

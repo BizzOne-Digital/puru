@@ -35,14 +35,14 @@ Previous public navigation contained Home, About, Solutions, Partnership, Indust
 - Distributors Wanted Worldwide page and application form were not present.
 - New Products page was missing.
 - Global Markets and Investments pages were missing.
-- Safe Solution distributor CTA was missing from homepage, products, and partnerships.
+- Safe Solution distributor call-to-action was missing from homepage, products, and partnerships.
 - Contact form did not expose floor-assessment or distributor-specific fields.
 
 ## Broken or Suspicious Routes and Buttons
 
 - `/partnership` was singular while the requested menu label is Partnerships.
 - Known route patterns such as `/industries/wholesale-distribution`, `/industries/import-export-businesses`, and `/industries/industrial-machinery` did not map to live industry pages.
-- Product detail pages generated related industry URLs from text labels, which could create non-existent routes.
+- Product route pages generated related industry URLs from text labels, which could create non-existent routes.
 - Generic product CTA wording used “Ready to submit a [Product] inquiry?” which caused grammar issues such as “a EV”.
 
 ## Content Quality Issues
@@ -86,4 +86,4 @@ Previous public navigation contained Home, About, Solutions, Partnership, Indust
 - Safe Solution®, CRS™, Clean Step™, metrics, distributor benefits, process steps, target industries, document statuses, and disclaimers were moved into typed structured data in `lib/data/safe-solution.ts`.
 - No fake certifications, fake testimonials, fake documents, or fake product imagery were added.
 - Documents are displayed as “Available on request” until approved files exist.
-- A professional visual placeholder is used for Safe Solution® instead of random stock imagery.
+- An abstract commercial floor-safety visual is used for Safe Solution® instead of unapproved stock or product imagery.

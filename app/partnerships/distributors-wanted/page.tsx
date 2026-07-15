@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
   title: 'Distributors Wanted Worldwide | Yuvaan International',
   description:
-    'Apply to distribute the Safe Solution® Floor Safety System in your territory through Yuvaan International.',
+    'Apply to represent the Safe Solution® Floor Safety System in an available territory through Yuvaan International.',
   alternates: { canonical: '/partnerships/distributors-wanted' },
   openGraph: {
     title: 'Distributors Wanted Worldwide | Yuvaan International',
@@ -107,7 +107,7 @@ export default function DistributorsWantedPage() {
         </Container>
       </section>
 
-      <section id="application" className="py-16" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
+      <section id="distributor-application" className="scroll-mt-28 py-16" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
         <Container>
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-start">
             <div>
@@ -117,7 +117,7 @@ export default function DistributorsWantedPage() {
                 This form automatically identifies your submission as a Distributor Application for the Safe Solution® Floor Safety System.
               </p>
               <p className="font-inter text-soft-white/40 text-sm leading-relaxed">
-                Uploads are not supported by the existing backend. Please include a company-profile link or note that documents can be sent after initial contact.
+                Provide a link to your company profile, or our team will request supporting documents after the initial review.
               </p>
             </div>
             <DistributorApplicationForm />

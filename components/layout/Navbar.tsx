@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ChevronDown, Menu, Phone, Search, X } from 'lucide-react';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
+import { company } from '@/lib/data/company';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -33,10 +34,10 @@ const navLinks = [
     children: [
       { label: 'Distributors Wanted Worldwide', href: '/partnerships/distributors-wanted' },
       { label: 'Manufacturer Partnerships', href: '/partnerships#manufacturer-partnerships' },
-      { label: 'Country Representatives', href: '/partnerships#country-representative' },
-      { label: 'Importer & Exporter Partnerships', href: '/partnerships#importer-partnerships' },
-      { label: 'Joint Ventures', href: '/partnerships#joint-venture-partnerships' },
-      { label: 'Government & Institutional Partnerships', href: '/partnerships#government-institutional' },
+      { label: 'Country Representatives', href: '/partnerships#country-representatives' },
+      { label: 'Importer & Exporter Partnerships', href: '/partnerships#importers-exporters' },
+      { label: 'Joint Ventures', href: '/partnerships#joint-ventures' },
+      { label: 'Government & Institutional Partnerships', href: '/partnerships#government-institutions' },
     ],
   },
   { label: 'Investments', href: '/investments' },
@@ -66,6 +67,18 @@ export default function Navbar() {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileOpen(false);
+        setSearchOpen(false);
+        setOpenGroup(null);
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   const isActive = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(href.split('?')[0].split('#')[0]));
 
@@ -109,10 +122,13 @@ export default function Navbar() {
                       {link.children && <ChevronDown className="w-3 h-3" />}
                     </Link>
                     {link.children && (
-                      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-1/2 -translate-x-1/2 top-full pt-3 transition-all">
-                        <div className="w-72 rounded-2xl bg-[#0b1f2e]/98 backdrop-blur-2xl border border-white/10 p-3 shadow-2xl">
+                      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-1/2 -translate-x-1/2 top-full pt-3 z-[70] transition-all">
+                        <div
+                          className="w-72 rounded-2xl bg-[#020b12] border border-[#244150] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.92)] ring-1 ring-white/5"
+                          style={{ backgroundColor: '#020b12' }}
+                        >
                           {link.children.map((child) => (
-                            <Link key={child.href} href={child.href} className="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm text-white/68 hover:text-white hover:bg-white/6 transition-all">
+                            <Link key={child.href} href={child.href} className="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm text-white/82 hover:text-white hover:bg-[#0b2734] transition-all">
                               {child.label}
                               <ArrowRight className="w-3 h-3 text-teal" />
                             </Link>
@@ -133,7 +149,7 @@ export default function Navbar() {
               >
                 <Search className="w-3.5 h-3.5" strokeWidth={1.75} />
               </button>
-              <a href="tel:+17788283610" className="hidden sm:flex w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 items-center justify-center text-white/70 hover:text-white transition-all" aria-label="Call us">
+              <a href={`tel:${company.publicPhoneTel}`} className="hidden sm:flex w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 items-center justify-center text-white/70 hover:text-white transition-all" aria-label="Call us">
                 <Phone className="w-3.5 h-3.5" strokeWidth={1.75} />
               </a>
               <Link
@@ -144,7 +160,7 @@ export default function Navbar() {
                 Distributors Wanted
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 flex items-center justify-center text-white/70 hover:text-white transition-all ml-0.5" aria-label="Toggle menu">
+              <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 flex items-center justify-center text-white/70 hover:text-white transition-all ml-0.5" aria-label={mobileOpen ? 'Close menu' : 'Open menu'}>
                 {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
             </div>

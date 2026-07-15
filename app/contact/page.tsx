@@ -8,6 +8,7 @@ import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import InquiryForm from '@/components/forms/InquiryForm';
 import { siteContent } from '@/lib/data/site-content';
+import { company, targetMarketCountLabel } from '@/lib/data/company';
 
 export const metadata: Metadata = {
   title: 'Contact | Complete Your Trade Inquiry | YUVAAN INTERNATIONAL',
@@ -23,6 +24,25 @@ const inquiryPaths = [
   { label: 'Partnership Inquiry', href: '/contact?inquiry=partnership#inquiry-form' },
   { label: 'Investment or Project Inquiry', href: '/contact?inquiry=investment#inquiry-form' },
 ];
+
+function InquiryFormShell() {
+  return (
+    <div className="space-y-5" aria-label="Inquiry form loading">
+      <div className="grid sm:grid-cols-2 gap-5">
+        {['Full name *', 'Company name *', 'Business email *', 'Phone or WhatsApp *'].map((label) => (
+          <div key={label}>
+            <label className="block font-inter text-soft-white/70 text-xs font-medium mb-1.5 tracking-wide uppercase">{label}</label>
+            <div className="h-12 rounded-xl bg-white/5 border border-white/10" />
+          </div>
+        ))}
+      </div>
+      <div>
+        <label className="block font-inter text-soft-white/70 text-xs font-medium mb-1.5 tracking-wide uppercase">Message *</label>
+        <div className="h-28 rounded-xl bg-white/5 border border-white/10" />
+      </div>
+    </div>
+  );
+}
 
 export default function ContactPage() {
   return (
@@ -78,23 +98,23 @@ export default function ContactPage() {
                   <div className="glass border border-teal/20 rounded-2xl p-7">
                     <h2 className="font-sora font-bold text-xl text-soft-white mb-6">Contact Information</h2>
                     <div className="space-y-5">
-                      <a href={`tel:${contact.phone.replace(/\D/g,'')}`} className="flex items-start gap-4 group">
+                      <a href={`tel:${company.publicPhoneTel}`} className="flex items-start gap-4 group">
                         <div className="w-10 h-10 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0 group-hover:bg-teal/20 transition-colors">
                           <Phone className="w-4 h-4 text-teal" />
                         </div>
                         <div>
                           <p className="font-inter text-xs text-soft-white/40 tracking-widest uppercase mb-1">Phone</p>
-                          <p className="font-inter text-soft-white group-hover:text-aqua transition-colors">{contact.phone}</p>
+                          <p className="font-inter text-soft-white group-hover:text-aqua transition-colors">{company.publicPhoneDisplay}</p>
                         </div>
                       </a>
 
-                      <a href={`mailto:${contact.email}`} className="flex items-start gap-4 group">
+                      <a href={`mailto:${company.publicEmail}`} className="flex items-start gap-4 group">
                         <div className="w-10 h-10 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0 group-hover:bg-teal/20 transition-colors">
                           <Mail className="w-4 h-4 text-teal" />
                         </div>
                         <div>
                           <p className="font-inter text-xs text-soft-white/40 tracking-widest uppercase mb-1">Email</p>
-                          <p className="font-inter text-soft-white text-sm group-hover:text-aqua transition-colors break-all">{contact.email}</p>
+                          <p className="font-inter text-soft-white text-sm group-hover:text-aqua transition-colors break-all">{company.publicEmail}</p>
                         </div>
                       </a>
 
@@ -104,8 +124,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="font-inter text-xs text-soft-white/40 tracking-widest uppercase mb-1">Headquarters</p>
-                          <p className="font-inter text-soft-white">{contact.location}</p>
-                          <p className="font-inter text-soft-white/50 text-sm">Canada</p>
+                          <p className="font-inter text-soft-white">{company.locationDisplay}</p>
                         </div>
                       </div>
 
@@ -114,9 +133,9 @@ export default function ContactPage() {
                           <Globe className="w-4 h-4 text-teal" />
                         </div>
                         <div>
-                          <p className="font-inter text-xs text-soft-white/40 tracking-widest uppercase mb-1">Global Presence</p>
-                          <p className="font-inter text-soft-white">11+ Markets</p>
-                          <p className="font-inter text-soft-white/50 text-sm">Worldwide Operations</p>
+                          <p className="font-inter text-xs text-soft-white/40 tracking-widest uppercase mb-1">Market Focus</p>
+                          <p className="font-inter text-soft-white">{targetMarketCountLabel}</p>
+                          <p className="font-inter text-soft-white/50 text-sm">International market development</p>
                         </div>
                       </div>
                     </div>
@@ -165,7 +184,7 @@ export default function ContactPage() {
                   <p className="font-inter text-soft-white/50 text-sm mb-8 leading-relaxed">
                     Fill in your details below. All fields marked with * are required.
                   </p>
-                  <Suspense fallback={<div className="text-soft-white/50 font-inter text-sm">Loading inquiry form...</div>}>
+                  <Suspense fallback={<InquiryFormShell />}>
                     <InquiryForm source="contact" />
                   </Suspense>
                 </div>

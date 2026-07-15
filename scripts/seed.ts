@@ -44,7 +44,7 @@ const siteContentSeed = [
   { section: 'hero', key: 'subheadline', value: 'YUVAAN INTERNATIONAL connects importers, exporters, manufacturers, wholesalers, distributors, and industrial buyers with reliable international trade opportunities.', type: 'textarea', label: 'Hero Subheadline' },
   { section: 'hero', key: 'cta_primary', value: 'Complete Inquiry', type: 'text', label: 'Hero CTA Primary Button' },
   { section: 'hero', key: 'cta_secondary', value: 'Explore Products', type: 'text', label: 'Hero CTA Secondary Button' },
-  { section: 'hero', key: 'badge1', value: 'Global Network', type: 'text', label: 'Hero Badge 1 Title' },
+  { section: 'hero', key: 'badge1', value: 'Market Focus', type: 'text', label: 'Hero Badge 1 Title' },
   { section: 'hero', key: 'badge1_desc', value: 'Trusted connections across 50+ countries.', type: 'text', label: 'Hero Badge 1 Description' },
   { section: 'hero', key: 'badge2', value: 'Reliable & Secure', type: 'text', label: 'Hero Badge 2 Title' },
   { section: 'hero', key: 'badge2_desc', value: 'Verified partners and transparent processes.', type: 'text', label: 'Hero Badge 2 Description' },

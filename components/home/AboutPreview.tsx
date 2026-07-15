@@ -31,7 +31,7 @@ export default function AboutPreview() {
                   </div>
                   <div className="ml-auto pl-4 border-l border-teal/20">
                     <p className="font-inter text-xs text-soft-white/40 tracking-widest uppercase">Markets</p>
-                    <p className="font-sora font-bold text-teal text-xl">{brand.markets}+</p>
+                    <p className="font-sora font-bold text-teal text-xl">{brand.markets}</p>
                   </div>
                 </div>
 
@@ -58,7 +58,7 @@ export default function AboutPreview() {
                 transition={{ duration: 5, repeat: Infinity }}
                 className="relative sm:absolute sm:-right-6 sm:top-1/3 mt-4 sm:mt-0 glass border border-copper/20 rounded-2xl px-5 py-4"
               >
-                <p className="text-copper font-sora font-bold text-2xl">{brand.markets}+</p>
+                <p className="text-copper font-sora font-bold text-2xl">{brand.markets}</p>
                 <p className="text-soft-white/50 font-inter text-xs">Global Markets</p>
               </motion.div>
             </div>

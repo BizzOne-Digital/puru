@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { CheckCircle, AlertCircle, Send, Loader2 } from 'lucide-react';
@@ -27,6 +27,7 @@ const schema = z.object({
   programInterest: z.string().optional(),
   message: z.string().min(10, 'Please provide at least 10 characters'),
   consent: z.boolean().refine((v) => v === true, 'You must agree to be contacted'),
+  websiteHoneypot: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -44,6 +45,7 @@ const inquiryCategories = ['General Business Inquiry', 'Product Inquiry', 'Reque
 export default function InquiryForm({ source = 'contact', prefilledProduct = '', onSuccess, compact = false }: InquiryFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [startedAt] = useState(() => Date.now());
   const searchParams = useSearchParams();
   const inquiryParam = searchParams.get('inquiry') || '';
   const productParam = searchParams.get('product') || '';
@@ -53,9 +55,10 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
     inquiryParam === 'floor-assessment' ? 'Request a Floor Assessment' :
     inquiryParam === 'investment' ? 'Investment or Project Inquiry' :
     inquiryParam === 'partnership' ? 'Partnership Inquiry' :
+    inquiryParam === 'product' ? 'Product Inquiry' :
     inquiryParam ? 'General Business Inquiry' : '';
 
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<FormData>({
+  const { control, register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
       inquiryCategory: defaultCategory,
@@ -64,8 +67,8 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
     },
   });
 
-  const selectedCategory = watch('inquiryCategory');
-  const productNeeded = watch('productOrServiceNeeded');
+  const selectedCategory = useWatch({ control, name: 'inquiryCategory' });
+  const productNeeded = useWatch({ control, name: 'productOrServiceNeeded' });
   const showSafeSolutionFields =
     selectedCategory === 'Request a Floor Assessment' ||
     selectedCategory === 'Distributor Application' ||
@@ -90,7 +93,7 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
       const res = await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, message: `${data.message}${safeSolutionDetails}`, source }),
+        body: JSON.stringify({ ...data, startedAt, message: `${data.message}${safeSolutionDetails}`, source }),
       });
       const json = await res.json();
       if (json.success) {
@@ -133,6 +136,7 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+      <input {...register('websiteHoneypot')} type="text" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {submitStatus === 'error' && (
         <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
           <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />

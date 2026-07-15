@@ -7,6 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "verify:routes": "node scripts/verify-routes.mjs",
+    "screenshots": "node scripts/capture-screenshots.mjs",
     "seed": "node scripts/seed.js && npx tsx scripts/seed-entities.ts",
     "seed:entities": "npx tsx scripts/seed-entities.ts"
   },
@@ -27,6 +31,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",

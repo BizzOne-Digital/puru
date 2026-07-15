@@ -1,5 +1,4 @@
 'use client';
-import { useEffect, useRef } from 'react';
 
 export default function TradeRouteLines({ className = '' }: { className?: string }) {
   return (

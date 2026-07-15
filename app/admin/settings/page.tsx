@@ -1,18 +1,13 @@
 'use client';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { Save, Eye, EyeOff, CheckCircle } from 'lucide-react';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
 import AdminShell from '@/components/admin/AdminShell';
 
 export default function SettingsPage() {
   const { data: session } = useSession();
   const [showPassword, setShowPassword] = useState(false);
-  const [saved, setSaved] = useState(false);
-
-  const handleSave = () => {
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
-  };
+  const [saved] = useState(false);
 
   const fc = 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-teal-500 transition-colors';
 

@@ -47,15 +47,15 @@ export default function HeroSection() {
 
       {/* ── Floating cards ── */}
       <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none hidden lg:block">
-        {/* Active Trade card */}
+        {/* Trade inquiry card */}
         <motion.div
           animate={{ y: [-6, 6, -6] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/4 right-8 rounded-xl px-4 py-3 w-44"
           style={{ background: 'rgba(10,25,40,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(42,140,140,0.3)', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}
         >
-          <p className="text-[10px] text-teal-400/80 font-inter font-medium tracking-[0.15em] uppercase">Active Trade</p>
-          <p className="text-white text-sm font-semibold font-sora mt-0.5">Global Sourcing</p>
+          <p className="text-[10px] text-teal-400/80 font-inter font-medium tracking-[0.15em] uppercase">Trade Inquiry</p>
+          <p className="text-white text-sm font-semibold font-sora mt-0.5">Market Sourcing</p>
           <div className="mt-2 h-1 rounded-full bg-teal-900/60">
             <motion.div
               animate={{ width: ['20%', '78%', '20%'] }}
@@ -72,8 +72,8 @@ export default function HeroSection() {
           className="absolute bottom-1/3 right-6 rounded-xl px-4 py-3 w-44"
           style={{ background: 'rgba(10,25,40,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(217,104,58,0.3)', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}
         >
-          <p className="text-[10px] text-copper font-inter font-medium tracking-[0.15em] uppercase">11+ Markets</p>
-          <p className="text-white text-sm font-semibold font-sora mt-0.5">Global Presence</p>
+          <p className="text-[10px] text-copper font-inter font-medium tracking-[0.15em] uppercase">11+ Target Markets</p>
+          <p className="text-white text-sm font-semibold font-sora mt-0.5">Market Focus</p>
           <div className="mt-2 flex gap-1">
             {[1,2,3,4,5].map((s, i) => (
               <motion.div
@@ -192,7 +192,7 @@ export default function HeroSection() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <p className="text-center text-white/25 text-xs font-inter tracking-widest uppercase mb-5">
-            Industries and Brands Relevant to Our Markets
+            Industries We Support
           </p>
           <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
             {hero.brandLogos.map((b, i) => (

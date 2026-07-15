@@ -14,6 +14,121 @@ export const safeSolutionSummary = {
     'A complete commercial and industrial floor-safety system combining invisible anti-slip treatment, low-residue cleaning, scheduled inspection, and traction rejuvenation.',
 };
 
+export type EvidenceStatus = 'verified' | 'pending' | 'disabled';
+
+export interface ProductClaim {
+  label: string;
+  value?: string;
+  description: string;
+  status: EvidenceStatus;
+  sourceDocument?: string;
+  evidenceRequired?: string;
+}
+
+export const productClaims: ProductClaim[] = [
+  {
+    label: 'Traction coefficient range',
+    value: '0.6–0.8+',
+    description: 'Reported coefficient range under applicable conditions.',
+    status: 'pending',
+    evidenceRequired: 'Complete test report including method, wet/dry condition, surface, instrument, lab, date, and limitations.',
+  },
+  {
+    label: 'Potential protection interval',
+    value: 'Up to 3 years',
+    description: 'Commercial protection or assessment interval.',
+    status: 'pending',
+    evidenceRequired: 'Manufacturer-approved technical/commercial documentation defining use cases, exclusions, and maintenance requirements.',
+  },
+  {
+    label: 'Rejuvenation interval',
+    value: '1–3 years',
+    description: 'Typical period between rejuvenation assessments.',
+    status: 'pending',
+    evidenceRequired: 'Manufacturer maintenance guide or program documentation with limitations.',
+  },
+  {
+    label: 'Insurance-premium reduction',
+    value: 'Up to 10%',
+    description: 'Potential insurance-premium reduction.',
+    status: 'pending',
+    evidenceRequired: 'Insurer documentation, jurisdiction, program conditions, and approved wording.',
+  },
+  {
+    label: 'Claim deductible example',
+    value: '$5,000',
+    description: 'Average claim deductible example.',
+    status: 'disabled',
+    evidenceRequired: 'Client-approved financial basis and exact allowed wording.',
+  },
+  {
+    label: 'Five-year price guarantee',
+    description: 'Commercial price guarantee.',
+    status: 'pending',
+    evidenceRequired: 'Approved commercial terms, eligibility, exclusions, renewal conditions, territory restrictions, and customer responsibilities.',
+  },
+  {
+    label: 'UL-related wording',
+    description: 'UL certification or testing language.',
+    status: 'disabled',
+    evidenceRequired: 'Valid UL certificate or report and approved wording.',
+  },
+  {
+    label: 'ASTM-related wording',
+    description: 'ASTM certification or testing language.',
+    status: 'disabled',
+    evidenceRequired: 'Complete ASTM test report and approved wording.',
+  },
+  {
+    label: 'Sanitizing',
+    description: 'Sanitizing product-property claim.',
+    status: 'pending',
+    evidenceRequired: 'Technical Data Sheet, Safety Data Sheet, regulatory registration if applicable, and manufacturer-approved marketing material.',
+  },
+  {
+    label: 'Antibacterial',
+    description: 'Antibacterial product-property claim.',
+    status: 'disabled',
+    evidenceRequired: 'Regulatory registration and manufacturer-approved wording.',
+  },
+  {
+    label: 'Biodegradable',
+    description: 'Biodegradable product-property claim.',
+    status: 'disabled',
+    evidenceRequired: 'Testing or regulatory documentation and approved wording.',
+  },
+  {
+    label: 'Non-hazardous',
+    description: 'Non-hazardous product-property claim.',
+    status: 'disabled',
+    evidenceRequired: 'Current SDS and jurisdiction-specific regulatory confirmation.',
+  },
+  {
+    label: 'pH-neutral',
+    description: 'pH-neutral product-property claim.',
+    status: 'pending',
+    evidenceRequired: 'Current Technical Data Sheet or SDS confirming pH range and wording.',
+  },
+  {
+    label: 'Heavy-duty',
+    description: 'Heavy-duty product-positioning claim.',
+    status: 'pending',
+    evidenceRequired: 'Manufacturer-approved marketing material or technical sheet.',
+  },
+  {
+    label: 'WCB-rate reductions',
+    description: 'Workers compensation rate-reduction claim.',
+    status: 'disabled',
+    evidenceRequired: 'Jurisdiction-specific WCB documentation and approved wording.',
+  },
+  {
+    label: 'Certification language',
+    description: 'Any certified, approved, or independently verified claim.',
+    status: 'disabled',
+    evidenceRequired: 'Valid certificate/report and exact approved public wording.',
+  },
+];
+
 export const productSystem = [
   {
     name: 'Safe Solution®',
@@ -46,10 +161,10 @@ export const productSystem = [
     subtitle: 'Multi-Purpose Cleaner',
     shortLabel: 'Multi-Purpose Cleaner',
     points: [
-      'Cleaner, degreaser, and sanitizing solution where supported by approved technical documentation',
+      'Cleaner and degreaser for commercial floor-maintenance programs',
       'Super low-residue formulation',
       'Designed to maintain Safe Solution® treated surfaces',
-      'pH-neutral and heavy-duty where confirmed by the technical data sheet',
+      'Product properties should be confirmed against the current technical documentation',
       'Intended as an alternative to stocking multiple specialized cleaners',
       'Supports ongoing floor appearance, cleanliness, and safety',
       'Commercial pricing may be available without requiring excessive purchase volume',
@@ -68,26 +183,9 @@ export const safetyBenefits = [
 ];
 
 export const performanceMetrics = [
-  {
-    value: '0.6–0.8+',
-    label: 'Reported traction-performance range under applicable test conditions',
-  },
-  {
-    value: 'Up to 3 Years',
-    label: 'Potential commercial protection or assessment interval depending on surface, use, and maintenance',
-  },
-  {
-    value: '1–3 Years',
-    label: 'Typical reported period between rejuvenation assessments in many commercial applications',
-  },
-  {
-    value: 'Up to 10%',
-    label: 'Potential insurance-premium reduction only where confirmed by the applicable insurer and jurisdiction',
-  },
-  {
-    value: '$5K',
-    label: 'Client-supplied example of an average claim deductible; outcomes vary by claim and policy',
-  },
+  { value: 'Assessment', label: 'A site and test-area review is required before full treatment.' },
+  { value: 'Program', label: 'Treatment, cleaning, inspection, and rejuvenation work together as a maintenance program.' },
+  { value: 'Documentation', label: 'Technical information is available to qualified customers and distribution partners upon request.' },
 ];
 
 export const suitableSurfaces = [
@@ -107,16 +205,16 @@ export const floorCareProcess = [
 ];
 
 export const targetIndustries = [
-  { title: 'Hospitality and food service', href: '/industries/commercial' },
+  { title: 'Hospitality and food service', href: '/industries/hospitality-food-service' },
   { title: 'Healthcare and senior care', href: '/industries/healthcare' },
   { title: 'Education', href: '/industries/education' },
   { title: 'Retail', href: '/industries/commercial' },
   { title: 'Commercial property', href: '/industries/commercial' },
   { title: 'Manufacturing', href: '/industries/manufacturing' },
-  { title: 'Warehousing and logistics', href: '/industries/transportation' },
+  { title: 'Warehousing and logistics', href: '/industries/warehousing-logistics' },
   { title: 'Government facilities', href: '/industries/government' },
   { title: 'Recreation and public buildings', href: '/industries/government' },
-  { title: 'Facilities management', href: '/industries/commercial' },
+  { title: 'Facilities management', href: '/industries/facilities-management' },
   { title: 'Commercial cleaning companies', href: safeSolutionRoutes.distributor },
 ];
 
@@ -164,4 +262,4 @@ export const distributorProcess = [
 ];
 
 export const productClaimFootnote =
-  'Insurance, financial, performance, maintenance, and pricing outcomes vary by insurer, jurisdiction, surface, traffic, maintenance, program eligibility, and supporting documentation. No specific result is guaranteed.';
+  'Product suitability, appearance, traction performance, maintenance intervals, insurance outcomes, and commercial terms depend on the surface, application, site conditions, maintenance, jurisdiction, and supporting documentation. A test-area assessment is required before full application.';

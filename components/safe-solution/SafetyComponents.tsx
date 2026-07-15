@@ -152,8 +152,8 @@ export function MetricsAndBenefitsSection() {
       <Container>
         <SectionHeading
           eyebrow="Commercial Floor-Safety Benefits"
-          title="Carefully Qualified <span class='gradient-text'>Safety and Maintenance Value</span>"
-          subtitle="The program is presented with appropriate qualifiers because performance, maintenance, insurance, and financial outcomes depend on the surface, site conditions, documentation, and insurer."
+          title="Commercial <span class='gradient-text'>Floor-Safety Benefits</span>"
+          subtitle="A structured program helps commercial sites connect floor treatment, routine maintenance, inspection, documentation, and rejuvenation into one practical operating approach."
           className="mb-10"
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -280,6 +280,7 @@ export function DistributorApplicationForm() {
     consent: false,
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [startedAt] = useState(() => Date.now());
 
   const update = (key: string, value: string | boolean | string[]) => setForm((prev) => ({ ...prev, [key]: value }));
 
@@ -308,7 +309,9 @@ export function DistributorApplicationForm() {
       `Main customer types: ${form.customerTypes || ''}`,
       `Markets currently served: ${form.markets || ''}`,
       `Product interest: ${Array.isArray(form.interests) ? form.interests.join(', ') : ''}`,
-      `Expected annual opportunity: ${form.annualOpportunity || ''}`,
+      `Estimated annual sales opportunity: ${form.annualOpportunity || ''}`,
+      `Currency: ${form.currency || ''}`,
+      `Estimated first-year volume: ${form.firstYearVolume || ''}`,
       `Company-profile link or note: ${form.profileLink || ''}`,
       `Additional message: ${form.message || ''}`,
     ].join('\n');
@@ -332,6 +335,8 @@ export function DistributorApplicationForm() {
           message: details,
           consent: form.consent === true,
           source: 'partnership',
+          startedAt,
+          websiteHoneypot: form.websiteHoneypot || '',
         }),
       });
       const data = await response.json();
@@ -356,6 +361,15 @@ export function DistributorApplicationForm() {
 
   return (
     <form onSubmit={submit} className="rounded-3xl glass border border-teal/15 p-5 sm:p-8 space-y-5">
+      <input
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        value={String(form.websiteHoneypot || '')}
+        onChange={(event) => update('websiteHoneypot', event.target.value)}
+        className="hidden"
+        aria-hidden="true"
+      />
       {status === 'error' && <p className="rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-sm p-4">Please review the required fields and try again.</p>}
       <div className="grid md:grid-cols-2 gap-5">
         {[
@@ -377,8 +391,9 @@ export function DistributorApplicationForm() {
           ['technicalCapability', 'Technical or service capability'],
           ['customerTypes', 'Main customer types'],
           ['markets', 'Markets currently served'],
-          ['annualOpportunity', 'Expected annual opportunity'],
-          ['profileLink', 'Company-profile link or note'],
+          ['annualOpportunity', 'Estimated annual sales opportunity'],
+          ['firstYearVolume', 'Estimated first-year volume'],
+          ['profileLink', 'Company-profile URL or note'],
         ].map(([key, label]) => (
           <div key={key}>
             <label className={labelClass}>{label}</label>
@@ -390,6 +405,19 @@ export function DistributorApplicationForm() {
             />
           </div>
         ))}
+      </div>
+
+      <div>
+        <label className={labelClass}>Currency</label>
+        <select value={String(form.currency || '')} onChange={(event) => update('currency', event.target.value)} className={`${fieldClass} [&>option]:bg-navy`}>
+          <option value="">Select currency</option>
+          <option value="CAD">CAD</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="INR">INR</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
 
       <div>
@@ -417,7 +445,7 @@ export function DistributorApplicationForm() {
       </div>
 
       <p className="font-inter text-soft-white/45 text-xs leading-relaxed">
-        Uploads are not supported by the current backend. Please provide a company-profile link above or mention that a profile can be sent after initial contact.
+        Provide a link to your company profile, or our team will request supporting documents after the initial review.
       </p>
 
       <label className="flex items-start gap-3 rounded-xl bg-white/5 border border-white/10 p-4 cursor-pointer">

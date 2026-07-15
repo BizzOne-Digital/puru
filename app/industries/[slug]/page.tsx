@@ -10,6 +10,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import { safeSolutionRoutes } from '@/lib/data/safe-solution';
+import { relatedIndustryMap } from '@/lib/data/related-industries';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,8 +40,23 @@ export default async function IndustryDetailPage(
   );
   const relatedProductIcons = relatedProducts.map((p) => getIcon(p.icon));
 
-  const moreIndustries = industries.filter((i) => i.slug !== slug).slice(0, 3);
-  const floorSafetyRelevant = ['healthcare', 'education', 'manufacturing', 'commercial', 'government', 'transportation', 'real-estate', 'infrastructure'].includes(slug);
+  const mappedIndustrySlugs = relatedIndustryMap[slug] ?? [];
+  const moreIndustries = mappedIndustrySlugs.length > 0
+    ? (mappedIndustrySlugs.map((industrySlug) => industries.find((i) => i.slug === industrySlug)).filter(Boolean) as typeof industries)
+    : industries.filter((i) => i.slug !== slug).slice(0, 3);
+  const floorSafetyRelevant = [
+    'healthcare',
+    'education',
+    'manufacturing',
+    'commercial',
+    'government',
+    'transportation',
+    'real-estate',
+    'infrastructure',
+    'hospitality-food-service',
+    'warehousing-logistics',
+    'facilities-management',
+  ].includes(slug);
 
   return (
     <div className="min-h-screen bg-navy">

@@ -5,8 +5,6 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Container from '@/components/ui/Container';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import { siteContent } from '@/lib/data/site-content';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 const { coreBusiness } = siteContent;
 
@@ -18,10 +16,10 @@ const pillarColors = [
 ];
 
 const supportCards = [
-  { icon: Globe,    title: 'Global Trade Support',          desc: 'International sourcing, import/export, and supply chain management across 11+ markets worldwide.' },
-  { icon: Search,   title: 'Technology Commercialization',  desc: 'Bringing cutting-edge technologies to market through strategic partnerships and distribution networks.' },
+  { icon: Globe,    title: 'Global Trade Support',          desc: 'International sourcing, import/export coordination, and supply chain review across target markets.' },
+  { icon: Search,   title: 'Technology Commercialization',  desc: 'Reviewing commercial pathways for technologies, products, and partnership opportunities.' },
   { icon: Handshake,title: 'Business Matchmaking',          desc: 'Joint ventures, cross-border partnerships, and government relations to accelerate global growth.' },
-  { icon: Truck,    title: 'Wholesale & Distribution',      desc: 'Exclusive distribution agreements and wholesale channel development for global product categories.' },
+  { icon: Truck,    title: 'Wholesale & Distribution',      desc: 'Commercial distribution discussions and wholesale channel development for global product categories.' },
   { icon: Settings, title: 'Industrial Machinery',          desc: 'Specialized sourcing and trade support for industrial machinery, equipment, and heavy industry.' },
   { icon: Building2,title: 'Infrastructure Projects',       desc: 'Renewable energy, PPP projects, and investment facilitation for large-scale development.' },
 ];
