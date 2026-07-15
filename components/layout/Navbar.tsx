@@ -92,7 +92,7 @@ export default function Navbar() {
           className="w-full max-w-[1440px] pointer-events-auto"
         >
           <div
-            className={`relative flex items-center rounded-full px-3 py-2 sm:px-4 sm:py-2.5 transition-all duration-500 ${
+            className={`relative grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 transition-all duration-500 ${
               scrolled ? 'bg-[#0a1520]/90 backdrop-blur-2xl border border-white/12' : 'bg-[#0a1520]/76 backdrop-blur-xl border border-white/10'
             }`}
             style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.48), inset 0 1px 0 rgba(255,255,255,0.06)' }}
@@ -101,20 +101,20 @@ export default function Navbar() {
               <div className="w-10 h-10 flex-shrink-0">
                 <Image src="/logo-dark.png" alt="YUVAAN INTERNATIONAL logo" width={40} height={40} className="object-contain w-full h-full" priority />
               </div>
-              <div className="hidden xl:flex flex-col leading-none">
+              <div className="hidden md:flex flex-col leading-none">
                 <span className="font-sora font-bold text-white text-[14px] tracking-[0.16em] uppercase">YUVAAN</span>
                 <span className="font-inter text-[#4DB8D5] text-[9px] tracking-[0.34em] uppercase mt-1">INTERNATIONAL</span>
               </div>
             </Link>
 
-            <nav className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-0.5" aria-label="Main Navigation">
+            <nav className="hidden xl:flex min-w-0 items-center justify-center gap-0.5" aria-label="Main Navigation">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
                 return (
                   <div key={link.label} className="relative group">
                     <Link
                       href={link.href}
-                      className={`relative flex items-center gap-1 px-2.5 xl:px-3 py-2 font-inter text-[12px] xl:text-[13px] font-medium transition-colors duration-200 whitespace-nowrap ${
+                      className={`relative flex items-center gap-1 px-2 py-2 font-inter text-[12px] 2xl:px-3 2xl:text-[13px] font-medium transition-colors duration-200 whitespace-nowrap ${
                         active ? 'text-[#4DB8D5]' : 'text-white/88 hover:text-white'
                       }`}
                     >
@@ -141,26 +141,26 @@ export default function Navbar() {
               })}
             </nav>
 
-            <div className="flex items-center gap-1.5 ml-auto z-10">
+            <div className="flex items-center justify-end gap-1.5 z-10">
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="hidden sm:flex w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 items-center justify-center text-white/70 hover:text-white transition-all"
+                className="hidden md:flex w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 items-center justify-center text-white/70 hover:text-white transition-all"
                 aria-label="Search"
               >
                 <Search className="w-3.5 h-3.5" strokeWidth={1.75} />
               </button>
-              <a href={`tel:${company.publicPhoneTel}`} className="hidden sm:flex w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 items-center justify-center text-white/70 hover:text-white transition-all" aria-label="Call us">
+              <a href={`tel:${company.publicPhoneTel}`} className="hidden md:flex w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 items-center justify-center text-white/70 hover:text-white transition-all" aria-label="Call us">
                 <Phone className="w-3.5 h-3.5" strokeWidth={1.75} />
               </a>
               <Link
                 href="/partnerships/distributors-wanted"
-                className="hidden sm:inline-flex items-center gap-2 ml-1.5 px-4 xl:px-5 py-2.5 rounded-full text-white text-[12px] xl:text-[13px] font-semibold font-inter transition-all duration-300 hover:brightness-110"
+                className="hidden sm:inline-flex items-center gap-2 ml-1.5 px-4 2xl:px-5 py-2.5 rounded-full text-white text-[12px] 2xl:text-[13px] font-semibold font-inter transition-all duration-300 hover:brightness-110"
                 style={{ background: 'linear-gradient(90deg, #B8562D 0%, #D9683A 45%, #E88B4A 100%)', boxShadow: '0 4px 18px rgba(217,104,58,0.45)' }}
               >
                 Distributors Wanted
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 flex items-center justify-center text-white/70 hover:text-white transition-all ml-0.5" aria-label={mobileOpen ? 'Close menu' : 'Open menu'}>
+              <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden w-9 h-9 rounded-full bg-white/4 hover:bg-white/10 border border-white/12 flex items-center justify-center text-white/70 hover:text-white transition-all ml-0.5" aria-label={mobileOpen ? 'Close menu' : 'Open menu'}>
                 {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
             </div>
@@ -178,7 +178,7 @@ export default function Navbar() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-40 bg-[#060f18] lg:hidden overflow-y-auto">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-40 bg-[#060f18] xl:hidden overflow-y-auto">
             <TradeRouteLines />
             <div className="absolute inset-0 bg-gradient-to-b from-[#060f18]/90 to-[#06293A]/95" />
             <div className="relative z-10 min-h-full pt-24 sm:pt-28 px-5 sm:px-8 pb-10 sm:pb-16">
