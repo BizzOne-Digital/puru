@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CheckCircle, Users, Tag, ChevronDown, MessageSquare } from 'lucide-react';
 import { productCategories, getProductBySlug } from '@/lib/data/products';
+import { industries } from '@/lib/data/industries';
 import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
@@ -10,10 +11,6 @@ import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import { getIcon } from '@/lib/data/icons';
 
 export const dynamic = 'force-dynamic';
-
-export function generateStaticParams() {
-  return productCategories.map((p) => ({ slug: p.slug }));
-}
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -39,6 +36,16 @@ export default async function ProductDetailPage(
   const related = productCategories
     .filter((p) => p.slug !== slug && p.relatedIndustries.some((r) => product.relatedIndustries.includes(r)))
     .slice(0, 3);
+  const industryLinks = product.relatedIndustries
+    .map((name) => {
+      const normalized = name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const match = industries.find((industry) =>
+        industry.slug === normalized ||
+        industry.title.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') === normalized
+      );
+      return match ? { label: name, href: `/industries/${match.slug}` } : null;
+    })
+    .filter(Boolean) as Array<{ label: string; href: string }>;
 
   return (
     <div className="min-h-screen bg-navy">
@@ -124,10 +131,10 @@ export default async function ProductDetailPage(
                       <p className="font-inter text-xs text-soft-white/40 uppercase tracking-widest">Related Industries</p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {product.relatedIndustries.map((ind) => (
-                        <Link key={ind} href={`/industries/${ind.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`}
+                      {industryLinks.map((ind) => (
+                        <Link key={ind.href} href={ind.href}
                           className="text-xs font-inter text-copper/80 hover:text-copper bg-copper/5 px-2.5 py-1 rounded-full border border-copper/15 transition-colors">
-                          {ind}
+                          {ind.label}
                         </Link>
                       ))}
                     </div>
@@ -230,7 +237,7 @@ export default async function ProductDetailPage(
           <div className="relative z-10 text-center">
             <ScrollReveal>
               <h2 className="font-sora font-bold text-3xl md:text-4xl text-soft-white mb-4">
-                Ready to submit a <span className="gradient-text">{product.title}</span> inquiry?
+                Submit an inquiry about <span className="gradient-text">{product.title}</span>
               </h2>
               <p className="font-inter text-soft-white/55 text-base mb-8 leading-relaxed">Tell us your requirement and our team will review it and identify relevant trade connections.</p>
               <Link href="/contact#inquiry-form" className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold hover:shadow-glow-teal hover:scale-105 transition-all duration-300">

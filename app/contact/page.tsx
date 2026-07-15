@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import { Phone, Mail, Globe, MapPin } from 'lucide-react';
+import { Suspense } from 'react';
+import Link from 'next/link';
+import { ArrowRight, Phone, Mail, Globe, MapPin } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
@@ -13,6 +15,14 @@ export const metadata: Metadata = {
 };
 
 const { contact } = siteContent;
+const inquiryPaths = [
+  { label: 'General Business Inquiry', href: '/contact?inquiry=general#inquiry-form' },
+  { label: 'Product Inquiry', href: '/contact?inquiry=product#inquiry-form' },
+  { label: 'Request a Floor Assessment', href: '/contact?inquiry=floor-assessment&product=safe-solution#inquiry-form' },
+  { label: 'Distributor Application', href: '/contact?inquiry=distributor&product=safe-solution#inquiry-form' },
+  { label: 'Partnership Inquiry', href: '/contact?inquiry=partnership#inquiry-form' },
+  { label: 'Investment or Project Inquiry', href: '/contact?inquiry=investment#inquiry-form' },
+];
 
 export default function ContactPage() {
   return (
@@ -42,6 +52,21 @@ export default function ContactPage() {
       {/* Contact Content */}
       <section className="py-16">
         <Container>
+          <div className="mb-12">
+            <ScrollReveal>
+              <div className="glass border border-teal/15 rounded-3xl p-6 sm:p-8">
+                <h2 className="font-sora font-bold text-2xl text-soft-white mb-4">Choose Your Inquiry Path</h2>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {inquiryPaths.map((path) => (
+                    <Link key={path.href} href={path.href} className="group rounded-2xl bg-white/5 border border-white/10 hover:border-teal/30 p-4 flex items-center justify-between transition-all">
+                      <span className="font-inter text-soft-white/70 text-sm">{path.label}</span>
+                      <ArrowRight className="w-4 h-4 text-teal group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
           <div className="grid lg:grid-cols-3 gap-12">
 
             {/* Sidebar */}
@@ -140,7 +165,9 @@ export default function ContactPage() {
                   <p className="font-inter text-soft-white/50 text-sm mb-8 leading-relaxed">
                     Fill in your details below. All fields marked with * are required.
                   </p>
-                  <InquiryForm source="contact" />
+                  <Suspense fallback={<div className="text-soft-white/50 font-inter text-sm">Loading inquiry form...</div>}>
+                    <InquiryForm source="contact" />
+                  </Suspense>
                 </div>
               </ScrollReveal>
             </div>

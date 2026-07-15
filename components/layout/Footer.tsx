@@ -13,17 +13,25 @@ const footerLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Products', href: '/products' },
-  { label: 'Partnership', href: '/partnership' },
+  { label: 'Partnerships', href: '/partnerships' },
   { label: 'Industries', href: '/industries' },
+  { label: 'Global Markets', href: '/global-markets' },
+  { label: 'Investments', href: '/investments' },
   { label: 'Contact', href: '/contact' },
 ];
 
 const solutionLinks = [
+  { label: 'New Products', href: '/products/new-products' },
+  { label: 'Safe Solution®', href: '/products/new-products/safe-solution-floor-safety-system' },
+  { label: 'Distributors Wanted Worldwide', href: '/partnerships/distributors-wanted' },
   { label: 'Battery Energy Storage', href: '/products/battery-energy-storage' },
   { label: 'EV Charging Infrastructure', href: '/products/ev-charging-infrastructure' },
-  { label: 'Hydrogen Energy R&D', href: '/products/hydrogen-energy' },
-  { label: 'Smart Grid & Power', href: '/products/smart-grid-power-management' },
-  { label: 'Global Trading', href: '/products/global-trading' },
+  { label: 'Industrial Machinery', href: '/products/industrial-machinery' },
+];
+
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Use', href: '/terms-of-use' },
 ];
 
 export default function Footer() {
@@ -143,7 +151,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 />
-                Solutions
+                Products
               </h3>
               <ul className="space-y-3">
                 {solutionLinks.map((link, i) => (
@@ -178,7 +186,7 @@ export default function Footer() {
                 Start Your Inquiry
               </h3>
               <p className="text-soft-white/50 text-sm font-inter leading-relaxed mb-4">
-                Whether you&apos;re a manufacturer, investor, government agency, or business partner — submit your inquiry today.
+                Whether you&apos;re a manufacturer, distributor, investor, government agency, or business partner — submit your inquiry today.
               </p>
               <div className="flex items-center gap-2 mb-3">
                 <motion.div
@@ -196,17 +204,41 @@ export default function Footer() {
                 />
                 <span className="text-soft-white/40 text-xs font-inter">British Columbia, Canada HQ</span>
               </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/contact#inquiry-form"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal to-aqua text-navy text-sm font-semibold font-inter transition-all hover:shadow-glow-teal"
-                >
+              <div className="flex flex-col gap-3">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    href="/partnerships/distributors-wanted"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-copper to-[#E88B4A] text-white text-sm font-semibold font-inter transition-all"
+                  >
+                    Distributors Wanted
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </motion.div>
+                <Link href="/contact#inquiry-form" className="text-aqua text-sm font-inter hover:underline">
                   Complete Inquiry
-                  <ArrowRight className="w-4 h-4" />
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </ScrollReveal>
+        </div>
+
+        <div className="relative z-10 grid md:grid-cols-2 gap-4 mb-8">
+          <div className="rounded-2xl bg-white/[0.03] border border-white/8 p-5">
+            <p className="font-sora font-semibold text-soft-white text-sm mb-3">Legal</p>
+            <div className="flex flex-wrap gap-3">
+              {legalLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="text-soft-white/45 hover:text-aqua text-xs font-inter transition-colors">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-2xl bg-white/[0.03] border border-white/8 p-5">
+            <p className="font-sora font-semibold text-soft-white text-sm mb-3">Trademark Notice</p>
+            <p className="text-soft-white/40 text-xs font-inter leading-relaxed">
+              Safe Solution®, CRS™, and Clean Step™ are trademarks of their respective owner.
+            </p>
+          </div>
         </div>
 
         {/* Teal divider — animated */}
@@ -230,8 +262,8 @@ export default function Footer() {
           <p className="text-soft-white/30 text-xs font-inter text-center md:text-left">
             © {new Date().getFullYear()} {brand.fullName}. All rights reserved.
           </p>
-          <p className="text-soft-white/25 text-xs font-inter text-center leading-relaxed max-w-xl">
-            Information on this website is for general business inquiry purposes only. Availability of products, partnerships, sourcing, or trade opportunities is subject to review, confirmation, and applicable regulations.
+          <p className="text-soft-white/25 text-xs font-inter text-center leading-relaxed max-w-3xl">
+            Information on this website is for general business inquiry purposes only. Product suitability, surface compatibility, test-area results, performance, maintenance intervals, insurance or financial outcomes, territory availability, and program availability vary by use case and require review, confirmation, and applicable documentation.
           </p>
         </motion.div>
       </div>

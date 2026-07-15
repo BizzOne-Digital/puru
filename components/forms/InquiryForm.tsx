@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -17,6 +18,13 @@ const schema = z.object({
   productOrServiceNeeded: z.string().min(2, 'Please describe what you need'),
   quantityOrVolume: z.string().optional(),
   targetMarket: z.string().optional(),
+  facilityType: z.string().optional(),
+  city: z.string().optional(),
+  floorArea: z.string().optional(),
+  surfaceType: z.string().optional(),
+  currentFloorProblem: z.string().optional(),
+  desiredAssessmentDate: z.string().optional(),
+  programInterest: z.string().optional(),
   message: z.string().min(10, 'Please provide at least 10 characters'),
   consent: z.boolean().refine((v) => v === true, 'You must agree to be contacted'),
 });
@@ -30,27 +38,59 @@ interface InquiryFormProps {
   compact?: boolean;
 }
 
-const businessTypes = ['Importer', 'Exporter', 'Manufacturer', 'Wholesaler', 'Distributor', 'Industrial Machinery Buyer', 'Product Supplier', 'Project Partner', 'Other'];
-const inquiryCategories = ['Import', 'Export', 'Product Sourcing', 'Industrial Machinery', 'Wholesale / Distribution', 'Manufacturing', 'Partnership', 'Infrastructure / Project Opportunity', 'Other'];
+const businessTypes = ['Importer', 'Exporter', 'Manufacturer', 'Wholesaler', 'Distributor', 'Commercial Cleaning Company', 'Facilities Manager', 'Safety-Product Supplier', 'Industrial Machinery Buyer', 'Product Supplier', 'Project Partner', 'Other'];
+const inquiryCategories = ['General Business Inquiry', 'Product Inquiry', 'Request a Floor Assessment', 'Distributor Application', 'Partnership Inquiry', 'Investment or Project Inquiry', 'Import', 'Export', 'Product Sourcing', 'Industrial Machinery', 'Wholesale / Distribution', 'Manufacturing', 'Partnership', 'Infrastructure / Project Opportunity', 'Other'];
 
 export default function InquiryForm({ source = 'contact', prefilledProduct = '', onSuccess, compact = false }: InquiryFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const searchParams = useSearchParams();
+  const inquiryParam = searchParams.get('inquiry') || '';
+  const productParam = searchParams.get('product') || '';
+  const safeSolutionProduct = productParam === 'safe-solution' ? 'Safe Solution® Floor Safety System' : prefilledProduct;
+  const defaultCategory =
+    inquiryParam === 'distributor' ? 'Distributor Application' :
+    inquiryParam === 'floor-assessment' ? 'Request a Floor Assessment' :
+    inquiryParam === 'investment' ? 'Investment or Project Inquiry' :
+    inquiryParam === 'partnership' ? 'Partnership Inquiry' :
+    inquiryParam ? 'General Business Inquiry' : '';
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
-      productOrServiceNeeded: prefilledProduct,
+      inquiryCategory: defaultCategory,
+      productOrServiceNeeded: safeSolutionProduct,
+      programInterest: safeSolutionProduct ? 'Complete Floor Care Safety Program' : '',
     },
   });
+
+  const selectedCategory = watch('inquiryCategory');
+  const productNeeded = watch('productOrServiceNeeded');
+  const showSafeSolutionFields =
+    selectedCategory === 'Request a Floor Assessment' ||
+    selectedCategory === 'Distributor Application' ||
+    productNeeded?.toLowerCase().includes('safe solution');
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
+      const safeSolutionDetails = showSafeSolutionFields
+        ? [
+            '',
+            'Safe Solution® details:',
+            `Facility type: ${data.facilityType || ''}`,
+            `Country and city: ${data.country || ''}${data.city ? `, ${data.city}` : ''}`,
+            `Approximate floor area: ${data.floorArea || ''}`,
+            `Surface type: ${data.surfaceType || ''}`,
+            `Current floor problem: ${data.currentFloorProblem || ''}`,
+            `Desired assessment date: ${data.desiredAssessmentDate || ''}`,
+            `Product or program interest: ${data.programInterest || ''}`,
+          ].join('\n')
+        : '';
       const res = await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, source }),
+        body: JSON.stringify({ ...data, message: `${data.message}${safeSolutionDetails}`, source }),
       });
       const json = await res.json();
       if (json.success) {
@@ -170,6 +210,51 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
         {errors.productOrServiceNeeded && <p className={errorClass}><AlertCircle className="w-3 h-3" />{errors.productOrServiceNeeded.message}</p>}
       </div>
 
+      {showSafeSolutionFields && (
+        <div className="rounded-2xl bg-teal/5 border border-teal/15 p-5 space-y-5">
+          <div>
+            <p className="font-sora font-semibold text-soft-white">Safe Solution® Floor Assessment Details</p>
+            <p className="font-inter text-soft-white/45 text-sm mt-1">These fields help us review floor-safety, distributor, and program inquiries more accurately.</p>
+          </div>
+          <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-5`}>
+            <div>
+              <label className={labelClass}>Facility Type</label>
+              <input {...register('facilityType')} placeholder="Hotel, clinic, warehouse, school..." className={fieldClass} />
+            </div>
+            <div>
+              <label className={labelClass}>City</label>
+              <input {...register('city')} placeholder="City" className={fieldClass} />
+            </div>
+            <div>
+              <label className={labelClass}>Approximate Floor Area</label>
+              <input {...register('floorArea')} placeholder="e.g. 5,000 sq ft" className={fieldClass} />
+            </div>
+            <div>
+              <label className={labelClass}>Surface Type</label>
+              <input {...register('surfaceType')} placeholder="Ceramic tile, concrete, mineral surface..." className={fieldClass} />
+            </div>
+            <div>
+              <label className={labelClass}>Current Floor Problem</label>
+              <input {...register('currentFloorProblem')} placeholder="Slippery when wet, residue buildup..." className={fieldClass} />
+            </div>
+            <div>
+              <label className={labelClass}>Desired Assessment Date</label>
+              <input {...register('desiredAssessmentDate')} type="date" className={fieldClass} />
+            </div>
+          </div>
+          <div>
+            <label className={labelClass}>Product or Program Interest</label>
+            <select {...register('programInterest')} className={`${fieldClass} [&>option]:bg-navy`}>
+              <option value="">Select interest</option>
+              <option value="Safe Solution®">Safe Solution®</option>
+              <option value="CRS™">CRS™</option>
+              <option value="Clean Step™">Clean Step™</option>
+              <option value="Complete Floor Care Safety Program">Complete Floor Care Safety Program</option>
+            </select>
+          </div>
+        </div>
+      )}
+
       <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-5`}>
         {/* Quantity / Volume */}
         <div>
@@ -205,7 +290,7 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
           className="mt-0.5 w-4 h-4 rounded border-white/20 bg-transparent accent-teal cursor-pointer"
         />
         <label htmlFor="consent" className="font-inter text-soft-white/60 text-sm leading-relaxed cursor-pointer">
-          I agree to be contacted regarding this inquiry.
+          I agree to be contacted regarding this inquiry and understand submitted information will be reviewed for the requested product, partnership, distributor, investment, or floor-assessment path.
         </label>
       </div>
       {errors.consent && <p className={errorClass}><AlertCircle className="w-3 h-3" />{errors.consent.message}</p>}

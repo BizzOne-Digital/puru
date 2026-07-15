@@ -6,6 +6,12 @@ import ProductPreview from '@/components/home/ProductPreview';
 import PartnershipPreview from '@/components/home/PartnershipPreview';
 import IndustriesPreview from '@/components/home/IndustriesPreview';
 import FinalCTA from '@/components/home/FinalCTA';
+import {
+  DistributorCTA,
+  MetricsAndBenefitsSection,
+  NewProductSpotlight,
+  ProductSystemSection,
+} from '@/components/safe-solution/SafetyComponents';
 
 export const metadata: Metadata = {
   title: 'YUVAAN INTERNATIONAL | Global Trade, Products & Partnerships',
@@ -16,9 +22,13 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <CorporateSnapshot />
-      <AboutPreview />
+      <NewProductSpotlight />
+      <ProductSystemSection compact />
+      <MetricsAndBenefitsSection />
+      <DistributorCTA compact />
       <ProductPreview />
+      <AboutPreview />
+      <CorporateSnapshot />
       <PartnershipPreview />
       <IndustriesPreview />
       <FinalCTA />

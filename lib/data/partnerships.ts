@@ -10,6 +10,13 @@ export interface PartnershipType {
 
 export const partnershipTypes: PartnershipType[] = [
   {
+    slug: 'distributors-wanted-worldwide',
+    title: 'Distributors Wanted Worldwide',
+    description: 'Apply to represent the Safe Solution® Floor Safety System, CRS™, Clean Step™, and the Floor Care Safety Program in qualified commercial and industrial territories.',
+    icon: 'Users',
+    image: '/hero-background.png',
+  },
+  {
     slug: 'manufacturer-partnerships',
     title: 'Manufacturer Partnerships',
     description: 'Become a manufacturer partner and access YUVAAN\'s global distribution network across 11+ markets. We help manufacturers reach new buyers and establish exclusive distribution agreements internationally.',
@@ -18,23 +25,16 @@ export const partnershipTypes: PartnershipType[] = [
   },
   {
     slug: 'country-representative',
-    title: 'Country Representative',
+    title: 'Country Representatives',
     description: 'Represent YUVAAN INTERNATIONAL in your country and facilitate regional trade, project opportunities, and business development. Ideal for established professionals with local market knowledge.',
     icon: 'Globe',
     image: '/images/products/global-trading.jpg',
   },
   {
     slug: 'importer-partnerships',
-    title: 'Importer Partnerships',
+    title: 'Importer & Exporter Partnerships',
     description: 'Connect with reliable product sources, technologies, and suppliers to support your import operations. YUVAAN helps importers access BESS, EV infrastructure, industrial machinery, and wholesale goods.',
     icon: 'Download',
-    image: '/images/products/global-trading.jpg',
-  },
-  {
-    slug: 'exporter-partnerships',
-    title: 'Exporter Partnerships',
-    description: 'Expand your export reach with YUVAAN\'s international buyer connections and established distribution channels across North America, Asia, Europe, the Middle East, and beyond.',
-    icon: 'Upload',
     image: '/images/products/global-trading.jpg',
   },
   {

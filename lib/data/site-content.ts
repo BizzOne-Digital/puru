@@ -145,11 +145,11 @@ export const siteContent = {
       'We combine the reliability of Canadian business practices with the reach of a global trading company to deliver exceptional results.',
     reasons: [
       { title: 'Canadian Leadership', desc: 'Headquartered in British Columbia with a commitment to Canadian business excellence and global standards.' },
-      { title: 'Global Network', desc: 'Active partnerships and market presence across 11+ countries spanning four continents.' },
-      { title: 'Strategic Partnerships', desc: 'Deep relationships with manufacturers, governments, investors, and technology providers worldwide.' },
-      { title: 'International Experience', desc: 'Decades of combined expertise in cross-border trade, project development, and investment facilitation.' },
-      { title: 'Innovation-Focused', desc: 'Commercializing cutting-edge technologies in energy storage, EV infrastructure, hydrogen, and smart grid.' },
-      { title: 'Reliable Execution', desc: 'Proven track record of delivering complex international projects on time and within scope.' },
+      { title: 'Global Market Focus', desc: 'A Canada-based platform evaluating trade, sourcing, and distribution opportunities across 11+ target markets.' },
+      { title: 'Strategic Partnerships', desc: 'Business development support for manufacturers, distributors, institutions, investors, and technology providers.' },
+      { title: 'International Experience', desc: 'Cross-border trade, sourcing, project development, and partnership review capabilities.' },
+      { title: 'Innovation-Focused', desc: 'Commercial pathways for energy storage, EV infrastructure, hydrogen, smart grid, and floor-safety solutions.' },
+      { title: 'Reliable Process', desc: 'Structured inquiry review, partner coordination, due diligence support, and commercial follow-up.' },
       { title: 'Long-Term Relationships', desc: 'Building enduring business partnerships based on trust, mutual benefit, and shared success.' },
       { title: 'Sustainable Development', desc: 'Committed to projects that create lasting economic value while protecting the environment.' },
     ],
@@ -160,8 +160,8 @@ export const siteContent = {
     subheading:
       'Whether you\'re a manufacturer seeking global distribution, an investor looking for strategic opportunities, or a government agency developing critical infrastructure — YUVAAN is your trusted partner.',
     options: [
-      { title: 'Strategic Partnerships', desc: 'Become a global partner, manufacturer partner, or country representative', href: '/partnership' },
-      { title: 'Investment Opportunities', desc: 'Explore real estate, renewable energy, and infrastructure investments', href: '/contact' },
+      { title: 'Strategic Partnerships', desc: 'Become a distributor, manufacturer partner, country representative, or institutional partner', href: '/partnerships' },
+      { title: 'Investment and Project Collaboration', desc: 'Submit qualified strategic opportunities for review and due diligence', href: '/investments' },
     ],
     cta: 'Request a Business Meeting',
   },

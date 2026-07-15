@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -91,10 +92,10 @@ export default function ProductPreview() {
         </div>
 
         <ScrollReveal delay={0.3} className="text-center mt-12">
-          <a href="/products" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-teal/30 text-soft-white font-inter font-medium hover:border-teal hover:bg-teal/10 transition-all duration-300">
+          <Link href="/products" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-teal/30 text-soft-white font-inter font-medium hover:border-teal hover:bg-teal/10 transition-all duration-300">
             View All Solutions
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </ScrollReveal>
       </Container>
 

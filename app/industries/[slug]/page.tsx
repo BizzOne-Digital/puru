@@ -9,12 +9,9 @@ import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
 import TradeRouteLines from '@/components/ui/TradeRouteLines';
+import { safeSolutionRoutes } from '@/lib/data/safe-solution';
 
 export const dynamic = 'force-dynamic';
-
-export function generateStaticParams() {
-  return industries.map((i) => ({ slug: i.slug }));
-}
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -43,6 +40,7 @@ export default async function IndustryDetailPage(
   const relatedProductIcons = relatedProducts.map((p) => getIcon(p.icon));
 
   const moreIndustries = industries.filter((i) => i.slug !== slug).slice(0, 3);
+  const floorSafetyRelevant = ['healthcare', 'education', 'manufacturing', 'commercial', 'government', 'transportation', 'real-estate', 'infrastructure'].includes(slug);
 
   return (
     <div className="min-h-screen bg-navy">
@@ -148,6 +146,34 @@ export default async function IndustryDetailPage(
           </div>
         </Container>
       </section>
+
+      {floorSafetyRelevant && (
+        <section className="py-16 bg-navy">
+          <Container>
+            <div className="rounded-3xl border border-copper/25 bg-gradient-to-br from-copper/12 via-teal/8 to-white/[0.03] p-6 sm:p-8">
+              <div className="grid lg:grid-cols-[1fr_0.8fr] gap-6 items-center">
+                <div>
+                  <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Floor Safety Solutions</span>
+                  <h2 className="font-sora font-bold text-2xl sm:text-3xl text-soft-white mb-4">
+                    Safe Solution® for {industry.title} Facilities
+                  </h2>
+                  <p className="font-inter text-soft-white/60 leading-relaxed">
+                    Facilities in this sector may benefit from a structured floor-safety program that combines suitable-surface assessment, test-area application, invisible anti-slip treatment, Clean Step™ low-residue maintenance, scheduled inspection, and CRS™ rejuvenation where required.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
+                  <Link href={safeSolutionRoutes.detail} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold text-sm">
+                    Explore Safe Solution® <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link href={safeSolutionRoutes.floorAssessment} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-copper/35 text-copper font-sora font-semibold text-sm">
+                    Request Assessment <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* What We Support */}
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>

@@ -42,7 +42,7 @@ export default function LeadSignupForm() {
     return (
       <div className="flex items-center gap-3 p-4 rounded-xl bg-teal/10 border border-teal/20">
         <CheckCircle className="w-5 h-5 text-teal" />
-        <p className="text-soft-white/80 text-sm font-inter">Thank you! We'll be in touch soon.</p>
+        <p className="text-soft-white/80 text-sm font-inter">Thank you! We&apos;ll be in touch soon.</p>
       </div>
     );
   }

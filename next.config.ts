@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/webp'],
   },
+  async redirects() {
+    return [
+      { source: '/industries/wholesale-distribution', destination: '/industries/commercial', permanent: false },
+      { source: '/industries/import-export-businesses', destination: '/products/global-trading', permanent: false },
+      { source: '/industries/industrial-machinery', destination: '/products/industrial-machinery', permanent: false },
+      { source: '/partnership', destination: '/partnerships', permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

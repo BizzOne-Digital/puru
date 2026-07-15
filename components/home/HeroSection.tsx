@@ -192,7 +192,7 @@ export default function HeroSection() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <p className="text-center text-white/25 text-xs font-inter tracking-widest uppercase mb-5">
-            Trusted by Businesses Worldwide
+            Industries and Brands Relevant to Our Markets
           </p>
           <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
             {hero.brandLogos.map((b, i) => (

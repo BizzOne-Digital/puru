@@ -41,7 +41,7 @@ export default function PartnershipPreview() {
         </div>
 
         <ScrollReveal className="text-center">
-          <Link href="/partnership" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-semibold font-inter hover:shadow-glow-teal hover:scale-105 transition-all duration-300">
+          <Link href="/partnerships" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-semibold font-inter hover:shadow-glow-teal hover:scale-105 transition-all duration-300">
             Explore Partnerships
             <ArrowRight className="w-4 h-4" />
           </Link>

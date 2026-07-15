@@ -8,7 +8,7 @@ const pages = [
   { path: '/', label: 'Home Page', icon: Globe, content: 'hero, about preview, products preview, partnership preview, industries preview, CTA', editSection: 'hero' },
   { path: '/about', label: 'About Page', icon: Info, content: 'about overview, mission, vision, values', editSection: 'about' },
   { path: '/products', label: 'Products Page', icon: Package, content: 'product categories, inquiry modal', editSection: 'products' },
-  { path: '/partnership', label: 'Partnership Page', icon: Handshake, content: 'partnership types, how it works, who can partner', editSection: 'partnership' },
+  { path: '/partnerships', label: 'Partnerships Page', icon: Handshake, content: 'distributors wanted, partnership types, process, inquiry CTAs', editSection: 'partnership' },
   { path: '/industries', label: 'Industries Page', icon: Factory, content: 'industry cards, custom requirement CTA', editSection: 'industries' },
   { path: '/contact', label: 'Contact Page', icon: Phone, content: 'inquiry form, contact details', editSection: 'contact' },
 ];

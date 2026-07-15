@@ -21,7 +21,7 @@ export default function AdminPartnershipsPage() {
         title="Partnership Types"
         description="Manage partnership types stored in MongoDB. These appear on the partnership page and public API."
         apiPath="/api/admin/partnerships"
-        publicPath="/partnership"
+        publicPath="/partnerships"
         fields={partnershipFields}
       />
     </AdminShell>

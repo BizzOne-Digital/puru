@@ -1,6 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
-import { Search, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { Search, ArrowRight, ShieldCheck } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
@@ -9,6 +10,7 @@ import ProductInquiryModal from '@/components/products/ProductInquiryModal';
 import ProductCategoryCard from '@/components/products/ProductCategoryCard';
 import { productCategories } from '@/lib/data/products';
 import { getIcon } from '@/lib/data/icons';
+import { productSystem, safeSolutionRoutes, safeSolutionSummary } from '@/lib/data/safe-solution';
 
 const filters = ['All', 'Energy Solutions', 'Trade & Sourcing', 'Business Development', 'Infrastructure', 'Industrial Machinery', 'Wholesale Products', 'Agriculture', 'Custom Sourcing'];
 
@@ -66,9 +68,64 @@ export default function ProductsPage() {
         </Container>
       </section>
 
+      {/* New Products Spotlight */}
+      <section className="py-12 sm:py-16 bg-navy">
+        <Container>
+          <ScrollReveal>
+            <div className="rounded-3xl border border-copper/25 bg-gradient-to-br from-copper/14 via-teal/8 to-white/[0.03] p-6 sm:p-8 lg:p-10">
+              <div className="grid lg:grid-cols-[1fr_0.9fr] gap-8 items-center">
+                <div>
+                  <span className="inline-flex px-3 py-1 rounded-full bg-copper/15 border border-copper/30 text-copper text-xs font-inter font-bold uppercase tracking-[0.25em] mb-5">
+                    New Product
+                  </span>
+                  <h2 className="font-sora font-bold text-3xl sm:text-4xl text-soft-white mb-4">
+                    {safeSolutionSummary.title}
+                  </h2>
+                  <p className="font-inter text-soft-white/65 text-base leading-relaxed mb-6">
+                    {safeSolutionSummary.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-7">
+                    {productSystem.map((item) => (
+                      <span key={item.name} className="px-3 py-1.5 rounded-full bg-white/6 border border-white/10 text-soft-white/70 text-xs font-inter">
+                        {item.name}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link href={safeSolutionRoutes.detail} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold text-sm hover:shadow-glow-teal transition-all">
+                      View Complete System <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link href={safeSolutionRoutes.distributor} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-copper/35 text-copper font-sora font-semibold text-sm hover:bg-copper/10 transition-all">
+                      Become a Distributor <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-navy/60 p-6 min-h-[260px] flex flex-col justify-between">
+                  <div className="flex items-center justify-between">
+                    <ShieldCheck className="w-12 h-12 text-aqua" />
+                    <span className="font-inter text-soft-white/35 text-xs uppercase tracking-widest">Professional Visual Placeholder</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3 mt-10">
+                    {productSystem.map((item) => (
+                      <div key={item.name} className="rounded-2xl bg-white/5 border border-white/10 p-3">
+                        <p className="font-sora font-bold text-soft-white text-sm">{item.name}</p>
+                        <p className="font-inter text-soft-white/45 text-xs mt-2 leading-relaxed">{item.shortLabel}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
+
       {/* Filter + Search */}
       <section className="py-6 sm:py-8 sticky top-[72px] sm:top-[88px] z-20 bg-navy/80 backdrop-blur-xl border-b border-white/5">
         <Container>
+          <h2 className="font-sora font-bold text-soft-white text-2xl text-center mb-4">
+            Other Products and Global Trade Solutions
+          </h2>
           <div className="flex flex-col items-center gap-4">
             <div className="relative w-full max-w-md">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-soft-white/30" />
