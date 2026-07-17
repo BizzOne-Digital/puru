@@ -252,7 +252,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Safe Solution® Floor Safety System', 'Clean Step™', 'CRS™', 'Custom Product Sourcing'],
     faqs: [{ q: 'Can facilities teams request program documentation?', a: 'Technical documentation is available to qualified customers and distribution partners upon request.' }],
     icon: 'Building',
-    image: '/images/industries/commercial.jpg',
+    image: '/images/industries/facilities-management.jpg',
   },
 ];
 

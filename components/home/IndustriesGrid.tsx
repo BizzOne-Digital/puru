@@ -14,8 +14,8 @@ const industryCards = [
   { title: 'Education', href: '/industries/education', image: '/images/industries/education.jpg' },
   { title: 'Manufacturing', href: '/industries/manufacturing', image: '/images/industries/manufacturing.jpg' },
   { title: 'Warehousing & Logistics', href: '/industries/warehousing-logistics', image: '/images/industries/warehouse.jpg' },
-  { title: 'Facilities Management', href: '/industries/facilities-management', image: '/images/industries/commercial.jpg' },
-  { title: 'Government', href: '/industries/government', image: '/images/industries/commercial.jpg' },
+  { title: 'Facilities Management', href: '/industries/facilities-management', image: '/images/industries/facilities-management.jpg' },
+  { title: 'Government', href: '/industries/government', image: '/images/industries/government.jpg' },
 ];
 
 export default function IndustriesGrid() {
