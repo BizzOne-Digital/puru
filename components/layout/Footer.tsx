@@ -36,13 +36,13 @@ export default function Footer() {
       <Container>
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 md:grid-cols-2 md:gap-10 md:py-14 lg:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 mb-5">
-              <div className="relative w-11 h-11 rounded-xl overflow-hidden bg-white/10 border border-white/10">
-                <Image src="/logo-dark.png" alt="YUVAAN INTERNATIONAL" fill className="object-contain p-1" sizes="44px" />
+            <Link href="/" className="mb-5 inline-flex items-center gap-3.5">
+              <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-white/15 bg-white/10 sm:h-16 sm:w-16">
+                <Image src="/logo-dark.png" alt="YUVAAN INTERNATIONAL" fill className="object-contain p-1" sizes="64px" />
               </div>
               <div>
-                <p className="font-sora font-bold tracking-[0.14em] text-sm">YUVAAN</p>
-                <p className="text-accent-bright text-[10px] tracking-[0.24em] uppercase">International</p>
+                <p className="font-sora text-base font-bold tracking-[0.14em] sm:text-lg">YUVAAN</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-accent-bright">International</p>
               </div>
             </Link>
             <p className="text-white/65 text-sm leading-relaxed mb-5 max-w-xs">

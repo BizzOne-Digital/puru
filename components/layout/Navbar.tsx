@@ -69,14 +69,14 @@ export default function Navbar() {
       <header className="fixed top-0 inset-x-0 z-50">
         <div className={`transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-xl border-b border-surface-border shadow-soft' : 'bg-white/75 backdrop-blur-md border-b border-transparent'}`}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 sm:h-[72px] sm:gap-4">
-              <Link href="/" className="flex items-center gap-3 min-w-0" aria-label="YUVAAN INTERNATIONAL">
-                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl border border-surface-border bg-white">
-                  <Image src="/logo-dark.png" alt="YUVAAN INTERNATIONAL logo" fill className="object-contain p-1" sizes="40px" priority />
+            <div className="grid h-[72px] grid-cols-[auto_1fr_auto] items-center gap-3 sm:h-20 sm:gap-4">
+              <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="YUVAAN INTERNATIONAL">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-surface-border bg-white sm:h-14 sm:w-14">
+                  <Image src="/logo-dark.png" alt="YUVAAN INTERNATIONAL logo" fill className="object-contain p-0.5" sizes="56px" priority />
                 </div>
-                <div className="hidden sm:flex flex-col leading-none">
-                  <span className="font-sora font-bold text-ink text-sm tracking-[0.14em] uppercase">YUVAAN</span>
-                  <span className="font-inter text-accent text-[10px] tracking-[0.28em] uppercase mt-1">International</span>
+                <div className="hidden flex-col leading-none sm:flex">
+                  <span className="font-sora text-base font-bold uppercase tracking-[0.14em] text-ink">YUVAAN</span>
+                  <span className="mt-1 font-inter text-[11px] uppercase tracking-[0.28em] text-accent">International</span>
                 </div>
               </Link>
 
