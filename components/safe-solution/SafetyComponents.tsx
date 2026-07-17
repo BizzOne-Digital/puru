@@ -43,14 +43,14 @@ export function ProductSystemCard({
   const Icon = cardIcons[index] ?? ShieldCheck;
 
   return (
-    <div className="group h-full rounded-2xl glass border border-teal/15 p-5 sm:p-7 hover:border-teal/35 transition-all card-hover">
+    <div className="group h-full surface-card p-5 sm:p-7 card-hover">
       <div className="flex items-start gap-4 mb-5">
-        <div className="w-12 h-12 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0">
-          <Icon className="w-6 h-6 text-teal group-hover:text-aqua transition-colors" />
+        <div className="w-12 h-12 rounded-xl bg-accent-soft text-accent flex items-center justify-center flex-shrink-0">
+          <Icon className="w-6 h-6" />
         </div>
         <div>
-          <h3 className="font-sora font-bold text-soft-white text-xl">{item.name}</h3>
-          <p className="font-inter text-copper text-sm mt-1">{item.subtitle}</p>
+          <h3 className="font-sora font-bold text-ink text-xl">{item.name}</h3>
+          <p className="font-inter text-accent text-sm mt-1">{item.subtitle}</p>
         </div>
       </div>
 
@@ -58,13 +58,13 @@ export function ProductSystemCard({
         <ul className="space-y-3">
           {item.points.map((point) => (
             <li key={point} className="flex items-start gap-3">
-              <CheckCircle className="w-4 h-4 text-teal mt-0.5 flex-shrink-0" />
-              <span className="font-inter text-soft-white/60 text-sm leading-relaxed">{point}</span>
+              <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+              <span className="font-inter text-steel-grey text-sm leading-relaxed">{point}</span>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="font-inter text-soft-white/55 text-sm leading-relaxed">{item.shortLabel}</p>
+        <p className="font-inter text-steel-grey text-sm leading-relaxed">{item.shortLabel}</p>
       )}
     </div>
   );
@@ -72,46 +72,43 @@ export function ProductSystemCard({
 
 export function NewProductSpotlight() {
   return (
-    <section className="relative py-14 sm:py-20 bg-navy overflow-hidden">
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(217,104,58,0.12), transparent 60%)' }} />
+    <section className="section-pad bg-surface-soft">
       <Container>
         <ScrollReveal>
-          <div className="relative z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center rounded-3xl border border-copper/25 bg-gradient-to-br from-copper/14 via-teal/8 to-white/[0.03] p-6 sm:p-8 lg:p-10 overflow-hidden">
-            <div>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/15 border border-copper/30 text-copper text-xs font-inter font-bold uppercase tracking-[0.25em] mb-5">
+          <div className="surface-card overflow-hidden grid lg:grid-cols-[1.1fr_0.9fr] gap-0">
+            <div className="p-6 sm:p-8 lg:p-10">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-soft text-accent text-xs font-inter font-bold uppercase tracking-[0.25em] mb-5">
                 {safeSolutionSummary.eyebrow}
               </span>
-              <h2 className="font-sora font-bold text-3xl sm:text-4xl lg:text-5xl text-soft-white leading-tight mb-5">
+              <h2 className="font-sora font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight mb-5">
                 Safe Solution® <span className="gradient-text">Floor Safety System</span>
               </h2>
-              <p className="font-inter text-soft-white/65 text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
+              <p className="font-inter text-steel-grey text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
                 {safeSolutionSummary.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href={safeSolutionRoutes.detail} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold text-sm hover:shadow-glow-teal transition-all">
+                <Link href={safeSolutionRoutes.detail} className="btn-primary">
                   Explore the Complete System <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href={safeSolutionRoutes.distributor} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-copper/35 text-copper font-sora font-semibold text-sm hover:bg-copper/10 transition-all">
+                <Link href={safeSolutionRoutes.distributor} className="btn-secondary">
                   Become a Distributor <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
-
-            <div className="relative min-h-[280px] rounded-3xl border border-white/10 bg-navy/55 p-5 overflow-hidden">
-              <div className="absolute inset-0 grid-bg opacity-40" />
+            <div className="relative min-h-[280px] border-t border-surface-border bg-surface-muted p-4 sm:p-5 lg:border-l lg:border-t-0">
               <div className="relative h-full flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-teal/15 border border-teal/25 flex items-center justify-center">
-                    <ShieldCheck className="w-7 h-7 text-aqua" />
+                  <div className="w-14 h-14 rounded-2xl bg-accent-soft text-accent flex items-center justify-center">
+                    <ShieldCheck className="w-7 h-7" />
                   </div>
-                  <span className="text-xs font-inter text-soft-white/40 uppercase tracking-widest">Commercial Floor Care</span>
+                  <span className="text-xs font-inter text-steel-grey uppercase tracking-widest">Commercial Floor Care</span>
                 </div>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                   {productSystem.map((item, index) => (
-                    <div key={item.name} className="rounded-2xl bg-white/5 border border-white/10 p-3 min-h-32">
-                      <p className="font-sora font-bold text-soft-white text-sm">{item.name}</p>
-                      <p className="font-inter text-soft-white/45 text-xs mt-2 leading-relaxed">{item.shortLabel}</p>
-                      <div className={`mt-4 h-1 rounded-full ${index === 0 ? 'bg-copper' : index === 1 ? 'bg-teal' : 'bg-aqua'}`} />
+                    <div key={item.name} className="rounded-2xl bg-white border border-surface-border p-3 min-h-32">
+                      <p className="font-sora font-bold text-ink text-sm">{item.name}</p>
+                      <p className="font-inter text-steel-grey text-xs mt-2 leading-relaxed">{item.shortLabel}</p>
+                      <div className={`mt-4 h-1 rounded-full ${index === 0 ? 'bg-accent' : index === 1 ? 'bg-accent-bright' : 'bg-ink-soft'}`} />
                     </div>
                   ))}
                 </div>
@@ -126,7 +123,7 @@ export function NewProductSpotlight() {
 
 export function ProductSystemSection({ compact = false }: { compact?: boolean }) {
   return (
-    <section className={`relative ${compact ? 'py-12' : 'py-16 sm:py-20'} bg-navy`}>
+    <section className={`${compact ? 'py-12' : 'section-pad'} bg-white`}>
       <Container>
         <SectionHeading
           eyebrow="Three-Part Product System"
@@ -148,7 +145,7 @@ export function ProductSystemSection({ compact = false }: { compact?: boolean })
 
 export function MetricsAndBenefitsSection() {
   return (
-    <section className="py-16 sm:py-20" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
+    <section className="section-pad bg-surface-soft">
       <Container>
         <SectionHeading
           eyebrow="Commercial Floor-Safety Benefits"
@@ -158,9 +155,9 @@ export function MetricsAndBenefitsSection() {
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {safetyBenefits.map((benefit) => (
-            <div key={benefit} className="glass border border-teal/10 rounded-2xl p-5 flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-              <p className="font-inter text-soft-white/65 text-sm leading-relaxed">{benefit}</p>
+            <div key={benefit} className="surface-card p-5 flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <p className="font-inter text-steel-grey text-sm leading-relaxed">{benefit}</p>
             </div>
           ))}
         </div>
@@ -169,7 +166,7 @@ export function MetricsAndBenefitsSection() {
             <MetricCard key={metric.value} value={metric.value} label={metric.label} />
           ))}
         </div>
-        <p className="font-inter text-soft-white/35 text-xs leading-relaxed mt-6">{productClaimFootnote}</p>
+        <p className="font-inter text-steel-grey/70 text-xs leading-relaxed mt-6">{productClaimFootnote}</p>
       </Container>
     </section>
   );
@@ -177,18 +174,20 @@ export function MetricsAndBenefitsSection() {
 
 export function MetricCard({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-5">
-      <p className="font-sora font-bold text-2xl text-aqua mb-2">{value}</p>
-      <p className="font-inter text-soft-white/55 text-xs leading-relaxed">{label}</p>
+    <div className="surface-card p-5">
+      <p className="font-sora font-bold text-2xl text-accent mb-2">{value}</p>
+      <p className="font-inter text-steel-grey text-xs leading-relaxed">{label}</p>
     </div>
   );
 }
 
 export function SafetyNotice({ children, tone = 'teal' }: { children: React.ReactNode; tone?: 'teal' | 'copper' }) {
-  const color = tone === 'copper' ? 'border-copper/25 bg-copper/8 text-copper' : 'border-teal/25 bg-teal/8 text-aqua';
+  const color = tone === 'copper'
+    ? 'border-amber-200 bg-amber-50'
+    : 'border-accent/20 bg-accent-soft';
   return (
     <div className={`rounded-2xl border p-5 ${color}`}>
-      <p className="font-inter text-sm leading-relaxed text-soft-white/70">{children}</p>
+      <p className="font-inter text-sm leading-relaxed text-steel-grey">{children}</p>
     </div>
   );
 }
@@ -197,9 +196,9 @@ export function ProcessTimeline({ items = floorCareProcess }: { items?: string[]
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {items.map((item, index) => (
-        <div key={item} className="relative rounded-2xl glass border border-teal/10 p-5">
-          <span className="font-sora font-bold text-4xl text-teal/20">{String(index + 1).padStart(2, '0')}</span>
-          <p className="font-sora font-semibold text-soft-white mt-3">{item}</p>
+        <div key={item} className="relative surface-card p-5">
+          <span className="font-sora font-bold text-4xl text-accent/20">{String(index + 1).padStart(2, '0')}</span>
+          <p className="font-sora font-semibold text-ink mt-3">{item}</p>
         </div>
       ))}
     </div>
@@ -208,11 +207,11 @@ export function ProcessTimeline({ items = floorCareProcess }: { items?: string[]
 
 export function DocumentCard({ title, status }: { title: string; status: string }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 flex items-start gap-3">
-      <FileText className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
+    <div className="surface-card p-5 flex items-start gap-3">
+      <FileText className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
       <div>
-        <p className="font-sora font-semibold text-soft-white text-sm">{title}</p>
-        <p className="font-inter text-soft-white/45 text-xs mt-1">{status}</p>
+        <p className="font-sora font-semibold text-ink text-sm">{title}</p>
+        <p className="font-inter text-steel-grey text-xs mt-1">{status}</p>
       </div>
     </div>
   );
@@ -230,19 +229,19 @@ export function DocumentsGrid() {
 
 export function DistributorCTA({ compact = false }: { compact?: boolean }) {
   return (
-    <section className={`${compact ? 'py-10' : 'py-16 sm:py-20'} bg-navy`}>
+    <section className={compact ? 'py-10' : 'section-pad bg-white'}>
       <Container>
-        <div className="rounded-3xl border border-copper/30 bg-gradient-to-br from-copper/15 via-teal/10 to-white/[0.03] p-6 sm:p-8 lg:p-10 text-center">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-copper/15 border border-copper/30 text-copper text-xs font-inter font-bold uppercase tracking-[0.25em] mb-4">
+        <div className="rounded-3xl border border-accent/20 bg-accent-soft p-5 text-center sm:p-8 lg:p-10">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-3 py-1 font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-accent sm:text-xs sm:tracking-[0.25em]">
             Territory Opportunity
           </span>
-          <h2 className="font-sora font-bold text-3xl sm:text-4xl text-soft-white mb-4">
+          <h2 className="mb-4 font-sora text-2xl font-bold text-ink sm:text-4xl">
             Distributors Wanted Worldwide
           </h2>
-          <p className="font-inter text-soft-white/65 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-7">
+          <p className="font-inter text-steel-grey text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-7">
             We are seeking qualified commercial cleaning companies, safety-product suppliers, flooring specialists, facilities-service providers, and established B2B distributors to represent the Safe Solution® Floor Safety System in new markets.
           </p>
-          <Link href={safeSolutionRoutes.distributor} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-copper to-[#E88B4A] text-white font-sora font-bold hover:brightness-110 transition-all">
+          <Link href={safeSolutionRoutes.distributor} className="btn-primary w-full sm:w-auto">
             Apply for Your Territory <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -254,17 +253,17 @@ export function DistributorCTA({ compact = false }: { compact?: boolean }) {
 export function FinalConversionPanels() {
   return (
     <div className="grid md:grid-cols-2 gap-5">
-      <Link href={safeSolutionRoutes.floorAssessment} className="group rounded-3xl glass border border-teal/20 p-7 hover:border-teal/40 transition-all">
-        <ClipboardCheck className="w-9 h-9 text-teal mb-5" />
-        <h3 className="font-sora font-bold text-soft-white text-2xl mb-3">Request a Commercial Floor Assessment</h3>
-        <p className="font-inter text-soft-white/55 text-sm leading-relaxed mb-5">Tell us about your facility, surface type, and current floor-safety concern.</p>
-        <span className="inline-flex items-center gap-2 text-aqua font-inter font-semibold text-sm">Request Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
+      <Link href={safeSolutionRoutes.floorAssessment} className="group surface-card p-5 card-hover sm:p-7">
+        <ClipboardCheck className="w-9 h-9 text-accent mb-5" />
+        <h3 className="mb-3 font-sora text-xl font-bold text-ink sm:text-2xl">Request a Commercial Floor Assessment</h3>
+        <p className="font-inter text-steel-grey text-sm leading-relaxed mb-5">Tell us about your facility, surface type, and current floor-safety concern.</p>
+        <span className="inline-flex items-center gap-2 text-accent font-inter font-semibold text-sm">Request Assessment <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
       </Link>
-      <Link href={safeSolutionRoutes.distributor} className="group rounded-3xl glass border border-copper/25 p-7 hover:border-copper/45 transition-all">
-        <Users className="w-9 h-9 text-copper mb-5" />
-        <h3 className="font-sora font-bold text-soft-white text-2xl mb-3">Become a Safe Solution® Distributor</h3>
-        <p className="font-inter text-soft-white/55 text-sm leading-relaxed mb-5">Apply to represent Safe Solution®, CRS™, Clean Step™, and the Floor Care Safety Program in your market.</p>
-        <span className="inline-flex items-center gap-2 text-copper font-inter font-semibold text-sm">Start Distributor Application <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
+      <Link href={safeSolutionRoutes.distributor} className="group surface-card p-5 card-hover sm:p-7">
+        <Users className="w-9 h-9 text-accent mb-5" />
+        <h3 className="mb-3 font-sora text-xl font-bold text-ink sm:text-2xl">Become a Safe Solution® Distributor</h3>
+        <p className="font-inter text-steel-grey text-sm leading-relaxed mb-5">Apply to represent Safe Solution®, CRS™, Clean Step™, and the Floor Care Safety Program in your market.</p>
+        <span className="inline-flex items-center gap-2 text-accent font-inter font-semibold text-sm">Start Distributor Application <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
       </Link>
     </div>
   );
@@ -346,21 +345,21 @@ export function DistributorApplicationForm() {
     }
   };
 
-  const fieldClass = 'w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-soft-white text-sm font-inter placeholder:text-soft-white/30 focus:outline-none focus:border-teal/50';
-  const labelClass = 'block font-inter text-soft-white/70 text-xs font-medium mb-1.5 tracking-wide uppercase';
+  const fieldClass = 'block w-full min-w-0 rounded-xl border border-surface-border bg-white px-4 py-3 font-inter text-base text-ink placeholder:text-steel-grey/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/20 sm:text-sm';
+  const labelClass = 'block font-inter text-steel-grey text-xs font-medium mb-1.5 tracking-wide uppercase';
 
   if (status === 'success') {
     return (
-      <div className="rounded-3xl glass border border-teal/20 p-8 text-center">
-        <CheckCircle className="w-12 h-12 text-teal mx-auto mb-4" />
-        <h3 className="font-sora font-bold text-2xl text-soft-white mb-2">Distributor Application Received</h3>
-        <p className="font-inter text-soft-white/60">Thank you. Yuvaan International will review your territory and capability details.</p>
+      <div className="surface-card p-8 text-center">
+        <CheckCircle className="w-12 h-12 text-accent mx-auto mb-4" />
+        <h3 className="font-sora font-bold text-2xl text-ink mb-2">Distributor Application Received</h3>
+        <p className="font-inter text-steel-grey">Thank you. Yuvaan International will review your territory and capability details.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={submit} className="rounded-3xl glass border border-teal/15 p-5 sm:p-8 space-y-5">
+    <form onSubmit={submit} className="surface-card min-w-0 space-y-5 p-4 sm:p-8">
       <input
         type="text"
         tabIndex={-1}
@@ -370,7 +369,7 @@ export function DistributorApplicationForm() {
         className="hidden"
         aria-hidden="true"
       />
-      {status === 'error' && <p className="rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-sm p-4">Please review the required fields and try again.</p>}
+      {status === 'error' && <p className="rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm p-4">Please review the required fields and try again.</p>}
       <div className="grid md:grid-cols-2 gap-5">
         {[
           ['fullName', 'Applicant full name *'],
@@ -409,7 +408,7 @@ export function DistributorApplicationForm() {
 
       <div>
         <label className={labelClass}>Currency</label>
-        <select value={String(form.currency || '')} onChange={(event) => update('currency', event.target.value)} className={`${fieldClass} [&>option]:bg-navy`}>
+        <select value={String(form.currency || '')} onChange={(event) => update('currency', event.target.value)} className={`${fieldClass} [&>option]:bg-white`}>
           <option value="">Select currency</option>
           <option value="CAD">CAD</option>
           <option value="USD">USD</option>
@@ -424,9 +423,9 @@ export function DistributorApplicationForm() {
         <p className={labelClass}>Product interest</p>
         <div className="grid sm:grid-cols-2 gap-3">
           {interestOptions.map((interest) => (
-            <label key={interest} className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3 cursor-pointer">
-              <input type="checkbox" checked={Array.isArray(form.interests) && form.interests.includes(interest)} onChange={() => toggleInterest(interest)} className="accent-teal" />
-              <span className="font-inter text-soft-white/70 text-sm">{interest}</span>
+            <label key={interest} className="flex items-center gap-3 rounded-xl bg-surface-soft border border-surface-border p-3 cursor-pointer">
+              <input type="checkbox" checked={Array.isArray(form.interests) && form.interests.includes(interest)} onChange={() => toggleInterest(interest)} className="h-5 w-5 shrink-0 accent-accent" />
+              <span className="font-inter text-steel-grey text-sm">{interest}</span>
             </label>
           ))}
         </div>
@@ -444,16 +443,16 @@ export function DistributorApplicationForm() {
         />
       </div>
 
-      <p className="font-inter text-soft-white/45 text-xs leading-relaxed">
+      <p className="font-inter text-steel-grey text-xs leading-relaxed">
         Provide a link to your company profile, or our team will request supporting documents after the initial review.
       </p>
 
-      <label className="flex items-start gap-3 rounded-xl bg-white/5 border border-white/10 p-4 cursor-pointer">
-        <input required type="checkbox" checked={form.consent === true} onChange={(event) => update('consent', event.target.checked)} className="mt-1 accent-teal" />
-        <span className="font-inter text-soft-white/60 text-sm leading-relaxed">I agree to be contacted about this distributor application and understand territory opportunities are subject to review.</span>
+      <label className="flex items-start gap-3 rounded-xl bg-surface-soft border border-surface-border p-4 cursor-pointer">
+        <input required type="checkbox" checked={form.consent === true} onChange={(event) => update('consent', event.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 accent-accent" />
+        <span className="font-inter text-steel-grey text-sm leading-relaxed">I agree to be contacted about this distributor application and understand territory opportunities are subject to review.</span>
       </label>
 
-      <button disabled={status === 'loading'} className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold disabled:opacity-60">
+      <button disabled={status === 'loading'} className="btn-primary w-full !py-4 disabled:opacity-60">
         {status === 'loading' ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
         Apply for Your Territory
       </button>

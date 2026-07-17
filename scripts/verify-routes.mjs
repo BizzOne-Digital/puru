@@ -11,6 +11,7 @@ const requiredRoutes = [
   '/global-markets',
   '/investments',
   '/industries',
+  '/resources',
   '/contact',
   '/privacy-policy',
   '/terms-of-use',

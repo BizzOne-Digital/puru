@@ -208,7 +208,7 @@ export const productCategories: ProductCategory[] = [
       { q: 'Can YUVAAN source specific industrial machinery models?', a: 'Yes. Submit an inquiry with your exact specifications and we will work to identify suitable supplier connections.' },
     ],
     icon: 'Settings',
-    image: '/images/products/global-trading.jpg',
+    image: '/images/products/industrial-machinery.jpg',
   },
   {
     slug: 'wholesale-consumer-products',
@@ -231,7 +231,7 @@ export const productCategories: ProductCategory[] = [
       { q: 'What product categories are available for wholesale?', a: 'We cover consumer electronics, household goods, apparel, textiles, general merchandise, and specialty categories.' },
     ],
     icon: 'Package',
-    image: '/images/products/global-trading.jpg',
+    image: '/images/products/wholesale.jpg',
   },
   {
     slug: 'agricultural-food-trade-products',
@@ -254,7 +254,7 @@ export const productCategories: ProductCategory[] = [
       { q: 'Do you support certified organic food trade?', a: 'Yes. We can connect certified organic producers with importers and distributors in target markets.' },
     ],
     icon: 'Wheat',
-    image: '/images/products/global-trading.jpg',
+    image: '/images/products/agriculture.jpg',
   },
   {
     slug: 'custom-product-sourcing',
@@ -277,7 +277,7 @@ export const productCategories: ProductCategory[] = [
       { q: 'What information do I need for a custom sourcing inquiry?', a: 'Product description, quantity, target quality level, destination market, and any certifications required.' },
     ],
     icon: 'Search',
-    image: '/images/products/global-trading.jpg',
+    image: '/images/products/custom-sourcing.jpg',
   },
 ];
 

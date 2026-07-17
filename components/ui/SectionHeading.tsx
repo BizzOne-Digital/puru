@@ -22,37 +22,37 @@ export default function SectionHeading({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.55 }}
       className={`flex flex-col ${alignClass} ${className}`}
     >
       {eyebrow && (
-        <span className="inline-block font-inter text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase text-copper mb-3 font-medium">
+        <span className={`inline-block font-inter text-[11px] sm:text-xs tracking-[0.22em] uppercase font-semibold mb-3 ${light ? 'text-accent-bright' : 'text-accent'}`}>
           {eyebrow}
         </span>
       )}
       <h2
-        className={`font-sora font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight max-w-3xl ${
+        className={`font-sora font-bold text-2xl sm:text-3xl md:text-4xl leading-tight max-w-3xl ${
           align === 'center' ? 'mx-auto' : ''
-        } ${light ? 'text-dark-text' : 'text-soft-white'}`}
+        } ${light ? 'text-white' : 'text-ink'}`}
         dangerouslySetInnerHTML={{ __html: title }}
       />
       {subtitle && (
         <p
           className={`mt-4 text-base md:text-lg max-w-2xl leading-relaxed ${
-            light ? 'text-steel-grey' : 'text-soft-white/60'
+            light ? 'text-white/75' : 'text-steel-grey'
           } ${align === 'center' ? 'mx-auto' : ''}`}
         >
           {subtitle}
         </p>
       )}
       {align === 'center' && (
-        <div className="mt-6 flex gap-2 items-center">
-          <div className="h-px w-12 bg-teal opacity-60" />
-          <div className="h-1.5 w-1.5 rounded-full bg-copper" />
-          <div className="h-px w-12 bg-teal opacity-60" />
+        <div className="mt-5 flex gap-2 items-center">
+          <div className={`h-px w-10 ${light ? 'bg-white/40' : 'bg-accent/40'}`} />
+          <div className={`h-1.5 w-1.5 rounded-full ${light ? 'bg-accent-bright' : 'bg-accent'}`} />
+          <div className={`h-px w-10 ${light ? 'bg-white/40' : 'bg-accent/40'}`} />
         </div>
       )}
     </motion.div>

@@ -113,16 +113,16 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
   if (submitStatus === 'success') {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="w-16 h-16 rounded-full bg-teal/20 border border-teal/30 flex items-center justify-center mb-6">
-          <CheckCircle className="w-8 h-8 text-teal" />
+        <div className="w-16 h-16 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-6">
+          <CheckCircle className="w-8 h-8 text-accent" />
         </div>
-        <h3 className="font-sora font-bold text-2xl text-soft-white mb-3">Inquiry Received</h3>
-        <p className="font-inter text-soft-white/60 text-base leading-relaxed max-w-sm">
+        <h3 className="font-sora font-bold text-2xl text-ink mb-3">Inquiry Received</h3>
+        <p className="font-inter text-steel-grey text-base leading-relaxed max-w-sm">
           Thank you. Your inquiry has been received. Our team will review your details and contact you shortly.
         </p>
         <button
           onClick={() => setSubmitStatus('idle')}
-          className="mt-8 text-sm text-aqua font-inter hover:underline"
+          className="mt-8 text-sm text-accent font-inter hover:underline"
         >
           Submit another inquiry
         </button>
@@ -130,17 +130,17 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
     );
   }
 
-  const fieldClass = `w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-soft-white text-sm font-inter placeholder:text-soft-white/30 focus:outline-none focus:border-teal/50 focus:bg-white/8 transition-all`;
-  const errorClass = `mt-1.5 text-xs text-red-400 font-inter flex items-center gap-1`;
-  const labelClass = `block font-inter text-soft-white/70 text-xs font-medium mb-1.5 tracking-wide uppercase`;
+  const fieldClass = `block w-full min-w-0 rounded-xl border border-surface-border bg-white px-4 py-3 font-inter text-base text-ink placeholder:text-steel-grey/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/20 sm:text-sm`;
+  const errorClass = `mt-1.5 text-xs text-red-600 font-inter flex items-center gap-1`;
+  const labelClass = `block font-inter text-steel-grey text-xs font-medium mb-1.5 tracking-wide uppercase`;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
       <input {...register('websiteHoneypot')} type="text" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {submitStatus === 'error' && (
-        <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-          <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-          <p className="text-red-400 text-sm font-inter">Something went wrong. Please try again.</p>
+        <div className="flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-200">
+          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+          <p className="text-red-600 text-sm font-inter">Something went wrong. Please try again.</p>
         </div>
       )}
 
@@ -182,14 +182,14 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
 
         {/* Website */}
         <div>
-          <label className={labelClass}>Website <span className="text-soft-white/30 normal-case">(optional)</span></label>
+          <label className={labelClass}>Website <span className="text-steel-grey/60 normal-case">(optional)</span></label>
           <input {...register('website')} type="url" placeholder="https://yourcompany.com" className={fieldClass} />
         </div>
 
         {/* Business Type */}
         <div>
           <label className={labelClass}>Business Type *</label>
-          <select {...register('businessType')} className={`${fieldClass} [&>option]:bg-navy`}>
+          <select {...register('businessType')} className={`${fieldClass} [&>option]:bg-white`}>
             <option value="">Select business type</option>
             {businessTypes.map(t => <option key={t} value={t}>{t}</option>)}
           </select>
@@ -199,7 +199,7 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
         {/* Inquiry Category */}
         <div>
           <label className={labelClass}>Inquiry Category *</label>
-          <select {...register('inquiryCategory')} className={`${fieldClass} [&>option]:bg-navy`}>
+          <select {...register('inquiryCategory')} className={`${fieldClass} [&>option]:bg-white`}>
             <option value="">Select category</option>
             {inquiryCategories.map(c => <option key={c} value={c}>{c}</option>)}
           </select>
@@ -215,10 +215,10 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
       </div>
 
       {showSafeSolutionFields && (
-        <div className="rounded-2xl bg-teal/5 border border-teal/15 p-5 space-y-5">
+        <div className="space-y-5 rounded-2xl border border-accent/15 bg-accent-soft p-4 sm:p-5">
           <div>
-            <p className="font-sora font-semibold text-soft-white">Safe Solution® Floor Assessment Details</p>
-            <p className="font-inter text-soft-white/45 text-sm mt-1">These fields help us review floor-safety, distributor, and program inquiries more accurately.</p>
+            <p className="font-sora font-semibold text-ink">Safe Solution® Floor Assessment Details</p>
+            <p className="font-inter text-steel-grey text-sm mt-1">These fields help us review floor-safety, distributor, and program inquiries more accurately.</p>
           </div>
           <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-5`}>
             <div>
@@ -248,7 +248,7 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
           </div>
           <div>
             <label className={labelClass}>Product or Program Interest</label>
-            <select {...register('programInterest')} className={`${fieldClass} [&>option]:bg-navy`}>
+            <select {...register('programInterest')} className={`${fieldClass} [&>option]:bg-white`}>
               <option value="">Select interest</option>
               <option value="Safe Solution®">Safe Solution®</option>
               <option value="CRS™">CRS™</option>
@@ -262,13 +262,13 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
       <div className={`grid ${compact ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-5`}>
         {/* Quantity / Volume */}
         <div>
-          <label className={labelClass}>Quantity / Volume <span className="text-soft-white/30 normal-case">(optional)</span></label>
+          <label className={labelClass}>Quantity / Volume <span className="text-steel-grey/60 normal-case">(optional)</span></label>
           <input {...register('quantityOrVolume')} placeholder="e.g. 500 units, 10 tonnes" className={fieldClass} />
         </div>
 
         {/* Target Market */}
         <div>
-          <label className={labelClass}>Target Market <span className="text-soft-white/30 normal-case">(optional)</span></label>
+          <label className={labelClass}>Target Market <span className="text-steel-grey/60 normal-case">(optional)</span></label>
           <input {...register('targetMarket')} placeholder="e.g. Canada, USA, India" className={fieldClass} />
         </div>
       </div>
@@ -286,14 +286,14 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
       </div>
 
       {/* Consent */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+      <div className="flex items-start gap-3 rounded-xl border border-surface-border bg-surface-soft p-4">
         <input
           {...register('consent')}
           type="checkbox"
           id="consent"
-          className="mt-0.5 w-4 h-4 rounded border-white/20 bg-transparent accent-teal cursor-pointer"
+          className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded border-surface-border bg-white accent-accent"
         />
-        <label htmlFor="consent" className="font-inter text-soft-white/60 text-sm leading-relaxed cursor-pointer">
+        <label htmlFor="consent" className="font-inter text-steel-grey text-sm leading-relaxed cursor-pointer">
           I agree to be contacted regarding this inquiry and understand submitted information will be reviewed for the requested product, partnership, distributor, investment, or floor-assessment path.
         </label>
       </div>
@@ -303,7 +303,7 @@ export default function InquiryForm({ source = 'contact', prefilledProduct = '',
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full flex items-center justify-center gap-3 py-4 px-8 rounded-xl bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold text-base hover:shadow-glow-teal hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+        className="btn-primary w-full !py-4 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
       >
         {isSubmitting ? (
           <>

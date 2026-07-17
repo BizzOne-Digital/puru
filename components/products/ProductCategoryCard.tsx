@@ -1,7 +1,9 @@
 'use client';
-import { motion } from 'framer-motion';
-import { ArrowRight, Users, ExternalLink } from 'lucide-react';
+
+import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, Users } from 'lucide-react';
 
 interface ProductCardProps {
   title: string;
@@ -9,61 +11,53 @@ interface ProductCardProps {
   category: string;
   shortDescription: string;
   audience: string;
+  image: string;
   icon: React.ComponentType<{ className?: string }>;
   onInquire: () => void;
 }
 
-export default function ProductCategoryCard({ title, slug, category, shortDescription, audience, icon: Icon, onInquire }: ProductCardProps) {
+export default function ProductCategoryCard({
+  title,
+  slug,
+  category,
+  shortDescription,
+  audience,
+  image,
+  onInquire,
+}: ProductCardProps) {
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      className="group relative h-full flex flex-col p-5 sm:p-7 rounded-2xl glass border border-teal/10 hover:border-teal/30 card-hover transition-all duration-300 overflow-hidden"
-    >
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shimmer rounded-2xl" />
+    <motion.article className="group surface-card flex h-full min-w-0 flex-col overflow-hidden card-hover">
+      <Link href={`/products/${slug}`} className="relative block aspect-[16/10] image-zoom bg-surface-muted">
+        <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" />
+        <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
+          {category}
+        </span>
+      </Link>
 
-      <div className="relative z-10 flex flex-col h-full">
-        {/* Header row: icon + category label */}
-        <div className="flex items-start justify-between mb-5 flex-shrink-0">
-          <div className="w-12 h-12 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center">
-            <Icon className="w-6 h-6 text-teal" />
-          </div>
-          <span className="text-xs font-inter text-soft-white/30 uppercase tracking-widest">{category}</span>
-        </div>
-
-        {/* Title — links to detail page */}
-        <Link href={`/products/${slug}`} className="block mb-3 flex-shrink-0">
-          <h3 className="font-sora font-bold text-soft-white text-lg sm:text-xl group-hover:text-aqua transition-colors">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <Link href={`/products/${slug}`}>
+          <h3 className="font-sora font-semibold text-ink text-lg mb-2 group-hover:text-accent transition-colors">
             {title}
           </h3>
         </Link>
-
-        {/* Description */}
-        <p className="font-inter text-soft-white/50 text-sm leading-relaxed mb-5 flex-grow">{shortDescription}</p>
-
-        {/* Audience */}
-        <div className="flex items-center gap-2 mb-5 flex-shrink-0">
-          <Users className="w-3.5 h-3.5 text-soft-white/30 flex-shrink-0" />
-          <span className="font-inter text-soft-white/40 text-xs">{audience}</span>
+        <p className="text-sm text-steel-grey leading-relaxed mb-4 flex-1 line-clamp-3">{shortDescription}</p>
+        <div className="flex items-start gap-2 mb-5">
+          <Users className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
+          <span className="text-xs text-ink-muted leading-relaxed line-clamp-2">{audience}</span>
         </div>
-
-        {/* Actions — always pinned to bottom */}
-        <div className="mt-auto flex items-center gap-2 flex-wrap">
-          <Link
-            href={`/products/${slug}`}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-teal/25 text-teal text-xs font-inter font-semibold hover:bg-teal/10 transition-all"
-          >
-            View Details
-            <ExternalLink className="w-3 h-3" />
+        <div className="mt-auto grid grid-cols-2 gap-2">
+          <Link href={`/products/${slug}`} className="btn-secondary min-h-11 !px-3 !py-2.5 !text-sm">
+            Learn More
           </Link>
           <button
+            type="button"
             onClick={(e) => { e.stopPropagation(); onInquire(); }}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-teal/20 to-aqua/20 border border-teal/20 text-aqua text-xs font-inter font-semibold hover:from-teal/30 hover:to-aqua/30 transition-all"
+            className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-accent px-3 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-bright"
           >
-            Inquire
-            <ArrowRight className="w-3 h-3" />
+            Request a Quote <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }

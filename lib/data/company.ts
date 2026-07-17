@@ -29,6 +29,7 @@ export const company = {
     partnerships: '/partnerships',
     distributorsWanted: '/partnerships/distributors-wanted',
     investments: '/investments',
+    resources: '/resources',
     contact: '/contact',
     privacy: '/privacy-policy',
     terms: '/terms-of-use',

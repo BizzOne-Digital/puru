@@ -33,17 +33,19 @@ export default function PrivacyPolicyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-navy pt-32 pb-20">
+    <div className="min-h-screen bg-surface-soft pt-28 sm:pt-32 pb-20">
       <Container size="md">
-        <h1 className="font-sora font-bold text-4xl text-soft-white mb-6">Privacy Policy</h1>
-        <p className="font-inter text-soft-white/50 mb-8">Effective date: July 15, 2026</p>
-        <div className="space-y-7">
-          {sections.map(([title, body]) => (
-            <section key={title}>
-              <h2 className="font-sora font-semibold text-xl text-soft-white mb-2">{title}</h2>
-              <p className="font-inter text-soft-white/60 leading-relaxed">{body}</p>
-            </section>
-          ))}
+        <div className="surface-card p-5 sm:p-8 md:p-10">
+          <h1 className="font-sora font-bold text-3xl sm:text-4xl text-ink mb-4">Privacy Policy</h1>
+          <p className="font-inter text-steel-grey mb-8">Effective date: July 15, 2026</p>
+          <div className="space-y-7">
+            {sections.map(([title, body]) => (
+              <section key={title}>
+                <h2 className="font-sora font-semibold text-xl text-ink mb-2">{title}</h2>
+                <p className="break-words font-inter leading-relaxed text-steel-grey">{body}</p>
+              </section>
+            ))}
+          </div>
         </div>
       </Container>
     </div>

@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/global-markets',
     '/investments',
     '/contact',
+    '/resources',
     '/privacy-policy',
     '/terms-of-use',
   ];

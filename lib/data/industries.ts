@@ -70,7 +70,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Custom Product Sourcing', 'Strategic Business Development'],
     faqs: [{ q: 'Can YUVAAN facilitate international academic partnerships?', a: 'Yes. We support cross-border partnerships, technology transfers, and collaborative programs between educational institutions.' }],
     icon: 'GraduationCap',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/education.jpg',
   },
   {
     slug: 'manufacturing',
@@ -98,7 +98,7 @@ export const industries: Industry[] = [
     relatedProducts: ['EV Charging Infrastructure', 'Battery Energy Storage', 'Wholesale Consumer Products'],
     faqs: [{ q: 'Can YUVAAN supply EV charging stations for commercial parking?', a: 'Yes. We connect commercial developers with EV charging infrastructure suppliers for parking facilities and commercial properties.' }],
     icon: 'Building',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/commercial.jpg',
   },
   {
     slug: 'residential',
@@ -112,7 +112,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Battery Energy Storage', 'EV Charging Infrastructure'],
     faqs: [{ q: 'Does YUVAAN supply residential-scale BESS?', a: 'Yes. We connect residential developers and builders with suppliers offering home-scale battery storage systems.' }],
     icon: 'Home',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/commercial.jpg',
   },
   {
     slug: 'mining',
@@ -168,7 +168,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Battery Energy Storage', 'Smart Grid & Power Management'],
     faqs: [{ q: 'Can YUVAAN supply BESS for data centre backup power?', a: 'Yes. We connect data centre operators with utility-grade and commercial BESS solutions suitable for critical power backup.' }],
     icon: 'Server',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/commercial.jpg',
   },
   {
     slug: 'telecom',
@@ -182,7 +182,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Battery Energy Storage', 'Smart Grid & Power Management'],
     faqs: [{ q: 'Does YUVAAN supply storage solutions for off-grid telecom towers?', a: 'Yes. We connect telecom tower operators with BESS and solar-plus-storage solutions for remote site reliability.' }],
     icon: 'Radio',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/commercial.jpg',
   },
   {
     slug: 'real-estate',
@@ -196,7 +196,7 @@ export const industries: Industry[] = [
     relatedProducts: ['EV Charging Infrastructure', 'Battery Energy Storage', 'Infrastructure Project Development'],
     faqs: [{ q: 'Can YUVAAN facilitate real estate investment opportunities?', a: 'Yes. We connect investors with real estate-linked opportunities in energy and infrastructure development.' }],
     icon: 'Building2',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/commercial.jpg',
   },
   {
     slug: 'infrastructure',
@@ -224,7 +224,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Safe Solution® Floor Safety System', 'Clean Step™', 'CRS™', 'Custom Product Sourcing'],
     faqs: [{ q: 'Can hospitality operators request a Safe Solution® assessment?', a: 'Yes. Suitable surfaces require a site review and test-area assessment before any full application.' }],
     icon: 'Building2',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/hospitality.jpg',
   },
   {
     slug: 'warehousing-logistics',
@@ -238,7 +238,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Industrial Machinery', 'Safe Solution® Floor Safety System', 'Custom Product Sourcing', 'Global Trading'],
     faqs: [{ q: 'Is Safe Solution® suitable for warehouse floors?', a: 'Suitability depends on the surface, traffic, contamination, and maintenance practices. A test-area assessment is required before full treatment.' }],
     icon: 'Truck',
-    image: '/images/industries/transport.jpg',
+    image: '/images/industries/warehouse.jpg',
   },
   {
     slug: 'facilities-management',
@@ -252,7 +252,7 @@ export const industries: Industry[] = [
     relatedProducts: ['Safe Solution® Floor Safety System', 'Clean Step™', 'CRS™', 'Custom Product Sourcing'],
     faqs: [{ q: 'Can facilities teams request program documentation?', a: 'Technical documentation is available to qualified customers and distribution partners upon request.' }],
     icon: 'Building',
-    image: '/images/industries/government.jpg',
+    image: '/images/industries/commercial.jpg',
   },
 ];
 

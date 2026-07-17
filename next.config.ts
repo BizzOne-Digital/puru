@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ['image/webp'],
+    // Avoid serving stale optimized variants after public/ image replacements
+    minimumCacheTTL: 0,
   },
   async redirects() {
     return [

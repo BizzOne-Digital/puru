@@ -1,16 +1,16 @@
 'use client';
-import { useState, useMemo } from 'react';
+
+import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Search, ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Search, ShieldCheck } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
-import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import ProductInquiryModal from '@/components/products/ProductInquiryModal';
 import ProductCategoryCard from '@/components/products/ProductCategoryCard';
 import { productCategories } from '@/lib/data/products';
 import { getIcon } from '@/lib/data/icons';
-import { productSystem, safeSolutionRoutes, safeSolutionSummary } from '@/lib/data/safe-solution';
+import { safeSolutionRoutes, safeSolutionSummary } from '@/lib/data/safe-solution';
 
 const filters = ['All', 'Energy Solutions', 'Trade & Sourcing', 'Business Development', 'Infrastructure', 'Industrial Machinery', 'Wholesale Products', 'Agriculture', 'Custom Sourcing'];
 
@@ -22,97 +22,72 @@ export default function ProductsPage() {
 
   const categories = useMemo(
     () =>
-      productCategories.map(p => ({
+      productCategories.map((p) => ({
         slug: p.slug,
         title: p.title,
         tag: p.tag,
         category: p.category,
         shortDescription: p.shortDescription,
         audience: p.audience.join(', '),
+        image: p.image,
         icon: getIcon(p.icon),
       })),
     []
   );
 
-  const filtered = categories.filter(c => {
+  const filtered = categories.filter((c) => {
     const matchesFilter = activeFilter === 'All' || c.category === activeFilter;
-    const matchesSearch = !searchQuery || c.title.toLowerCase().includes(searchQuery.toLowerCase()) || c.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      !searchQuery ||
+      c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
-  const openModal = (title: string) => {
-    setModalProduct(title);
-    setModalOpen(true);
-  };
-
   return (
-    <div className="min-h-screen bg-navy">
-      {/* Hero */}
-      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 overflow-hidden">
-        <GlobalGridBackground />
-        <TradeRouteLines />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/60" />
-        <Container size="md">
-          <div className="relative z-10 text-center">
-            <ScrollReveal>
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Solutions & Trade Categories</span>
-              <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-soft-white leading-tight mb-5 sm:mb-6">
-                Products, Machinery &amp;{' '}
-                <span className="gradient-text">Trade Solutions</span>
-              </h1>
-              <p className="font-inter text-soft-white/60 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2">
-                Explore YUVAAN INTERNATIONAL&apos;s energy solutions, trade categories, and sourcing capabilities across configured target markets.
-              </p>
-            </ScrollReveal>
-          </div>
+    <div className="min-h-screen bg-surface-soft">
+      <section className="relative overflow-hidden bg-ink pb-10 pt-24 sm:pb-12 sm:pt-32">
+        <div className="absolute inset-0">
+          <Image src="/images/hero/industrial-facility.jpg" alt="" fill className="object-cover opacity-30" sizes="100vw" priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/70" />
+        </div>
+        <Container className="relative z-10">
+          <ScrollReveal>
+            <span className="mb-4 inline-block max-w-full text-xs font-semibold uppercase tracking-[0.14em] text-accent-bright sm:tracking-[0.28em]">Product Catalog</span>
+            <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl text-white leading-tight mb-4 max-w-3xl">
+              Professional Solutions for Commercial &amp; Trade Partners
+            </h1>
+            <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Browse our floor-safety system and trade categories. Each card opens a focused product page with applications, technical information pathways, and quote options.
+            </p>
+          </ScrollReveal>
         </Container>
       </section>
 
-      {/* New Products Spotlight */}
-      <section className="py-12 sm:py-16 bg-navy">
+      <section className="py-10 sm:py-12">
         <Container>
           <ScrollReveal>
-            <div className="rounded-3xl border border-copper/25 bg-gradient-to-br from-copper/14 via-teal/8 to-white/[0.03] p-6 sm:p-8 lg:p-10">
-              <div className="grid lg:grid-cols-[1fr_0.9fr] gap-8 items-center">
-                <div>
-                  <span className="inline-flex px-3 py-1 rounded-full bg-copper/15 border border-copper/30 text-copper text-xs font-inter font-bold uppercase tracking-[0.25em] mb-5">
-                    New Product
-                  </span>
-                  <h2 className="font-sora font-bold text-3xl sm:text-4xl text-soft-white mb-4">
-                    {safeSolutionSummary.title}
-                  </h2>
-                  <p className="font-inter text-soft-white/65 text-base leading-relaxed mb-6">
-                    {safeSolutionSummary.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-7">
-                    {productSystem.map((item) => (
-                      <span key={item.name} className="px-3 py-1.5 rounded-full bg-white/6 border border-white/10 text-soft-white/70 text-xs font-inter">
-                        {item.name}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Link href={safeSolutionRoutes.detail} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold text-sm hover:shadow-glow-teal transition-all">
-                      View Complete System <ArrowRight className="w-4 h-4" />
-                    </Link>
-                    <Link href={safeSolutionRoutes.distributor} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-copper/35 text-copper font-sora font-semibold text-sm hover:bg-copper/10 transition-all">
-                      Become a Distributor <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-                <div className="rounded-3xl border border-white/10 bg-navy/60 p-6 min-h-[260px] flex flex-col justify-between">
-                  <div className="flex items-center justify-between">
-                    <ShieldCheck className="w-12 h-12 text-aqua" />
-                    <span className="font-inter text-soft-white/35 text-xs uppercase tracking-widest">Commercial floor-safety system</span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-3 mt-10">
-                    {productSystem.map((item) => (
-                      <div key={item.name} className="rounded-2xl bg-white/5 border border-white/10 p-3">
-                        <p className="font-sora font-bold text-soft-white text-sm">{item.name}</p>
-                        <p className="font-inter text-soft-white/45 text-xs mt-2 leading-relaxed">{item.shortLabel}</p>
-                      </div>
-                    ))}
-                  </div>
+            <div className="surface-card grid gap-0 overflow-hidden lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="image-zoom relative min-h-[210px] sm:min-h-[240px]">
+                <Image src="/images/products/safe-solution.jpg" alt="Safe Solution floor safety application context" fill className="object-cover" sizes="(max-width: 1023px) 100vw, 50vw" />
+              </div>
+              <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-10">
+                <span className="inline-flex w-fit px-3 py-1 rounded-full bg-accent-soft text-accent text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                  Featured New Product
+                </span>
+                <h2 className="font-sora font-bold text-2xl sm:text-3xl text-ink mb-3">{safeSolutionSummary.title}</h2>
+                <p className="text-steel-grey leading-relaxed mb-6">{safeSolutionSummary.description}</p>
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <Link href={safeSolutionRoutes.detail} className="btn-primary w-full sm:w-auto">
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => { setModalProduct(safeSolutionSummary.title); setModalOpen(true); }}
+                    className="btn-secondary w-full sm:w-auto"
+                  >
+                    Request a Quote
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,85 +95,62 @@ export default function ProductsPage() {
         </Container>
       </section>
 
-      {/* Filter + Search */}
-      <section className="py-6 sm:py-8 sticky top-[72px] sm:top-[88px] z-20 bg-navy/80 backdrop-blur-xl border-b border-white/5">
+      <section className="pb-16 sm:pb-20">
         <Container>
-          <h2 className="font-sora font-bold text-soft-white text-2xl text-center mb-4">
-            Other Products and Global Trade Solutions
-          </h2>
-          <div className="flex flex-col items-center gap-4">
-            <div className="relative w-full max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-soft-white/30" />
+          <div className="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between mb-8">
+            <div className="relative w-full flex-1 lg:max-w-xl">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-steel-grey" />
               <input
-                type="text"
-                placeholder="Search solutions and categories..."
+                type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-soft-white text-sm font-inter placeholder:text-soft-white/30 focus:outline-none focus:border-teal/40"
+                placeholder="Search products and categories..."
+                className="w-full rounded-full border border-surface-border bg-white py-3 pl-11 pr-4 text-base text-ink placeholder:text-steel-grey/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 sm:text-sm"
+                aria-label="Search products"
               />
             </div>
-            <div className="flex items-center justify-center gap-2 flex-wrap">
-              {filters.map(f => (
+            <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-2 scrollbar-hide lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0 lg:pb-0">
+              {filters.map((filter) => (
                 <button
-                  key={f}
-                  onClick={() => setActiveFilter(f)}
-                  className={`px-3 sm:px-4 py-2 rounded-full text-xs font-inter font-medium transition-all duration-200 whitespace-nowrap ${
-                    activeFilter === f
-                      ? 'bg-teal text-navy'
-                      : 'bg-white/5 text-soft-white/60 hover:bg-white/10 hover:text-soft-white'
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`min-h-11 shrink-0 snap-start whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold transition-all lg:text-xs ${
+                    activeFilter === filter
+                      ? 'bg-accent text-white shadow-soft'
+                      : 'bg-white border border-surface-border text-ink-muted hover:text-ink hover:border-accent/40'
                   }`}
                 >
-                  {f}
+                  {filter}
                 </button>
               ))}
             </div>
           </div>
-        </Container>
-      </section>
 
-      {/* Product Grid */}
-      <section className="py-16">
-        <Container>
-          {filtered.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-              {filtered.map((cat, i) => (
-                <ScrollReveal key={i} delay={i * 0.07} className="h-full">
-                  <ProductCategoryCard
-                    {...cat}
-                    onInquire={() => openModal(cat.title)}
-                  />
-                </ScrollReveal>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-20">
-              <p className="font-inter text-soft-white/40 text-lg">No results found. Try a different search or filter.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filtered.map((item, index) => (
+              <ScrollReveal key={item.slug} delay={index * 0.04} className="h-full">
+                <ProductCategoryCard
+                  title={item.title}
+                  slug={item.slug}
+                  category={item.category}
+                  shortDescription={item.shortDescription}
+                  audience={item.audience}
+                  image={item.image}
+                  icon={item.icon}
+                  onInquire={() => { setModalProduct(item.title); setModalOpen(true); }}
+                />
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {filtered.length === 0 && (
+            <div className="surface-card p-10 text-center">
+              <ShieldCheck className="w-10 h-10 text-accent mx-auto mb-3" />
+              <p className="font-sora font-semibold text-ink mb-1">No matching products</p>
+              <p className="text-sm text-steel-grey">Try another filter or search term, or request a custom sourcing discussion.</p>
             </div>
           )}
-        </Container>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="py-20 relative" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
-        <TradeRouteLines />
-        <Container size="md">
-          <div className="relative z-10 text-center">
-            <ScrollReveal>
-              <h2 className="font-sora font-bold text-2xl sm:text-4xl text-soft-white mb-4">
-                Don&apos;t See What You Need?
-              </h2>
-              <p className="font-inter text-soft-white/60 text-lg mb-8 max-w-xl mx-auto">
-                Submit a custom sourcing or project development inquiry. Our team will review your requirements and identify relevant trade pathways across target markets.
-              </p>
-              <button
-                onClick={() => openModal('Custom Product Sourcing')}
-                className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold hover:shadow-glow-teal hover:scale-105 transition-all duration-300"
-              >
-                Submit Custom Inquiry
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </ScrollReveal>
-          </div>
         </Container>
       </section>
 

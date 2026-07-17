@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AdminProviders } from '@/components/Providers';
 
 /** Admin pages use session/auth — skip static prerender to save build disk I/O */
 export const dynamic = 'force-dynamic';
@@ -10,8 +11,10 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-950 font-inter">
-      {children}
-    </div>
+    <AdminProviders>
+      <div className="min-h-screen bg-gray-950 font-inter">
+        {children}
+      </div>
+    </AdminProviders>
   );
 }

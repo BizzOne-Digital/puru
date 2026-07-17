@@ -10,13 +10,15 @@ const sora = Sora({ subsets: ['latin'], variable: '--font-sora', display: 'swap'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yuvaan-international.vercel.app'),
-  title: 'YUVAAN INTERNATIONAL | Trade, Products & Partnerships',
-  description: 'Yuvaan International supports cross-border product sourcing, commercial partnerships, market development, industrial solutions, and international business inquiries.',
-  keywords: 'international trade, import export, industrial machinery, wholesale distribution, business partnerships, product sourcing, Canada trade',
+  title: 'YUVAAN INTERNATIONAL | Professional Cleaning & Floor Safety Solutions',
+  description:
+    'Yuvaan International supports professional cleaning and floor-safety solutions, cross-border product sourcing, commercial partnerships, and international business inquiries.',
+  keywords:
+    'floor safety, commercial cleaning, Safe Solution, international trade, product sourcing, Canada trade, industrial solutions',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'YUVAAN INTERNATIONAL | Trade, Products & Partnerships',
-    description: 'Canada-based international trade, sourcing, products, and partnership development.',
+    title: 'YUVAAN INTERNATIONAL | Professional Cleaning & Floor Safety Solutions',
+    description: 'Safe. Sustainable. Commercial performance for facilities that need reliable floor-safety and sourcing support.',
     url: '/',
     type: 'website',
   },
@@ -44,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${sora.variable} bg-navy text-soft-white font-inter antialiased`}>
+      <body className={`${inter.variable} ${sora.variable} bg-surface-soft text-ink font-inter antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

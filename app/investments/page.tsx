@@ -4,8 +4,6 @@ import { ArrowRight, CheckCircle, ClipboardList } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
-import TradeRouteLines from '@/components/ui/TradeRouteLines';
 
 export const metadata: Metadata = {
   title: 'Investments and Project Collaboration | Yuvaan International',
@@ -20,27 +18,22 @@ const requiredInfo = ['Company profile', 'Project summary', 'Country and locatio
 
 export default function InvestmentsPage() {
   return (
-    <div className="min-h-screen bg-navy">
-      <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 overflow-hidden">
-        <GlobalGridBackground />
-        <TradeRouteLines />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/70" />
-        <Container size="md">
+    <div className="min-h-screen bg-surface-soft">
+      <section className="relative pt-28 sm:pt-32 pb-12 overflow-hidden bg-ink">
+        <Container className="relative z-10">
           <ScrollReveal>
-            <div className="relative z-10 text-center">
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Investments and Project Collaboration</span>
-              <h1 className="font-sora font-bold text-4xl md:text-6xl text-soft-white leading-tight mb-5">
-                Strategic Opportunities <span className="gradient-text">Under Review</span>
-              </h1>
-              <p className="font-inter text-soft-white/60 text-lg leading-relaxed max-w-3xl mx-auto">
-                Yuvaan International reviews investment, distribution, project, and strategic collaboration opportunities where there is a clear commercial fit, verifiable documentation, and appropriate due diligence.
-              </p>
-            </div>
+            <span className="mb-4 inline-block max-w-full text-xs font-semibold uppercase tracking-[0.14em] text-accent-bright sm:tracking-[0.28em]">Investments and Project Collaboration</span>
+            <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl text-white leading-tight mb-4 max-w-3xl">
+              Strategic Opportunities <span className="text-accent-bright">Under Review</span>
+            </h1>
+            <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+              Yuvaan International reviews investment, distribution, project, and strategic collaboration opportunities where there is a clear commercial fit, verifiable documentation, and appropriate due diligence.
+            </p>
           </ScrollReveal>
         </Container>
       </section>
 
-      <section className="py-16 bg-navy">
+      <section className="py-12 sm:py-16">
         <Container>
           <div className="grid lg:grid-cols-3 gap-5">
             <InfoPanel title="Sectors of Interest" items={sectors} />
@@ -50,7 +43,7 @@ export default function InvestmentsPage() {
         </Container>
       </section>
 
-      <section className="py-16" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
+      <section className="section-pad bg-white">
         <Container>
           <SectionHeading
             eyebrow="Due Diligence"
@@ -58,16 +51,16 @@ export default function InvestmentsPage() {
             subtitle="Yuvaan International does not promise returns, approvals, financing, funding, exclusivity, or project acceptance. Each opportunity is evaluated case by case."
             className="mb-10"
           />
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {['Initial inquiry', 'Documentation review', 'Commercial and territory fit', 'Partner discussion'].map((step, index) => (
-              <div key={step} className="rounded-2xl glass border border-teal/10 p-6">
-                <p className="font-sora font-bold text-4xl text-teal/20 mb-4">{String(index + 1).padStart(2, '0')}</p>
-                <h3 className="font-sora font-semibold text-soft-white">{step}</h3>
+              <div key={step} className="surface-card p-6">
+                <p className="font-sora font-bold text-4xl text-accent/20 mb-4">{String(index + 1).padStart(2, '0')}</p>
+                <h3 className="font-sora font-semibold text-ink">{step}</h3>
               </div>
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/contact?inquiry=investment#inquiry-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold">
+            <Link href="/contact?inquiry=investment#inquiry-form" className="btn-primary">
               Submit Investment or Project Inquiry <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -79,14 +72,14 @@ export default function InvestmentsPage() {
 
 function InfoPanel({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="rounded-3xl glass border border-teal/10 p-6 h-full">
-      <ClipboardList className="w-8 h-8 text-teal mb-5" />
-      <h2 className="font-sora font-bold text-soft-white text-xl mb-5">{title}</h2>
+    <div className="surface-card p-6 h-full">
+      <ClipboardList className="w-8 h-8 text-accent mb-5" />
+      <h2 className="font-sora font-bold text-ink text-xl mb-5">{title}</h2>
       <ul className="space-y-3">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-3">
-            <CheckCircle className="w-4 h-4 text-teal mt-0.5 flex-shrink-0" />
-            <span className="font-inter text-soft-white/60 text-sm leading-relaxed">{item}</span>
+            <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+            <span className="font-inter text-steel-grey text-sm leading-relaxed">{item}</span>
           </li>
         ))}
       </ul>

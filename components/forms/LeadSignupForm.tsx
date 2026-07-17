@@ -47,7 +47,7 @@ export default function LeadSignupForm() {
     );
   }
 
-  const fc = 'w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-soft-white text-sm font-inter placeholder:text-soft-white/30 focus:outline-none focus:border-teal/50 transition-all';
+  const fc = 'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 font-inter text-base text-soft-white placeholder:text-soft-white/30 transition-all focus:border-teal/50 focus:outline-none sm:text-sm';
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

@@ -1,12 +1,12 @@
 'use client';
-import { useState, useMemo } from 'react';
-import { ArrowRight } from 'lucide-react';
+
+import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import IndustryCard from '@/components/industries/IndustryCard';
-import GlobalGridBackground from '@/components/ui/GlobalGridBackground';
-import TradeRouteLines from '@/components/ui/TradeRouteLines';
 import ProductInquiryModal from '@/components/products/ProductInquiryModal';
 import { industries } from '@/lib/data/industries';
 import { getIcon } from '@/lib/data/icons';
@@ -17,98 +17,62 @@ export default function IndustriesPage() {
 
   const industryCards = useMemo(
     () =>
-      industries.map(ind => ({
+      industries.map((ind) => ({
         slug: ind.slug,
         title: ind.title,
         description: ind.description,
+        image: ind.image,
         icon: getIcon(ind.icon),
       })),
     []
   );
 
-  const openModal = (title: string) => {
-    setModalIndustry(title);
-    setModalOpen(true);
-  };
-
   return (
-    <div className="min-h-screen bg-navy">
-
-      {/* Hero */}
-      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
-        <GlobalGridBackground />
-        <TradeRouteLines />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy/60" />
-        <Container size="md">
-          <div className="relative z-10 text-center">
-            <ScrollReveal>
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Industries Served</span>
-              <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-soft-white leading-tight mb-5 sm:mb-6">
-                Solutions Across <span className="gradient-text">Every Sector</span>
-              </h1>
-              <p className="font-inter text-soft-white/60 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-2">
-                From government infrastructure to commercial real estate, we deliver strategic trade solutions tailored to the unique demands of each industry.
-              </p>
-            </ScrollReveal>
-          </div>
+    <div className="min-h-screen bg-surface-soft">
+      <section className="relative overflow-hidden bg-ink pb-10 pt-24 sm:pb-12 sm:pt-32">
+        <div className="absolute inset-0">
+          <Image src="/images/industries/commercial.jpg" alt="" fill className="object-cover opacity-30" sizes="100vw" priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/70" />
+        </div>
+        <Container className="relative z-10">
+          <ScrollReveal>
+            <span className="inline-block text-xs tracking-[0.28em] uppercase text-accent-bright font-semibold mb-4">Industries Served</span>
+            <h1 className="font-sora font-bold text-3xl sm:text-4xl md:text-5xl text-white leading-tight mb-4 max-w-3xl">
+              Solutions Across Commercial Environments
+            </h1>
+            <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Explore industry contexts for floor-safety programs, sourcing discussions, and partnership pathways.
+            </p>
+          </ScrollReveal>
         </Container>
       </section>
 
-      {/* Industry count strip */}
-      <div className="border-y border-white/5 bg-navy/60 backdrop-blur">
+      <section className="py-12 sm:py-16">
         <Container>
-          <div className="py-5 flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
-            {[
-              { val: '14+', label: 'Industries Served' },
-              { val: '11+', label: 'Target Markets' },
-              { val: '∞', label: 'Trade Connections' },
-            ].map((s, i) => (
-              <div key={i} className="text-center">
-                <p className="font-sora font-bold text-2xl text-teal">{s.val}</p>
-                <p className="font-inter text-soft-white/40 text-xs uppercase tracking-widest mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </div>
-
-      {/* Industry Cards */}
-      <section className="py-20">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            {industryCards.map((ind, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {industryCards.map((ind) => (
               <IndustryCard
-                key={i}
-                {...ind}
-                delay={i * 0.04}
-                onInquire={() => openModal(ind.title)}
+                key={ind.slug}
+                title={ind.title}
+                slug={ind.slug}
+                description={ind.description}
+                image={ind.image}
+                icon={ind.icon}
+                onInquire={() => { setModalIndustry(ind.title); setModalOpen(true); }}
               />
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* Custom requirement CTA */}
-      <section className="py-20 relative" style={{ background: 'linear-gradient(135deg, #041e2b 0%, #06293A 100%)' }}>
-        <GlobalGridBackground />
-        <Container size="md">
-          <div className="relative z-10">
-            <div className="glass border border-teal/20 rounded-3xl p-6 sm:p-8 md:p-12 text-center">
-              <span className="inline-block font-inter text-xs tracking-[0.3em] uppercase text-copper font-medium mb-4">Not Sure?</span>
-              <h2 className="font-sora font-bold text-2xl sm:text-4xl text-soft-white mb-4">
-                Not sure where your requirement fits?
-              </h2>
-              <p className="font-inter text-soft-white/60 text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-                Submit your inquiry and our team will review your product, machinery, energy solution, or partnership requirement and identify the best path forward.
+          <div className="mt-12 flex flex-col gap-6 rounded-3xl bg-ink p-6 text-white sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h2 className="font-sora font-bold text-2xl mb-2">Need help matching an industry to a solution?</h2>
+              <p className="text-white/70 max-w-xl text-sm sm:text-base leading-relaxed">
+                Tell us about your facility type and commercial need. We will review the most relevant product or partnership pathway.
               </p>
-              <Link
-                href="/contact#inquiry-form"
-                className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-teal to-aqua text-navy font-sora font-bold hover:shadow-glow-teal hover:scale-105 transition-all duration-300"
-              >
-                Contact Us
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
+            <Link href="/contact#inquiry-form" className="btn-primary w-full lg:w-auto xl:whitespace-nowrap">
+              Request a Quote <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </Container>
       </section>
@@ -116,7 +80,7 @@ export default function IndustriesPage() {
       <ProductInquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        productTitle={modalIndustry ? `Industry: ${modalIndustry}` : ''}
+        productTitle={modalIndustry || ''}
       />
     </div>
   );
