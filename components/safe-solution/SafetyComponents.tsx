@@ -231,19 +231,26 @@ export function DistributorCTA({ compact = false }: { compact?: boolean }) {
   return (
     <section className={compact ? 'py-10' : 'section-pad bg-white'}>
       <Container>
-        <div className="rounded-3xl border border-accent/20 bg-accent-soft p-5 text-center sm:p-8 lg:p-10">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-3 py-1 font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-accent sm:text-xs sm:tracking-[0.25em]">
-            Territory Opportunity
-          </span>
-          <h2 className="mb-4 font-sora text-2xl font-bold text-ink sm:text-4xl">
-            Distributors Wanted Worldwide
-          </h2>
-          <p className="font-inter text-steel-grey text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-7">
-            We are seeking qualified commercial cleaning companies, safety-product suppliers, flooring specialists, facilities-service providers, and established B2B distributors to represent the Safe Solution® Floor Safety System in new markets.
-          </p>
-          <Link href={safeSolutionRoutes.distributor} className="btn-primary w-full sm:w-auto">
-            Apply for Your Territory <ArrowRight className="w-4 h-4" />
-          </Link>
+        <div className="gradient-footer relative overflow-hidden rounded-3xl border border-white/10 p-5 text-center sm:p-8 lg:p-10">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            <div className="absolute -left-20 top-0 h-56 w-56 animate-aurora rounded-full bg-emerald-400/20 blur-3xl" />
+            <div className="absolute -right-16 bottom-0 h-64 w-64 animate-float-slow rounded-full bg-sky-400/15 blur-3xl" />
+            <div className="absolute inset-0 grid-bg-animated opacity-15" />
+          </div>
+          <div className="relative">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-accent-bright backdrop-blur-sm sm:text-xs sm:tracking-[0.25em]">
+              Territory Opportunity
+            </span>
+            <h2 className="mb-4 font-sora text-2xl font-bold text-white sm:text-4xl">
+              Distributors Wanted Worldwide
+            </h2>
+            <p className="font-inter text-white/75 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-7">
+              We are seeking qualified commercial cleaning companies, safety-product suppliers, flooring specialists, facilities-service providers, and established B2B distributors to represent the Safe Solution® Floor Safety System in new markets.
+            </p>
+            <Link href={safeSolutionRoutes.distributor} className="btn-primary w-full sm:w-auto">
+              Apply for Your Territory <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </Container>
     </section>

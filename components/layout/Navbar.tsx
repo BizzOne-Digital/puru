@@ -64,19 +64,31 @@ export default function Navbar() {
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href.split('?')[0].split('#')[0]));
 
+  // Pages whose top section is light (transparent header would be unreadable there)
+  const lightTopPages = ['/privacy-policy', '/terms-of-use'];
+  const transparentTop = !scrolled && !mobileOpen && !lightTopPages.includes(pathname);
+
   return (
     <>
       <header className="fixed top-0 inset-x-0 z-50">
-        <div className={`transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-xl border-b border-surface-border shadow-soft' : 'bg-white/75 backdrop-blur-md border-b border-transparent'}`}>
+        <div
+          className={`transition-all duration-500 ${
+            transparentTop
+              ? 'border-b border-white/10 bg-transparent'
+              : scrolled
+                ? 'border-b border-surface-border bg-white/90 shadow-soft backdrop-blur-xl'
+                : 'border-b border-transparent bg-white/90 backdrop-blur-md'
+          }`}
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid h-[72px] grid-cols-[auto_1fr_auto] items-center gap-3 sm:h-20 sm:gap-4">
               <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="YUVAAN INTERNATIONAL">
-                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-surface-border bg-white sm:h-14 sm:w-14">
+                <div className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border bg-white sm:h-14 sm:w-14 ${transparentTop ? 'border-white/25' : 'border-surface-border'}`}>
                   <Image src="/logo-dark.png" alt="YUVAAN INTERNATIONAL logo" fill className="object-contain p-0.5" sizes="56px" priority />
                 </div>
                 <div className="hidden flex-col leading-none sm:flex">
-                  <span className="font-sora text-base font-bold uppercase tracking-[0.14em] text-ink">YUVAAN</span>
-                  <span className="mt-1 font-inter text-[11px] uppercase tracking-[0.28em] text-accent">International</span>
+                  <span className={`font-sora text-base font-bold uppercase tracking-[0.14em] transition-colors ${transparentTop ? 'text-white' : 'text-ink'}`}>YUVAAN</span>
+                  <span className={`mt-1 font-inter text-[11px] uppercase tracking-[0.28em] transition-colors ${transparentTop ? 'text-accent-bright' : 'text-accent'}`}>International</span>
                 </div>
               </Link>
 
@@ -88,7 +100,13 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors ${
-                          active ? 'text-accent bg-accent-soft' : 'text-ink-muted hover:text-ink hover:bg-surface-muted'
+                          transparentTop
+                            ? active
+                              ? 'bg-white/15 text-white'
+                              : 'text-white/80 hover:bg-white/10 hover:text-white'
+                            : active
+                              ? 'text-accent bg-accent-soft'
+                              : 'text-ink-muted hover:text-ink hover:bg-surface-muted'
                         }`}
                       >
                         {link.label}
@@ -122,7 +140,9 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => setMobileOpen(!mobileOpen)}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-white text-ink lg:hidden"
+                  className={`flex h-11 w-11 items-center justify-center rounded-full border transition-colors lg:hidden ${
+                    transparentTop ? 'border-white/25 bg-white/10 text-white backdrop-blur-md' : 'border-surface-border bg-white text-ink'
+                  }`}
                   aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
                   aria-expanded={mobileOpen}
                   aria-controls="mobile-navigation"

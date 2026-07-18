@@ -128,6 +128,37 @@ h1, h2, h3, h4, h5, h6 {
   animation: aurora 20s ease-in-out infinite reverse;
 }
 
+/* Moving blue-green gradient band: green -> teal -> blue cycling */
+.gradient-band-soft {
+  background: linear-gradient(
+    120deg,
+    #A7F3D0 0%,
+    #6EE7B7 18%,
+    #5EEAD4 38%,
+    #67E8F9 56%,
+    #7DD3FC 74%,
+    #93C5FD 88%,
+    #A7F3D0 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-x 9s ease infinite;
+}
+
+/* Dark animated footer gradient: navy -> teal -> green cycling */
+.gradient-footer {
+  background: linear-gradient(
+    130deg,
+    #0B1F3A 0%,
+    #0E3A5C 20%,
+    #0F5E6E 40%,
+    #0F766E 58%,
+    #065F46 78%,
+    #0B1F3A 100%
+  );
+  background-size: 320% 320%;
+  animation: gradient-x 14s ease infinite;
+}
+
 /* Subtle animated grid for dark bands */
 .grid-bg-animated {
   background-image:
