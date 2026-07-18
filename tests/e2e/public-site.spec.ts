@@ -56,7 +56,7 @@ for (const route of requiredRoutes) {
 test('critical navigation and redirects work', async ({ page }) => {
   test.setTimeout(60_000);
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /Professional Cleaning & Floor Safety Solutions/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Connecting Global Opportunities Through Innovation/i })).toBeVisible();
   await expect(page.getByRole('heading', { name: /Safe Solution® Floor Safety System/i }).first()).toBeVisible();
   await page.goto('/resources');
   await expect(page.getByRole('heading', { name: /Markets, Partnerships/i })).toBeVisible();

@@ -15,7 +15,7 @@ const stats = [
   { value: 3, suffix: '-Part', label: 'Floor safety system' },
 ];
 
-const words = ['Professional', 'Cleaning', '&', 'Floor', 'Safety', 'Solutions'];
+const words = ['Connecting', 'Global', 'Opportunities', 'Through', 'Innovation'];
 
 const chips = [
   { icon: Globe2, label: 'Global Sourcing', className: 'left-[4%] top-[24%]', delay: 0, duration: 6 },
@@ -103,7 +103,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 + index * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 className={`mr-[0.26em] inline-block ${
-                  word === 'Floor' || word === 'Safety' ? 'gradient-text-animated' : ''
+                  word === 'Global' || word === 'Opportunities' ? 'gradient-text-animated' : ''
                 }`}
               >
                 {word}
@@ -117,7 +117,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.75 }}
             className="mx-auto mb-8 max-w-2xl text-[15px] leading-relaxed text-white/80 sm:mb-10 sm:text-lg"
           >
-            Safe. Sustainable. Commercial performance for facilities that need reliable floor-safety programs, product sourcing, and partnership support.
+            YUVAAN INTERNATIONAL connects manufacturers, governments, investors, and project developers across global markets — delivering innovative technologies, sustainable infrastructure, and long-term business partnerships that create lasting value.
           </motion.p>
 
           <motion.div
