@@ -5,7 +5,6 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
 import IndustriesGrid from '@/components/home/IndustriesGrid';
 import ProcessSection from '@/components/home/ProcessSection';
-import { DistributorCTA } from '@/components/safe-solution/SafetyComponents';
 
 export const metadata: Metadata = {
   title: 'YUVAAN INTERNATIONAL | Professional Cleaning & Floor Safety Solutions',
@@ -19,7 +18,6 @@ export default function HomePage() {
       <HeroSection />
       <CapabilitiesBand />
       <FeaturedProducts />
-      <DistributorCTA compact />
       <WhyChooseUs />
       <IndustriesGrid />
       <ProcessSection />

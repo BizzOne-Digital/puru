@@ -10,7 +10,16 @@ import { company } from '@/lib/data/company';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
+  {
+    label: 'Products',
+    href: '/products',
+    children: [
+      { label: 'All Products', href: '/products' },
+      { label: 'New Products', href: '/products/new-products' },
+      { label: 'Safe Solution®', href: '/products/new-products/safe-solution-floor-safety-system' },
+      { label: 'Distributors Wanted', href: '/partnerships/distributors-wanted' },
+    ],
+  },
   { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
   {
@@ -20,9 +29,7 @@ const navLinks = [
       { label: 'Resources Hub', href: '/resources' },
       { label: 'Global Markets', href: '/global-markets' },
       { label: 'Partnerships', href: '/partnerships' },
-      { label: 'Distributors Wanted', href: '/partnerships/distributors-wanted' },
       { label: 'Investments', href: '/investments' },
-      { label: 'Safe Solution®', href: '/products/new-products/safe-solution-floor-safety-system' },
     ],
   },
   { label: 'Contact', href: '/contact' },

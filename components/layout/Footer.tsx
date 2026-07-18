@@ -16,6 +16,7 @@ const quickLinks = [
 const productLinks = [
   { label: 'New Products', href: '/products/new-products' },
   { label: 'Safe Solution®', href: '/products/new-products/safe-solution-floor-safety-system' },
+  { label: 'Distributors Wanted', href: '/partnerships/distributors-wanted' },
   { label: 'Energy Solutions', href: '/products?category=Energy%20Solutions' },
   { label: 'Industrial Machinery', href: '/products/industrial-machinery' },
   { label: 'Custom Product Sourcing', href: '/products/custom-product-sourcing' },
@@ -24,7 +25,6 @@ const productLinks = [
 const resourceLinks = [
   { label: 'Global Markets', href: '/global-markets' },
   { label: 'Partnerships', href: '/partnerships' },
-  { label: 'Distributors Wanted', href: '/partnerships/distributors-wanted' },
   { label: 'Investments', href: '/investments' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms of Use', href: '/terms-of-use' },
