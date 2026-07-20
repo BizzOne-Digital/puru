@@ -142,7 +142,7 @@ export default function Navbar() {
 
               <div className="flex items-center justify-end gap-2">
                 <Link href="/contact#inquiry-form" className="hidden btn-primary !px-5 !py-2.5 lg:inline-flex">
-                  Request a Quote
+                  Contact us
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <button
@@ -216,7 +216,7 @@ export default function Navbar() {
 
               <div className="mt-8 space-y-3">
                 <Link href="/contact#inquiry-form" className="btn-primary w-full">
-                  Request a Quote
+                  Contact us
                 </Link>
                 <a href={`tel:${company.publicPhoneTel}`} className="block text-center text-sm text-steel-grey hover:text-accent">
                   {company.publicPhoneDisplay}
