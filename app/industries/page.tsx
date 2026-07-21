@@ -71,7 +71,7 @@ export default function IndustriesPage() {
               </p>
             </div>
             <Link href="/contact#inquiry-form" className="btn-primary w-full lg:w-auto xl:whitespace-nowrap">
-              Request a Quote <ArrowRight className="w-4 h-4" />
+              Contact us <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </Container>

@@ -127,7 +127,7 @@ export default function HeroSection() {
             className="mb-10 flex flex-col items-center justify-center gap-3 sm:mb-12 sm:flex-row"
           >
             <Link href="/contact#inquiry-form" className="btn-primary w-full !px-8 !py-4 !text-base sm:w-auto">
-              Request a Quote <ArrowRight className="h-5 w-5" />
+              Contact us <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               href="/products"

@@ -73,7 +73,7 @@ export default function ProcessSection() {
           <div className="pointer-events-none absolute inset-0 grid-bg-animated opacity-20" aria-hidden="true" />
           <div className="relative">
             <p className="text-accent-bright text-xs font-semibold tracking-[0.2em] uppercase mb-2">Ready to start?</p>
-            <h3 className="font-sora font-bold text-2xl sm:text-3xl mb-2">Request a quote or floor assessment</h3>
+            <h3 className="font-sora font-bold text-2xl sm:text-3xl mb-2">Contact us or request a floor assessment</h3>
             <p className="text-white/70 max-w-xl text-sm sm:text-base leading-relaxed">
               Share your requirement and our team will review the practical next step for your facility, market, or partnership inquiry.
             </p>

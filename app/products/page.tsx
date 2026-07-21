@@ -86,7 +86,7 @@ export default function ProductsPage() {
                     onClick={() => { setModalProduct(safeSolutionSummary.title); setModalOpen(true); }}
                     className="btn-secondary w-full sm:w-auto"
                   >
-                    Request a Quote
+                    Contact us
                   </button>
                 </div>
               </div>

@@ -54,7 +54,7 @@ export default function ProductCategoryCard({
             onClick={(e) => { e.stopPropagation(); onInquire(); }}
             className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-accent px-3 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-bright"
           >
-            Request a Quote <ArrowRight className="w-3.5 h-3.5" />
+            Contact us <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

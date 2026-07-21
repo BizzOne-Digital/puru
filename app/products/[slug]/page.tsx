@@ -84,7 +84,7 @@ export default async function ProductDetailPage(
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link href={`/contact?product=${encodeURIComponent(product.slug)}#inquiry-form`} className="btn-primary">
-                  <MessageSquare className="w-4 h-4" /> Request a Quote
+                  <MessageSquare className="w-4 h-4" /> Contact us
                 </Link>
                 <Link href="/products" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-all">
                   <ArrowLeft className="w-4 h-4" /> All Products
@@ -225,7 +225,7 @@ export default async function ProductDetailPage(
         <Container size="sm">
           <div className="text-center">
             <h2 className="font-sora font-bold text-2xl sm:text-3xl text-white mb-3">
-              Request a quote for {product.title}
+              Contact us about {product.title}
             </h2>
             <p className="text-white/65 mb-8 leading-relaxed">
               Share your requirement and our team will review the practical next step.
